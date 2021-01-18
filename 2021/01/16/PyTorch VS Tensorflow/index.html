@@ -16,7 +16,7 @@
 <meta property="og:description" content="PyTorch高效的C++内核Pytorch的核心库libtorch 使用C++实现了张量数据结构，GPU和CPU操作以及基本的并行原语。不需要持有Python全局解释器锁，使用的PyTorch操作组成的运算可在多线程中执行。 分离控制和数据流PyTorch在其控制流和数据流之间保持严格的分离。控制流的解析由运行在CPU上的Python和 C++代码处理，数据流既可以在CPU上也可以在GPU上运行">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2021-01-16T13:06:00.000Z">
-<meta property="article:modified_time" content="2021-01-17T05:46:19.760Z">
+<meta property="article:modified_time" content="2021-01-18T06:53:28.985Z">
 <meta property="article:author" content="Jerry Li">
 <meta property="article:tag" content="AI">
 <meta property="article:tag" content="computing framework">
@@ -179,7 +179,20 @@
 <h3 id="多进程优化"><a href="#多进程优化" class="headerlink" title="多进程优化"></a>多进程优化</h3><p>PyTorch将Python multiprocessing 模块扩展为 torch.multiprocessing，该模块会自动将发送到其他进程的张量数据移动到共享内存，而不是通过进程间通道来发送。</p>
 <h3 id="缓存分配优化"><a href="#缓存分配优化" class="headerlink" title="缓存分配优化"></a>缓存分配优化</h3><p>原生CUDAFREE操作会阻塞其调用者直至队列中所有任务结束，为了解决这一瓶颈，PyTorch实现自己的增量分配器</p>
 <h3 id="内存管理优化"><a href="#内存管理优化" class="headerlink" title="内存管理优化"></a>内存管理优化</h3><p>PyTorch依靠引用计数的方案来跟踪每个张量的使用次数，一旦该计数达到零立即释放底层内存。</p>
-<h2 id="Tensorflow"><a href="#Tensorflow" class="headerlink" title="Tensorflow"></a>Tensorflow</h2><h3 id="目标："><a href="#目标：" class="headerlink" title="目标："></a>目标：</h3><h2 id="二者区别"><a href="#二者区别" class="headerlink" title="二者区别"></a>二者区别</h2>
+<h2 id="Tensorflow"><a href="#Tensorflow" class="headerlink" title="Tensorflow"></a>Tensorflow</h2><p>提供基于数据流的编程规范，让开发者可以将应用部署在分布式集群或个人计算机甚至移动设备上。</p>
+<h3 id="设计理念："><a href="#设计理念：" class="headerlink" title="设计理念："></a>设计理念：</h3><ul>
+<li><p>基于计算原语的数据流图</p>
+<p>  在tensorflow中，数据流图的没个基点是一个独立的数学操作，如矩阵乘法、卷积等。这使得用户可以轻易的开发新的模型。</p>
+</li>
+<li><p>延期执行</p>
+<p>  tensorflow应用包含两个步骤：1）定义任务为一个数据流图（包括神经网络、更新策略）；2）执行优化后的任务。</p>
+<p>  这样的好处是，tensorflow可以从全局依赖关系的角度对任务进行优化。比如根据依赖关系优化任务的的执行序列，使计算的输出不需要等待，从而提升设备的利用率。</p>
+</li>
+<li><p>公用的加速器抽象</p>
+<p>  为了适用于包括CPU、GPU、TPU等不同加速器，tensorflow采用统一的抽象。每个设备必须支持 1）发布内核用于执行；2）分配内存用于输入输出；3）与host交换内存</p>
+</li>
+</ul>
+<h2 id="二者区别"><a href="#二者区别" class="headerlink" title="二者区别"></a>二者区别</h2>
       
 
       
