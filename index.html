@@ -46,7 +46,7 @@
 <div class="intrude-less">
 	<header id="header" class="inner">
 		<a href="/" class="profilepic">
-			<img src="https://avatars3.githubusercontent.com/u/8042196?s=460&amp;u=b1f52cdbf42db707640f69d3095f0cfeb8bbe859&amp;v=4" class="js-avatar">
+			<img src="https://s.gravatar.com/avatar/d08e8e9e07e91e21ca2d127595b14e71?size=496&amp;default=retro" class="js-avatar">
 		</a>
 		<hgroup>
 		  <h1 class="header-author"><a href="/"></a></h1>
@@ -102,7 +102,7 @@
 	<div class="intrude-less">
 		<header id="header" class="inner">
 			<div class="profilepic">
-				<img src="https://avatars3.githubusercontent.com/u/8042196?s=460&amp;u=b1f52cdbf42db707640f69d3095f0cfeb8bbe859&amp;v=4" class="js-avatar">
+				<img src="https://s.gravatar.com/avatar/d08e8e9e07e91e21ca2d127595b14e71?size=496&amp;default=retro" class="js-avatar">
 			</div>
 			<hgroup>
 			  <h1 class="header-author js-header-author"></h1>
@@ -152,6 +152,193 @@
           </div>
           <div id="js-content" class="content-ll">
             
+  
+    <article id="post-OneAPI" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/01/17/OneAPI/">OneAPI</a>
+    </h1>
+  
+
+        
+        <a href="/2021/01/17/OneAPI/" class="archive-article-date">
+  	<time datetime="2021-01-17T00:58:11.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-01-17</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="背景与简介"><a href="#背景与简介" class="headerlink" title="背景与简介"></a>背景与简介</h2><p>对于开发者而言，应对包括CPU、GPU、FPGA等多种架构十分挑战。每一种架构都有自己的库以及编程语言，如CUDA。到目前为止，没有普适的且不影响系统性能的编程模型。这意味着每一种架构都需要使用单独的工具，且代码复用困难。</p>
+<p>为了提升实现更快的应用程序性能、更高的生产率和更大的创新，OneAPI提供单一的软件抽象层让开发者进行跨不同类型硬件架构的直接编程。其开放、统一的标准保证了跨平台部署的稳定性以及系统的整体性能。</p>
+<h2 id="框架"><a href="#框架" class="headerlink" title="框架"></a>框架</h2><p><img src="/2021/01/17/OneAPI/framework.jpg" alt="oneAPI框架"></p>
+<h3 id="统一编程语言-Data-Parallel-C-DPC"><a href="#统一编程语言-Data-Parallel-C-DPC" class="headerlink" title="统一编程语言 (Data Parallel C++, DPC++)"></a>统一编程语言 (Data Parallel C++, DPC++)</h3><p>**oneAPI规范的核心是DPC++**，它是基于ISO C++和Khronos SYCL标准构建的开放式跨体系结构语言。DPC++扩展了这些标准，并提供了明确的并行构造和卸载（offload）接口，以支持广泛的计算体系结构和处理器，包括cpu和加速器体系结构。oneAPI平台上可以通过Accelerator接口支持其他语言和编程模型。</p>
+<p>其中，SYCL是一个在OpenCL上的C++抽象层，使得用户可以直接用简洁的C++对GPU等进行开发，而无需被OpenCL限制。</p>
+<h3 id="库"><a href="#库" class="headerlink" title="库"></a><strong>库</strong></h3><p>OneAPI为计算和数据密集型领域提供库，包括深度学习、科学计算、视频分析和媒体处理。</p>
+<ul>
+<li><p><strong>oneDPL (oneAPI DPC++ Library)</strong></p>
+<p>包含如下组成：</p>
+<ul>
+<li>C++标准库的子集</li>
+<li>并行 STL 算法的扩展，使其能够运行在oneAPI设备上</li>
+<li>其他未在C++标准及SYCL标准中涉及的扩展</li>
+</ul>
+</li>
+<li><p><strong>oneDNN (oneAPI Deep Neural Network Library)</strong></p>
+<p>  <img src="/2021/01/17/OneAPI/OneDNN.png" alt="OneDNN"></p>
+<ul>
+<li><p><strong>Primitive</strong>: 封装特定计算的函子对象，如前向卷积、后向LSTM计算或数据转换操作。</p>
+</li>
+<li><p><strong>Engine</strong>: 计算设备的抽象（CPU、指定GPU）</p>
+</li>
+<li><p><strong>Streams</strong>: 封装绑定到特定引擎的执行上下文</p>
+</li>
+<li><p><strong>Memory</strong>: 将句柄封装到特定引擎上分配的内存、张量维度、数据类型和内存格式—这是张量索引映射到线性内存空间中偏移量的方式。内存对象在执行期间传递给Primitive。</p>
+</li>
+</ul>
+</li>
+<li><p><strong>oneCCL (oneAPI Collective Communications Library )</strong></p>
+<p>  提供机器学习应用的通讯原语</p>
+</li>
+<li><p><strong>oneDAL (Data Analytics Library)</strong></p>
+<p>  采用批量、在线和分布式计算处理模式，为数据分析的所有阶段（预处理、转换、分析、建模、验证和决策）提供高度优化的算法模块。</p>
+</li>
+</ul>
+<ul>
+<li><p><strong>oneVPL (Video Processing Library)</strong></p>
+<p>  是一个用于视频解码、编码和处理的编程接口，用于在CPU、GPU和其他加速器上构建便携式媒体管道。它在以媒体为中心的工作负载和视频分析工作负载中提供设备发现和选择，并为零拷贝缓冲区共享提供API原语。oneVPL向后和跨体系结构兼容，确保在当前和下一代硬件上实现最佳执行，而无需更改源代码。</p>
+</li>
+<li><p><strong>oneMKL (Math Kernel Library)</strong></p>
+<p>  定义一组用于高性能计算和其他应用程序的基本数学方法。作为oneAPI的一部分，oneMKL的设计允许在各种计算设备上执行：包括CPU、GPU、FPGA和其他加速器。该功能被细分为几个领域：密集线性代数，稀疏线性代数，离散傅立叶变换，随机数发生器和向量数学。</p>
+</li>
+</ul>
+<h3 id="硬件抽象层-（Level-Zero）"><a href="#硬件抽象层-（Level-Zero）" class="headerlink" title="硬件抽象层 （Level Zero）"></a><strong>硬件抽象层 （Level Zero）</strong></h3><h4 id="核心组成"><a href="#核心组成" class="headerlink" title="核心组成"></a>核心组成</h4><p>Level Zero 核心API针对下列方法提供底层、细粒度、显式的控制：</p>
+<ul>
+<li>设备发现和切分</li>
+<li>内存分配、虚拟化、分配</li>
+<li>Kernel运行和调度</li>
+<li>点对点传输</li>
+<li>跨进程同步</li>
+</ul>
+<h5 id="Drivers-and-Devices"><a href="#Drivers-and-Devices" class="headerlink" title="Drivers and Devices"></a>Drivers and Devices</h5><ul>
+<li>driver对象表示一个物理设备集合，这个集合所有设备使用的相同的Level-Zero 驱动。</li>
+<li>device对象代表一个支持Level-Zero的物理设备</li>
+<li>Level-Zero启动时，首先调用ZeInit函数加载驱动，进一步发现支持的设备。</li>
+</ul>
+<p><img src="/2021/01/17/OneAPI/core_device.png" alt="driver and device"></p>
+<h6 id="Contexts"><a href="#Contexts" class="headerlink" title="Contexts"></a>Contexts</h6><p>context对象是一个逻辑对象，用于驱动管理所有内存、任务队列、同步对象等等。</p>
+<ul>
+<li>context句柄主要用于创建和管理可能由多个设备使用的资源。例如，可以通过context类实现显式地设备间内存共享。</li>
+</ul>
+<h5 id="Memory-and-Images"><a href="#Memory-and-Images" class="headerlink" title="Memory and Images"></a>Memory and Images</h5><ul>
+<li>Memory: 线性、非格式化的分配，既可以从host上分配也可以在设备上分配。通过虚拟地址访问。</li>
+<li>Images: 非线性、格式化的分配，只能从设备上进行分配。不透明对象，通过句柄访问。</li>
+</ul>
+<p><em>Memory</em> 分为三种类型：</p>
+<ul>
+<li>Host：由主机所有，从系统内存分配</li>
+<li>Device：由某个设备所有，从该设备本地内存分配</li>
+<li>Shared：有多个设备/主机共享，可以在主机和1/多个设备间迁移。至少能够被一个host和一个设备访问。</li>
+</ul>
+<p><em>Images</em> 用于存储多维和格式定义的内存内容。不支持主机直接访问内容。然而，当其被复制到主机可访问内存分配时，其内容将被隐式解码。格式描述符是格式、类型和swizzle的组合。格式布局描述组件的数量及其相应的位宽度。类型描述了所有这些组件的数据类型，swizzle关联图像组件如何映射到内核的XYZW/RGBA通道。</p>
+<h5 id="Command-Queues-and-Command-Lists"><a href="#Command-Queues-and-Command-Lists" class="headerlink" title="Command Queues and Command Lists"></a>Command Queues and Command Lists</h5><p><img src="/2021/01/17/OneAPI/core_queue.png" alt="Command Queues and Command Lists"></p>
+<ul>
+<li> Command Queues主要与物理设备属性相关联，代表了一个对设备的逻辑输入流，其访问物理设备接近零延迟。</li>
+<li> Command Lists 主要与主机线城相关联，代表了一个任务执行序列。</li>
+</ul>
+<h5 id="同步原语"><a href="#同步原语" class="headerlink" title="同步原语"></a>同步原语</h5><ul>
+<li><p>Fence 是一个重量级的同步原语，用于向主机传达命令列表执行已经完成。</p>
+<ul>
+<li>一个fence与一个Command Queues相关联</li>
+<li>只能从设备的Command Queues中发出信号。</li>
+<li>在发出信号之前，fence保证设备和主机之间的执行完成和内存一致性。</li>
+<li>只有两种状态：未信号化和信号化，且不会隐式复位。</li>
+<li>栅栏只能从主机上重置。</li>
+<li>栅栏不能跨进程共享。</li>
+</ul>
+</li>
+<li><p>Events 用于传达细粒度的主机到设备、设备到主机或设备到设备的依赖关系已经完成。</p>
+</li>
+</ul>
+<p>通过Fence和Events可以实现执行栅栏和内存栅栏，其中fence属于隐式、粗粒度控制而event是显示、细粒度的控制</p>
+<h5 id="Modules-and-Kernels"><a href="#Modules-and-Kernels" class="headerlink" title="Modules and Kernels"></a>Modules and Kernels</h5><ul>
+<li>Modules代表一个单一的翻译单元，由编译在一起的内核组成。</li>
+<li>Kernels代表模块内的内核，将直接从Command List中启动。</li>
+</ul>
+<p><img src="/2021/01/17/OneAPI/core_module.png" alt="Modules and Kernels"></p>
+<h4 id="工具集"><a href="#工具集" class="headerlink" title="工具集"></a>工具集</h4><p>提供底层设备访问：</p>
+<ul>
+<li>指标报告</li>
+<li>内核分析和调试</li>
+</ul>
+<h4 id="系统管理"><a href="#系统管理" class="headerlink" title="系统管理"></a>系统管理</h4><ul>
+<li>查询加速器资源的性能、电源和运行状况</li>
+<li>控制加速器资源的性能和功率分布</li>
+<li>设施维护，如执行硬件诊断、更新固件或重置设备</li>
+</ul>
+<h2 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h2><h3 id="代码迁移工具"><a href="#代码迁移工具" class="headerlink" title="代码迁移工具"></a>代码迁移工具</h3><p>原始CUDA代码</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cuda.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> vector_size = <span class="number">256</span>;</span><br><span class="line"></span><br><span class="line"><span class="function">__global__ <span class="keyword">void</span> <span class="title">SimpleAddKernel</span><span class="params">(<span class="keyword">float</span> *A, <span class="keyword">int</span> offset)</span> </span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  A[threadIdx.x] = threadIdx.x + offset;</span><br><span class="line"> </span><br><span class="line">&#125;<span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="keyword">float</span> *d_A;</span><br><span class="line">  <span class="keyword">int</span> offset = <span class="number">10000</span>;</span><br><span class="line"></span><br><span class="line">  cudaMalloc( &amp;d_A, vector_size * <span class="keyword">sizeof</span>( <span class="keyword">float</span> ) );</span><br><span class="line">  SimpleAddKernel&lt;&lt;&lt;<span class="number">1</span>, vector_size&gt;&gt;&gt;(d_A, offset);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">float</span> result[vector_size] = &#123; &#125;;</span><br><span class="line">  cudaMemcpy(result, d_A, vector_size*<span class="keyword">sizeof</span>(<span class="keyword">float</span>), cudaMemcpyDeviceToHost);</span><br><span class="line"></span><br><span class="line">  cudaFree( d_A );</span><br><span class="line">   </span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; vector_size; ++i) &#123;</span><br><span class="line">    <span class="keyword">if</span> (i % <span class="number">8</span> == <span class="number">0</span>) <span class="built_in">printf</span>( <span class="string">&quot;\n&quot;</span> );</span><br><span class="line">    <span class="built_in">printf</span>( <span class="string">&quot;%.1f &quot;</span>, result[i] );</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>迁移后代码</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;CL/sycl.hpp&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;dpct/dpct.hpp&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> vector_size = <span class="number">256</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">SimpleAddKernel</span><span class="params">(<span class="keyword">float</span> *A, <span class="keyword">int</span> offset, sycl::nd_item&lt;<span class="number">3</span>&gt; item_ct1)</span></span></span><br><span class="line"><span class="function"></span>&#123; </span><br><span class="line">  A[item_ct1.get_local_id(<span class="number">2</span>)] = item_ct1.get_local_id(<span class="number">2</span>) + offset;</span><br><span class="line"> </span><br><span class="line">&#125;<span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  dpct::device_ext &amp;dev_ct1 = dpct::get_current_device();</span><br><span class="line">  sycl::<span class="built_in">queue</span> &amp;q_ct1 = dev_ct1.default_queue();</span><br><span class="line">  <span class="keyword">float</span> *d_A;</span><br><span class="line">  <span class="keyword">int</span> offset = <span class="number">10000</span>;</span><br><span class="line"></span><br><span class="line">  d_A = sycl::malloc_device&lt;<span class="keyword">float</span>&gt;(vector_size, q_ct1);</span><br><span class="line">  q_ct1.submit([&amp;](sycl::handler &amp;cgh) &#123;</span><br><span class="line">    cgh.parallel_for(sycl::nd_range(sycl::range(<span class="number">1</span>, <span class="number">1</span>, vector_size),</span><br><span class="line">                                    sycl::range(<span class="number">1</span>, <span class="number">1</span>, vector_size)),</span><br><span class="line">                     [=](sycl::nd_item&lt;<span class="number">3</span>&gt; item_ct1) &#123;</span><br><span class="line">                       SimpleAddKernel(d_A, offset, item_ct1);</span><br><span class="line">                     &#125;);</span><br><span class="line">  &#125;);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">float</span> result[vector_size] = &#123; &#125;;</span><br><span class="line">  q_ct1.<span class="built_in">memcpy</span>(result, d_A, vector_size * <span class="keyword">sizeof</span>(<span class="keyword">float</span>)).wait();</span><br><span class="line"></span><br><span class="line">  sycl::<span class="built_in">free</span>(d_A, q_ct1);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; vector_size; ++i) &#123;</span><br><span class="line">    <span class="keyword">if</span> (i % <span class="number">8</span> == <span class="number">0</span>) <span class="built_in">printf</span>( <span class="string">&quot;\n&quot;</span> );</span><br><span class="line">    <span class="built_in">printf</span>( <span class="string">&quot;%.1f &quot;</span>, result[i] );</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Intel</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Programming Model</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2021/01/17/OneAPI/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
   
     <article id="post-拥塞控制" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
@@ -271,7 +458,7 @@
 <h3 id="多进程优化"><a href="#多进程优化" class="headerlink" title="多进程优化"></a>多进程优化</h3><p>PyTorch将Python multiprocessing 模块扩展为 torch.multiprocessing，该模块会自动将发送到其他进程的张量数据移动到共享内存，而不是通过进程间通道来发送。</p>
 <h3 id="缓存分配优化"><a href="#缓存分配优化" class="headerlink" title="缓存分配优化"></a>缓存分配优化</h3><p>原生CUDAFREE操作会阻塞其调用者直至队列中所有任务结束，为了解决这一瓶颈，PyTorch实现自己的增量分配器</p>
 <h3 id="内存管理优化"><a href="#内存管理优化" class="headerlink" title="内存管理优化"></a>内存管理优化</h3><p>PyTorch依靠引用计数的方案来跟踪每个张量的使用次数，一旦该计数达到零立即释放底层内存。</p>
-<h2 id="Tensorflow"><a href="#Tensorflow" class="headerlink" title="Tensorflow"></a>Tensorflow</h2><h2 id="二者区别"><a href="#二者区别" class="headerlink" title="二者区别"></a>二者区别</h2>
+<h2 id="Tensorflow"><a href="#Tensorflow" class="headerlink" title="Tensorflow"></a>Tensorflow</h2><h3 id="目标："><a href="#目标：" class="headerlink" title="目标："></a>目标：</h3><h2 id="二者区别"><a href="#二者区别" class="headerlink" title="二者区别"></a>二者区别</h2>
       
 
       
@@ -533,6 +720,14 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">拥塞控制</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Intel</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Programming Model</a>
               </li>
             
             <div class="clearfix"></div>

@@ -16,7 +16,7 @@
 <meta property="og:description" content="PyTorch高效的C++内核Pytorch的核心库libtorch 使用C++实现了张量数据结构，GPU和CPU操作以及基本的并行原语。不需要持有Python全局解释器锁，使用的PyTorch操作组成的运算可在多线程中执行。 分离控制和数据流PyTorch在其控制流和数据流之间保持严格的分离。控制流的解析由运行在CPU上的Python和 C++代码处理，数据流既可以在CPU上也可以在GPU上运行">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2021-01-16T13:06:00.000Z">
-<meta property="article:modified_time" content="2021-01-16T14:56:05.875Z">
+<meta property="article:modified_time" content="2021-01-17T05:46:19.760Z">
 <meta property="article:author" content="Jerry Li">
 <meta property="article:tag" content="AI">
 <meta property="article:tag" content="computing framework">
@@ -49,7 +49,7 @@
 <div class="intrude-less">
 	<header id="header" class="inner">
 		<a href="/" class="profilepic">
-			<img src="https://avatars3.githubusercontent.com/u/8042196?s=460&amp;u=b1f52cdbf42db707640f69d3095f0cfeb8bbe859&amp;v=4" class="js-avatar">
+			<img src="https://s.gravatar.com/avatar/d08e8e9e07e91e21ca2d127595b14e71?size=496&amp;default=retro" class="js-avatar">
 		</a>
 		<hgroup>
 		  <h1 class="header-author"><a href="/"></a></h1>
@@ -105,7 +105,7 @@
 	<div class="intrude-less">
 		<header id="header" class="inner">
 			<div class="profilepic">
-				<img src="https://avatars3.githubusercontent.com/u/8042196?s=460&amp;u=b1f52cdbf42db707640f69d3095f0cfeb8bbe859&amp;v=4" class="js-avatar">
+				<img src="https://s.gravatar.com/avatar/d08e8e9e07e91e21ca2d127595b14e71?size=496&amp;default=retro" class="js-avatar">
 			</div>
 			<hgroup>
 			  <h1 class="header-author js-header-author"></h1>
@@ -179,7 +179,7 @@
 <h3 id="多进程优化"><a href="#多进程优化" class="headerlink" title="多进程优化"></a>多进程优化</h3><p>PyTorch将Python multiprocessing 模块扩展为 torch.multiprocessing，该模块会自动将发送到其他进程的张量数据移动到共享内存，而不是通过进程间通道来发送。</p>
 <h3 id="缓存分配优化"><a href="#缓存分配优化" class="headerlink" title="缓存分配优化"></a>缓存分配优化</h3><p>原生CUDAFREE操作会阻塞其调用者直至队列中所有任务结束，为了解决这一瓶颈，PyTorch实现自己的增量分配器</p>
 <h3 id="内存管理优化"><a href="#内存管理优化" class="headerlink" title="内存管理优化"></a>内存管理优化</h3><p>PyTorch依靠引用计数的方案来跟踪每个张量的使用次数，一旦该计数达到零立即释放底层内存。</p>
-<h2 id="Tensorflow"><a href="#Tensorflow" class="headerlink" title="Tensorflow"></a>Tensorflow</h2><h2 id="二者区别"><a href="#二者区别" class="headerlink" title="二者区别"></a>二者区别</h2>
+<h2 id="Tensorflow"><a href="#Tensorflow" class="headerlink" title="Tensorflow"></a>Tensorflow</h2><h3 id="目标："><a href="#目标：" class="headerlink" title="目标："></a>目标：</h3><h2 id="二者区别"><a href="#二者区别" class="headerlink" title="二者区别"></a>二者区别</h2>
       
 
       
@@ -444,6 +444,14 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">拥塞控制</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Intel</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Programming Model</a>
               </li>
             
             <div class="clearfix"></div>
