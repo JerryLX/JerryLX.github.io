@@ -8,15 +8,15 @@
   <link rel="dns-prefetch" href="http://example.com">
   <title>Zink Failcase 分析 | Jerry Li的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="OpenGL fail case 分析ARB_vertex_type_2_10_10_10_rev一、Overview该特性提供两种新的顶点属性数据格式：  有符号2.10.10.10顶点数据格式 无符号2.10.10.10顶点数据格式  每个格式描述了一个4分量流，法线、切线、Binormal和其他顶点属性通常可以在不引入明显瑕疵的情况下以较低的精度指定，从而减少它们消耗的内存量和内存带宽。 二">
+  <meta name="description" content="ARB_vertex_type_2_10_10_10_rev一、Overview该特性提供两种新的顶点属性数据格式：  有符号2.10.10.10顶点数据格式 无符号2.10.10.10顶点数据格式  每个格式描述了一个4分量流，法线、切线、Binormal和其他顶点属性通常可以在不引入明显瑕疵的情况下以较低的精度指定，从而减少它们消耗的内存量和内存带宽。 二、Piglit 测试结果 .&#x2F;bin&#x2F;">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Zink Failcase 分析">
 <meta property="og:url" content="http://example.com/2021/01/27/Zink-Failcase-%E5%88%86%E6%9E%90/index.html">
 <meta property="og:site_name" content="Jerry Li的博客">
-<meta property="og:description" content="OpenGL fail case 分析ARB_vertex_type_2_10_10_10_rev一、Overview该特性提供两种新的顶点属性数据格式：  有符号2.10.10.10顶点数据格式 无符号2.10.10.10顶点数据格式  每个格式描述了一个4分量流，法线、切线、Binormal和其他顶点属性通常可以在不引入明显瑕疵的情况下以较低的精度指定，从而减少它们消耗的内存量和内存带宽。 二">
+<meta property="og:description" content="ARB_vertex_type_2_10_10_10_rev一、Overview该特性提供两种新的顶点属性数据格式：  有符号2.10.10.10顶点数据格式 无符号2.10.10.10顶点数据格式  每个格式描述了一个4分量流，法线、切线、Binormal和其他顶点属性通常可以在不引入明显瑕疵的情况下以较低的精度指定，从而减少它们消耗的内存量和内存带宽。 二、Piglit 测试结果 .&#x2F;bin&#x2F;">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2021-01-27T07:53:33.000Z">
-<meta property="article:modified_time" content="2021-01-27T08:01:51.816Z">
+<meta property="article:modified_time" content="2021-01-27T08:16:08.934Z">
 <meta property="article:author" content="Jerry Li">
 <meta property="article:tag" content="OpenGL">
 <meta name="twitter:card" content="summary">
@@ -63,6 +63,8 @@
 				<li><a href="/categories/something/">随笔</a></li>
 	        
 				<li><a href="/categories/ns/">网络研究</a></li>
+	        
+				<li><a href="/categories/ipfs/">IPFS项目</a></li>
 	        
 			</ul>
 		</nav>
@@ -118,6 +120,8 @@
 			
 				
 			
+				
+			
 			
 			
 			<nav class="header-nav">
@@ -134,11 +138,13 @@
 				<ul style="width: 70%">
 				
 				
-					<li style="width: 33.333333333333336%"><a href="/">主页</a></li>
+					<li style="width: 25%"><a href="/">主页</a></li>
 		        
-					<li style="width: 33.333333333333336%"><a href="/categories/something/">随笔</a></li>
+					<li style="width: 25%"><a href="/categories/something/">随笔</a></li>
 		        
-					<li style="width: 33.333333333333336%"><a href="/categories/ns/">网络研究</a></li>
+					<li style="width: 25%"><a href="/categories/ns/">网络研究</a></li>
+		        
+					<li style="width: 25%"><a href="/categories/ipfs/">IPFS项目</a></li>
 		        
 				</ul>
 			</nav>
@@ -173,25 +179,24 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="OpenGL-fail-case-分析"><a href="#OpenGL-fail-case-分析" class="headerlink" title="OpenGL fail case 分析"></a>OpenGL fail case 分析</h1><h2 id="ARB-vertex-type-2-10-10-10-rev"><a href="#ARB-vertex-type-2-10-10-10-rev" class="headerlink" title="ARB_vertex_type_2_10_10_10_rev"></a>ARB_vertex_type_2_10_10_10_rev</h2><h3 id="一、Overview"><a href="#一、Overview" class="headerlink" title="一、Overview"></a><strong>一、Overview</strong></h3><p>该特性提供两种新的顶点属性数据格式：</p>
+        <h2><span id="arb_vertex_type_2_10_10_10_rev">ARB_vertex_type_2_10_10_10_rev</span></h2><h3><span id="一-overview"><strong>一、Overview</strong></span></h3><p>该特性提供两种新的顶点属性数据格式：</p>
 <ul>
 <li>有符号2.10.10.10顶点数据格式</li>
 <li>无符号2.10.10.10顶点数据格式</li>
 </ul>
 <p>每个格式描述了一个4分量流，法线、切线、Binormal和其他顶点属性通常可以在不引入明显瑕疵的情况下以较低的精度指定，从而减少它们消耗的内存量和内存带宽。</p>
-<h3 id="二、Piglit-测试结果"><a href="#二、Piglit-测试结果" class="headerlink" title="二、Piglit 测试结果"></a><strong>二、Piglit 测试结果</strong></h3><ol>
+<h3><span id="二-piglit-测试结果"><strong>二、Piglit 测试结果</strong></span></h3><ol>
 <li><p><code>./bin/arb_vertex_type_2_10_10_10_rev-array_types -auto -fbo</code></p>
 <p> 测试结果：</p>
  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">testing: RGBA SINT </span><br><span class="line">testing: RGBA SNORM </span><br><span class="line">testing: RGBA UINT </span><br><span class="line">testing: RGBA UNORM </span><br><span class="line">testing: BGRA SNORM </span><br><span class="line">Probe color at (85,5)   </span><br><span class="line">Expected: 0.000000 0.250000 0.500000 1.000000   </span><br><span class="line">Observed: 0.501961 0.250980 0.000000 1.000000 </span><br><span class="line">testing: BGRA UNORM</span><br></pre></td></tr></table></figure>
- <a id="more"></a>
-</li>
+<a id="more"></a></li>
 <li><p><code>./bin/draw-vertices-2101010 -auto</code></p>
 <p> 测试结果：</p>
  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">Int vertices - 2&#x2F;10&#x2F;10&#x2F;10</span><br><span class="line">Unsigned Int vertices - 2&#x2F;10&#x2F;10&#x2F;10</span><br><span class="line">Int Color - 2&#x2F;10&#x2F;10&#x2F;10</span><br><span class="line">Probe color at (45,5)</span><br><span class="line">Expected: 1.000000 0.000000 0.000000 0.333000</span><br><span class="line">Observed: 1.000000 0.000000 0.000000 0.000000</span><br><span class="line">warning: driver uses GL 4.2+ rules for signed normalized to float conversions</span><br><span class="line">Unsigned Int Color - 2&#x2F;10&#x2F;10&#x2F;10</span><br><span class="line">Int BGRA Color - 2&#x2F;10&#x2F;10&#x2F;10</span><br><span class="line">Probe color at (85,5)</span><br><span class="line">Expected: 0.000000 0.000000 1.000000 0.333000</span><br><span class="line">Observed: 1.000000 0.000000 0.000000 0.000000</span><br><span class="line">Probe color at (85,5)</span><br><span class="line">Expected: 0.000000 0.000000 1.000000 0.000000</span><br><span class="line">Observed: 1.000000 0.000000 0.000000 0.000000</span><br><span class="line">Unsigned Int BGRA Color - 2&#x2F;10&#x2F;10&#x2F;10</span><br><span class="line">Int 2&#x2F;10&#x2F;10&#x2F;10 - test ABI</span><br><span class="line">Unsigned 2&#x2F;10&#x2F;10&#x2F;10 - test ABI</span><br></pre></td></tr></table></figure>
 
 </li>
 </ol>
-<h3 id="三、原因分析"><a href="#三、原因分析" class="headerlink" title="三、原因分析"></a><strong>三、原因分析</strong></h3><p>注意到测试结果中B和R位置发生了交换, 而在Zink 中，该特性与Vulkan映射如下：</p>
+<h3><span id="三-原因分析"><strong>三、原因分析</strong></span></h3><p>注意到测试结果中B和R位置发生了交换, 而在Zink 中，该特性与Vulkan映射如下：</p>
 <pre><code>[PIPE_FORMAT_R10G10B10A2_UNORM] = VK_FORMAT_A2B10G10R10_UNORM_PACK32,
 [PIPE_FORMAT_R10G10B10A2_SNORM] = VK_FORMAT_A2B10G10R10_SNORM_PACK32,
 [PIPE_FORMAT_B10G10R10A2_UNORM] = VK_FORMAT_A2R10G10B10_UNORM_PACK32,
@@ -216,7 +221,7 @@
 <p> testing: RGBA SINT<br> testing: RGBA SNORM<br> testing: RGBA UINT<br> testing: RGBA UNORM<br> testing: BGRA SNORM<br> testing: BGRA UNORM<br> PIGLIT: {“result”: “pass” }</p>
 </li>
 </ol>
-<h2 id="Border-Color"><a href="#Border-Color" class="headerlink" title="Border Color"></a>Border Color</h2><h3 id="一、Overview-1"><a href="#一、Overview-1" class="headerlink" title="一、Overview"></a><strong>一、Overview</strong></h3><p>目前大多数bordercolor相关测试均无法通过，但相关测试在去除bordercolor参数后即可通过。包括：</p>
+<h2><span id="border-color">Border Color</span></h2><h3><span id="一-overview"><strong>一、Overview</strong></span></h3><p>目前大多数bordercolor相关测试均无法通过，但相关测试在去除bordercolor参数后即可通过。包括：</p>
 <p><code>arb_texture_float</code> 相关:</p>
 <ol>
 <li><code>./bin/texwrap GL_ARB_texture_float bordercolor swizzled -auto -fbo</code></li>
@@ -303,7 +308,7 @@ Expected: 19 172 95 216
 Observed: 0 0 0 255
 PIGLIT: &#123;&quot;subtest&quot;: &#123;&quot;GL_RGBA32F, border color only&quot; : &quot;fail&quot;&#125;&#125;
 PIGLIT: &#123;&quot;result&quot;: &quot;fail&quot; &#125;</code></pre>
-<h3 id="二、原因分析"><a href="#二、原因分析" class="headerlink" title="二、原因分析"></a><strong>二、原因分析</strong></h3><ol>
+<h3><span id="二-原因分析"><strong>二、原因分析</strong></span></h3><ol>
 <li><p>上述测试去除bordercolor参数后均能通过，初步分析相关特性已实现，问题出在bordercolor上</p>
 </li>
 <li><p>失败样例均为LINEAR + GL_CLAMP</p>
@@ -333,9 +338,9 @@ PIGLIT: &#123;&quot;result&quot;: &quot;fail&quot; &#125;</code></pre>
 <p> 怀疑zink中使用的类型错误，<br> <code>sci.borderColor = VK_BORDER_COLOR_INT_CUSTOM_EXT;</code>应该为<code>sci.borderColor = VK_BORDER_COLOR_FLOAT_CUSTOM_EXT;</code></p>
 </li>
 </ol>
-<h2 id="ARB-seamless-cube-map"><a href="#ARB-seamless-cube-map" class="headerlink" title="ARB_seamless_cube_map"></a>ARB_seamless_cube_map</h2><h3 id="一、Overview-2"><a href="#一、Overview-2" class="headerlink" title="一、Overview"></a>一、Overview</h3><p>立方体贴图是一种纹理类型，类似于二维纹理有两个维度。但是，每个mipmap级别有6个面，每个面与其他面具有相同的大小。立方体贴图的宽度和高度必须相同（即：立方体贴图是正方形）。</p>
+<h2><span id="arb_seamless_cube_map">ARB_seamless_cube_map</span></h2><h3><span id="一-overview">一、Overview</span></h3><p>立方体贴图是一种纹理类型，类似于二维纹理有两个维度。但是，每个mipmap级别有6个面，每个面与其他面具有相同的大小。立方体贴图的宽度和高度必须相同（即：立方体贴图是正方形）。</p>
 <p>seamless特性影响的是采样的范围。在cubemap中，面之间不起作用，这将在立方体贴图的面上形成一个接缝。这在过去是一个硬件限制，但现代硬件能够跨立方体面边界进行插值。</p>
-<h3 id="二、Piglit测试"><a href="#二、Piglit测试" class="headerlink" title="二、Piglit测试"></a>二、Piglit测试</h3><p>初始化纹理：</p>
+<h3><span id="二-piglit测试">二、Piglit测试</span></h3><p>初始化纹理：</p>
 <pre><code>glBindTexture(GL_TEXTURE_CUBE_MAP_ARB, 1);
 glTexParameteri(GL_TEXTURE_CUBE_MAP_ARB, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
 glTexParameteri(GL_TEXTURE_CUBE_MAP_ARB, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
@@ -379,7 +384,7 @@ Probe color at (50,20)
 Expected: 1.000000 0.000000 0.000000
 Observed: 0.501961 0.000000 0.498039
 PIGLIT: &#123;&quot;result&quot;: &quot;fail&quot; &#125;</code></pre>
-<h3 id="三、原因分析-1"><a href="#三、原因分析-1" class="headerlink" title="三、原因分析"></a>三、原因分析</h3><p>失败样例中，测试分别以（10，10）和（40，10）为顶点，20为边长绘制矩形，采样坐标位于矩形正中间，zink输出的结果为期望结果与相邻纹理图片的线性采样。</p>
+<h3><span id="三-原因分析">三、原因分析</span></h3><p>失败样例中，测试分别以（10，10）和（40，10）为顶点，20为边长绘制矩形，采样坐标位于矩形正中间，zink输出的结果为期望结果与相邻纹理图片的线性采样。</p>
 <p>在OpenGL中，创建纹理需要同时创建图像与制定采样参数；在Vulkan中，图像与采样器是分开创建/设计的。目前Vulkan的采样器包含如下参数</p>
 <ul>
 <li>sType - Type of the structure. It should be equal to a VK_STRUCTURE_TYPE_SAMPLER_CREATE_INFO value.</li>
@@ -402,7 +407,7 @@ PIGLIT: &#123;&quot;result&quot;: &quot;fail&quot; &#125;</code></pre>
 <li>unnormalizedCoordinates - Usually (when this parameter is set to false) we provide texture coordinates using a normalized &lt;0.0; 1.0&gt; range. When set to true, this parameter allows us to specify that we want to use unnormalized coordinates and address texture using texels (in a &lt;0; texture dimension&gt; range, similar to OpenGL’s rectangle textures).</li>
 </ul>
 <p>换言之，Vulkan目前缺乏立方体问题采样相关参数设置，默认使用的是跨立方体面边界采样插值。<br>这样做的好处是能够使立方体贴图的边缘更加平滑。</p>
-<h2 id="Provoking-Vertex"><a href="#Provoking-Vertex" class="headerlink" title="Provoking Vertex"></a>Provoking Vertex</h2><h3 id="一、Overview-3"><a href="#一、Overview-3" class="headerlink" title="一、Overview"></a>一、Overview</h3><p><a target="_blank" rel="noopener" href="https://www.khronos.org/opengl/wiki/Primitive#Provoking_vertex">Provoking Vertex</a> 是输出图元中的一个顶点，该顶点对图元有特殊的意义。例如，当开启平面着色时，只有 provoking vertex 的颜色会被使用，该图元生成的每个片段的输入也都是 provoking vertex 的输出。</p>
+<h2><span id="provoking-vertex">Provoking Vertex</span></h2><h3><span id="一-overview">一、Overview</span></h3><p><a target="_blank" rel="noopener" href="https://www.khronos.org/opengl/wiki/Primitive#Provoking_vertex">Provoking Vertex</a> 是输出图元中的一个顶点，该顶点对图元有特殊的意义。例如，当开启平面着色时，只有 provoking vertex 的颜色会被使用，该图元生成的每个片段的输入也都是 provoking vertex 的输出。</p>
 <table>
 <thead>
 <tr>
@@ -470,13 +475,13 @@ PIGLIT: &#123;&quot;result&quot;: &quot;fail&quot; &#125;</code></pre>
 <blockquote>
 <p><a target="_blank" rel="noopener" href="https://www.khronos.org/registry/OpenGL/extensions/ARB/ARB_provoking_vertex.txt">ARB_provoking_vertex Overview</a><br>This extension provides an alternative provoking vertex convention<br>    for rendering lines, triangles, and (optionally depending on the<br>    implementation) quads.</p>
 </blockquote>
-<h3 id="二、Piglit-测试结果-1"><a href="#二、Piglit-测试结果-1" class="headerlink" title="二、Piglit 测试结果"></a>二、Piglit 测试结果</h3><p><code>./bin/arb-provoking-vertex-clipped-geometry-flatshading -auto</code></p>
+<h3><span id="二-piglit-测试结果">二、Piglit 测试结果</span></h3><p><code>./bin/arb-provoking-vertex-clipped-geometry-flatshading -auto</code></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Probe color at (158,79)</span><br><span class="line">  Expected: 1.000000 0.000000 0.000000</span><br><span class="line">  Observed: 0.000000 0.000000 1.000000</span><br><span class="line">PIGLIT: &#123;&quot;result&quot;: &quot;fail&quot; &#125;</span><br></pre></td></tr></table></figure>
 <p><code>./bin/arb-provoking-vertex-render -auto</code></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br></pre></td><td class="code"><pre><span class="line">GL_QUADS_FOLLOW_PROVOKING_VERTEX_CONVENTION &#x3D; 0</span><br><span class="line">Probe color at (40,80)</span><br><span class="line">  Expected: 0.000000 1.000000 0.000000</span><br><span class="line">  Observed: 1.000000 0.000000 0.000000</span><br><span class="line">Probe color at (120,80)</span><br><span class="line">  Expected: 1.000000 1.000000 0.000000</span><br><span class="line">  Observed: 0.000000 0.000000 1.000000</span><br><span class="line">Failure for GL_LINES, GL_LAST_VERTEX_CONVENTION</span><br><span class="line">Probe color at (40,80)</span><br><span class="line">  Expected: 0.000000 1.000000 0.000000</span><br><span class="line">  Observed: 1.000000 0.000000 0.000000</span><br><span class="line">Probe color at (120,80)</span><br><span class="line">  Expected: 0.000000 0.000000 1.000000</span><br><span class="line">  Observed: 0.000000 1.000000 0.000000</span><br><span class="line">Failure for GL_LINE_STRIP, GL_LAST_VERTEX_CONVENTION</span><br><span class="line">Probe color at (40,80)</span><br><span class="line">  Expected: 0.000000 1.000000 0.000000</span><br><span class="line">  Observed: 1.000000 0.000000 0.000000</span><br><span class="line">Probe color at (120,80)</span><br><span class="line">  Expected: 0.000000 0.000000 1.000000</span><br><span class="line">  Observed: 0.000000 1.000000 0.000000</span><br><span class="line">Failure for GL_LINE_LOOP, GL_LAST_VERTEX_CONVENTION</span><br><span class="line">Probe color at (40,79)</span><br><span class="line">  Expected: 0.000000 0.000000 1.000000</span><br><span class="line">  Observed: 1.000000 0.000000 0.000000</span><br><span class="line">Probe color at (120,79)</span><br><span class="line">  Expected: 1.000000 0.000000 0.000000</span><br><span class="line">  Observed: 0.000000 1.000000 0.000000</span><br><span class="line">Failure for GL_TRIANGLES, GL_LAST_VERTEX_CONVENTION</span><br><span class="line">Probe color at (40,79)</span><br><span class="line">  Expected: 0.000000 0.000000 1.000000</span><br><span class="line">  Observed: 1.000000 0.000000 0.000000</span><br><span class="line">Probe color at (120,79)</span><br><span class="line">  Expected: 1.000000 1.000000 0.000000</span><br><span class="line">  Observed: 0.000000 1.000000 0.000000</span><br><span class="line">Failure for GL_TRIANGLE_STRIP, GL_LAST_VERTEX_CONVENTION</span><br><span class="line">Probe color at (40,79)</span><br><span class="line">  Expected: 0.000000 0.000000 1.000000</span><br><span class="line">  Observed: 0.000000 1.000000 0.000000</span><br><span class="line">Probe color at (120,79)</span><br><span class="line">  Expected: 1.000000 1.000000 0.000000</span><br><span class="line">  Observed: 0.000000 0.000000 1.000000</span><br><span class="line">Failure for GL_TRIANGLE_FAN, GL_LAST_VERTEX_CONVENTION</span><br><span class="line">Probe color at (40,79)</span><br><span class="line">  Expected: 1.000000 1.000000 0.000000</span><br><span class="line">  Observed: 1.000000 0.000000 0.000000</span><br><span class="line">Probe color at (120,79)</span><br><span class="line">  Expected: 1.000000 0.000000 0.000000</span><br><span class="line">  Observed: 0.000000 1.000000 0.000000</span><br><span class="line">Failure for GL_QUADS, GL_FIRST_VERTEX_CONVENTION</span><br><span class="line">Probe color at (40,79)</span><br><span class="line">  Expected: 1.000000 1.000000 0.000000</span><br><span class="line">  Observed: 0.000000 1.000000 0.000000</span><br><span class="line">Probe color at (120,79)</span><br><span class="line">  Expected: 1.000000 0.000000 0.000000</span><br><span class="line">  Observed: 0.000000 1.000000 0.000000</span><br><span class="line">Failure for GL_QUADS, GL_LAST_VERTEX_CONVENTION</span><br><span class="line">Probe color at (40,79)</span><br><span class="line">  Expected: 1.000000 1.000000 0.000000</span><br><span class="line">  Observed: 1.000000 0.000000 0.000000</span><br><span class="line">Probe color at (120,79)</span><br><span class="line">  Expected: 1.000000 0.000000 0.000000</span><br><span class="line">  Observed: 0.000000 0.000000 1.000000</span><br><span class="line">Failure for GL_QUAD_STRIP, GL_FIRST_VERTEX_CONVENTION</span><br><span class="line">Probe color at (40,79)</span><br><span class="line">  Expected: 1.000000 1.000000 0.000000</span><br><span class="line">  Observed: 0.000000 0.000000 1.000000</span><br><span class="line">Probe color at (120,79)</span><br><span class="line">  Expected: 1.000000 0.000000 0.000000</span><br><span class="line">  Observed: 0.000000 1.000000 0.000000</span><br><span class="line">Failure for GL_QUAD_STRIP, GL_LAST_VERTEX_CONVENTION</span><br><span class="line">Probe color at (40,79)</span><br><span class="line">  Expected: 1.000000 0.000000 0.000000</span><br><span class="line">  Observed: 0.000000 1.000000 0.000000</span><br><span class="line">Probe color at (120,79)</span><br><span class="line">  Expected: 1.000000 0.000000 0.000000</span><br><span class="line">  Observed: 0.000000 0.000000 1.000000</span><br><span class="line">Failure for GL_POLYGON, GL_LAST_VERTEX_CONVENTION</span><br><span class="line">PIGLIT: &#123;&quot;result&quot;: &quot;fail&quot; &#125;</span><br></pre></td></tr></table></figure>
 <p><code>./bin/provoking-vertex -auto</code></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Probe color at (225,90)</span><br><span class="line">  Expected: 0.000000 0.000000 0.900000</span><br><span class="line">  Observed: 0.898039 0.000000 0.000000</span><br><span class="line">PIGLIT: &#123;&quot;result&quot;: &quot;fail&quot; &#125;</span><br></pre></td></tr></table></figure>
-<h3 id="三、原因分析-2"><a href="#三、原因分析-2" class="headerlink" title="三、原因分析"></a>三、原因分析</h3><p>OpenGL 的 provoking vertex 支持 <code>GL_FIRST_VERTEX_CONVENTION</code> 和 <code>GL_LAST_VERTEX_CONVENTION</code> 两种模式，为了排查问题，对这两种分别进行了测试。</p>
+<h3><span id="三-原因分析">三、原因分析</span></h3><p>OpenGL 的 provoking vertex 支持 <code>GL_FIRST_VERTEX_CONVENTION</code> 和 <code>GL_LAST_VERTEX_CONVENTION</code> 两种模式，为了排查问题，对这两种分别进行了测试。</p>
 <p><code>./bin/arb-provoking-vertex-clipped-geometry-flatshading -auto</code> 的关键绘图指令：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">glProvokingVertexEXT(GL_LAST_VERTEX_CONVENTION_EXT);</span><br><span class="line"></span><br><span class="line">const int y1 &#x3D; piglit_height &#x2F; 3;</span><br><span class="line"></span><br><span class="line">glBegin(GL_TRIANGLE_STRIP);</span><br><span class="line">    glColor3fv(cyan);</span><br><span class="line">    glVertex3i(piglit_width + 1, y1, 0);</span><br><span class="line">    glColor3fv(yellow);</span><br><span class="line">    glVertex3i(piglit_width + 2, y1, 0);</span><br><span class="line">    glColor3fv(blue);</span><br><span class="line">    glVertex3i(piglit_width + 3, y1, 0);</span><br><span class="line">    glColor3fv(green);</span><br><span class="line">    glVertex3i(piglit_width &#x2F; 2, y1 * 2, 0);</span><br><span class="line">    glColor3fv(red);</span><br><span class="line">    glVertex3i(piglit_width - 1, y1 * 2, 0);</span><br><span class="line">glEnd();</span><br></pre></td></tr></table></figure>
 <p>使用的是 <code>GL_LAST_VERTEX_CONVENTION</code>，修改成 <code>GL_FIRST_VERTEX_CONVENTION</code> 的等价形式：</p>
@@ -490,7 +495,7 @@ PIGLIT: &#123;&quot;result&quot;: &quot;fail&quot; &#125;</code></pre>
 </blockquote>
 <p>说的是 vulkan 只支持以第一个顶点作为 provoking vertex。</p>
 <p>所以最终问题定位到了 vulkan，vulkan 不支持与 <code>GL_LAST_VERTEX_CONVENTION</code> 相对应的绘图设置。</p>
-<h3 id="四、进一步验证"><a href="#四、进一步验证" class="headerlink" title="四、进一步验证"></a>四、进一步验证</h3><p><code>./bin/arb-provoking-vertex-render -auto</code> 测试中 quads 和 <code>GL_LAST_VERTEX_CONVENTION</code> 相关的注释掉：</p>
+<h3><span id="四-进一步验证">四、进一步验证</span></h3><p><code>./bin/arb-provoking-vertex-render -auto</code> 测试中 quads 和 <code>GL_LAST_VERTEX_CONVENTION</code> 相关的注释掉：</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">static</span> <span class="keyword">const</span> GLenum modes[] = &#123;</span><br><span class="line">    GL_LINES,</span><br><span class="line">    GL_LINE_STRIP,</span><br><span class="line">    GL_LINE_LOOP,</span><br><span class="line">    GL_TRIANGLES,</span><br><span class="line">    GL_TRIANGLE_STRIP,</span><br><span class="line">    GL_TRIANGLE_FAN,</span><br><span class="line">    <span class="comment">// GL_QUADS,</span></span><br><span class="line">    <span class="comment">// GL_QUAD_STRIP,</span></span><br><span class="line">    GL_POLYGON</span><br><span class="line"></span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">int</span> i;</span><br><span class="line"><span class="keyword">bool</span> pass = <span class="literal">true</span>;</span><br><span class="line"></span><br><span class="line">glViewport(<span class="number">0</span>, <span class="number">0</span>, piglit_width, piglit_height);</span><br><span class="line">glShadeModel(GL_FLAT);</span><br><span class="line"></span><br><span class="line">glGetBooleanv(GL_QUADS_FOLLOW_PROVOKING_VERTEX_CONVENTION, &amp;quads_pv);</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">&quot;GL_QUADS_FOLLOW_PROVOKING_VERTEX_CONVENTION = %u\n&quot;</span>, quads_pv);</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; ARRAY_SIZE(modes); i++) &#123;</span><br><span class="line">    pass = test_mode(modes[i], GL_FIRST_VERTEX_CONVENTION) &amp;&amp; pass;</span><br><span class="line">    <span class="comment">// pass = test_mode(modes[i], GL_LAST_VERTEX_CONVENTION) &amp;&amp; pass;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">pass = piglit_check_gl_error(GL_NO_ERROR) &amp;&amp; pass;</span><br><span class="line"></span><br><span class="line">piglit_report_result(pass ? PIGLIT_PASS : PIGLIT_FAIL);</span><br></pre></td></tr></table></figure>
 <p>测试结果：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">GL_QUADS_FOLLOW_PROVOKING_VERTEX_CONVENTION &#x3D; 0</span><br><span class="line">PIGLIT: &#123;&quot;result&quot;: &quot;pass&quot; &#125;</span><br></pre></td></tr></table></figure>
@@ -498,8 +503,8 @@ PIGLIT: &#123;&quot;result&quot;: &quot;fail&quot; &#125;</code></pre>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line">pass = pass &amp;&amp; piglit_probe_pixel_rgb(<span class="number">150</span>, <span class="number">90</span>, red);</span><br><span class="line">pass = pass &amp;&amp; piglit_probe_pixel_rgb(<span class="number">150</span>, <span class="number">170</span>, red);</span><br><span class="line"></span><br><span class="line"><span class="comment">// pass = pass &amp;&amp; piglit_probe_pixel_rgb(225, 90, blue);</span></span><br><span class="line"><span class="comment">// pass = pass &amp;&amp; piglit_probe_pixel_rgb(225, 170, blue);</span></span><br><span class="line"></span><br><span class="line">glFinish();</span><br><span class="line">piglit_present_results();</span><br></pre></td></tr></table></figure>
 <p>测试结果：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">PIGLIT: &#123;&quot;result&quot;: &quot;pass&quot; &#125;</span><br></pre></td></tr></table></figure>
-<h2 id="arb-texture-float"><a href="#arb-texture-float" class="headerlink" title="arb_texture_float"></a>arb_texture_float</h2><p>此扩展添加了带有 16 位和 32 位浮点数的纹理内部格式。32 位浮点数采用标准 IEEE 浮点格式。16 位浮点数具有 1 个符号位，5 个指数位和 10 个尾数位。</p>
-<h3 id="一、FBO-Blending-Formats"><a href="#一、FBO-Blending-Formats" class="headerlink" title="一、FBO Blending Formats"></a>一、FBO Blending Formats</h3><p>将源纹理 ($s$) 和目标纹理 ($d$) 通过指定的混合方式进行混合（先绘制目标纹理，再绘制源纹理）。</p>
+<h2><span id="arb_texture_float">arb_texture_float</span></h2><p>此扩展添加了带有 16 位和 32 位浮点数的纹理内部格式。32 位浮点数采用标准 IEEE 浮点格式。16 位浮点数具有 1 个符号位，5 个指数位和 10 个尾数位。</p>
+<h3><span id="一-fbo-blending-formats">一、FBO Blending Formats</span></h3><p>将源纹理 ($s$) 和目标纹理 ($d$) 通过指定的混合方式进行混合（先绘制目标纹理，再绘制源纹理）。</p>
 <table>
 <thead>
 <tr>
@@ -573,9 +578,9 @@ PIGLIT: &#123;&quot;result&quot;: &quot;fail&quot; &#125;</code></pre>
 </tr>
 </tbody></table>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">Accepted by the &lt;internalFormat&gt; parameter of TexImage1D,</span><br><span class="line">TexImage2D, and TexImage3D:</span><br><span class="line"></span><br><span class="line">    RGBA32F_ARB                      0x8814</span><br><span class="line">    RGB32F_ARB                       0x8815</span><br><span class="line">    ALPHA32F_ARB                     0x8816</span><br><span class="line">    INTENSITY32F_ARB                 0x8817</span><br><span class="line">    LUMINANCE32F_ARB                 0x8818</span><br><span class="line">    LUMINANCE_ALPHA32F_ARB           0x8819</span><br><span class="line">    RGBA16F_ARB                      0x881A</span><br><span class="line">    RGB16F_ARB                       0x881B</span><br><span class="line">    ALPHA16F_ARB                     0x881C</span><br><span class="line">    INTENSITY16F_ARB                 0x881D</span><br><span class="line">    LUMINANCE16F_ARB                 0x881E</span><br><span class="line">    LUMINANCE_ALPHA16F_ARB           0x881F</span><br></pre></td></tr></table></figure>
-<h3 id="二、Piglit-测试结果-2"><a href="#二、Piglit-测试结果-2" class="headerlink" title="二、Piglit 测试结果"></a>二、Piglit 测试结果</h3><p><code>./bin/fbo-blending-formats GL_ARB_texture_float -auto -fbo</code></p>
+<h3><span id="二-piglit-测试结果">二、Piglit 测试结果</span></h3><p><code>./bin/fbo-blending-formats GL_ARB_texture_float -auto -fbo</code></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line">Using test set: GL_ARB_texture_float</span><br><span class="line">Testing GL_RGB16F</span><br><span class="line">Probe color at (192,0)</span><br><span class="line">  Expected: 0.800000 0.300000 0.500000 1.000000</span><br><span class="line">  Observed: 0.849609 0.349854 0.599609 1.000000</span><br><span class="line">  when testing FBO result, blending with DST_ALPHA.</span><br><span class="line">PIGLIT: &#123;&quot;subtest&quot;: &#123;&quot;GL_RGB16F&quot; : &quot;fail&quot;&#125;&#125;</span><br><span class="line">Testing GL_RGBA16F</span><br><span class="line">PIGLIT: &#123;&quot;subtest&quot;: &#123;&quot;GL_RGBA16F&quot; : &quot;pass&quot;&#125;&#125;</span><br><span class="line">Testing GL_ALPHA16F_ARB</span><br><span class="line">PIGLIT: &#123;&quot;subtest&quot;: &#123;&quot;GL_ALPHA16F_ARB&quot; : &quot;pass&quot;&#125;&#125;</span><br><span class="line">Testing GL_LUMINANCE16F_ARB</span><br><span class="line">Probe color at (192,0)</span><br><span class="line">  Expected: 0.800000 0.000000 0.000000 1.000000</span><br><span class="line">  Observed: 0.849609 0.000000 0.000000 1.000000</span><br><span class="line">  when testing FBO result, blending with DST_ALPHA.</span><br><span class="line">PIGLIT: &#123;&quot;subtest&quot;: &#123;&quot;GL_LUMINANCE16F_ARB&quot; : &quot;fail&quot;&#125;&#125;</span><br><span class="line">Testing GL_LUMINANCE_ALPHA16F_ARB</span><br><span class="line">PIGLIT: &#123;&quot;subtest&quot;: &#123;&quot;GL_LUMINANCE_ALPHA16F_ARB&quot; : &quot;pass&quot;&#125;&#125;</span><br><span class="line">Testing GL_INTENSITY16F_ARB</span><br><span class="line">Probe color at (192,0)</span><br><span class="line">  Expected: 0.810000 0.000000 0.000000 1.000000</span><br><span class="line">  Observed: 0.849609 0.000000 0.000000 1.000000</span><br><span class="line">  when testing FBO result, blending with DST_ALPHA.</span><br><span class="line">PIGLIT: &#123;&quot;subtest&quot;: &#123;&quot;GL_INTENSITY16F_ARB&quot; : &quot;fail&quot;&#125;&#125;</span><br><span class="line">Testing GL_RGB32F</span><br><span class="line">Probe color at (192,0)</span><br><span class="line">  Expected: 0.800000 0.300000 0.500000 1.000000</span><br><span class="line">  Observed: 0.850000 0.350000 0.600000 1.000000</span><br><span class="line">  when testing FBO result, blending with DST_ALPHA.</span><br><span class="line">PIGLIT: &#123;&quot;subtest&quot;: &#123;&quot;GL_RGB32F&quot; : &quot;fail&quot;&#125;&#125;</span><br><span class="line">Testing GL_RGBA32F</span><br><span class="line">PIGLIT: &#123;&quot;subtest&quot;: &#123;&quot;GL_RGBA32F&quot; : &quot;pass&quot;&#125;&#125;</span><br><span class="line">Testing GL_ALPHA32F_ARB</span><br><span class="line">PIGLIT: &#123;&quot;subtest&quot;: &#123;&quot;GL_ALPHA32F_ARB&quot; : &quot;pass&quot;&#125;&#125;</span><br><span class="line">Testing GL_LUMINANCE32F_ARB</span><br><span class="line">Probe color at (192,0)</span><br><span class="line">  Expected: 0.800000 0.000000 0.000000 1.000000</span><br><span class="line">  Observed: 0.850000 0.000000 0.000000 1.000000</span><br><span class="line">  when testing FBO result, blending with DST_ALPHA.</span><br><span class="line">PIGLIT: &#123;&quot;subtest&quot;: &#123;&quot;GL_LUMINANCE32F_ARB&quot; : &quot;fail&quot;&#125;&#125;</span><br><span class="line">Testing GL_LUMINANCE_ALPHA32F_ARB</span><br><span class="line">PIGLIT: &#123;&quot;subtest&quot;: &#123;&quot;GL_LUMINANCE_ALPHA32F_ARB&quot; : &quot;pass&quot;&#125;&#125;</span><br><span class="line">Testing GL_INTENSITY32F_ARB</span><br><span class="line">Probe color at (192,0)</span><br><span class="line">  Expected: 0.810000 0.000000 0.000000 1.000000</span><br><span class="line">  Observed: 0.850000 0.000000 0.000000 1.000000</span><br><span class="line">  when testing FBO result, blending with DST_ALPHA.</span><br><span class="line">PIGLIT: &#123;&quot;subtest&quot;: &#123;&quot;GL_INTENSITY32F_ARB&quot; : &quot;fail&quot;&#125;&#125;</span><br><span class="line">PIGLIT: &#123;&quot;result&quot;: &quot;fail&quot; &#125;</span><br></pre></td></tr></table></figure>
-<h3 id="三、原因分析-3"><a href="#三、原因分析-3" class="headerlink" title="三、原因分析"></a>三、原因分析</h3><table>
+<h3><span id="三-原因分析">三、原因分析</span></h3><table>
 <thead>
 <tr>
 <th>Pass 的格式</th>
@@ -770,6 +775,15 @@ PIGLIT: &#123;&quot;result&quot;: &quot;fail&quot; &#125;</code></pre>
   
 <nav id="article-nav">
   
+    <a href="/2021/01/27/CDC/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          CDC
+        
+      </div>
+    </a>
+  
   
     <a href="/2021/01/17/OneAPI/" id="article-nav-older" class="article-nav-link-wrap">
       <div class="article-nav-title">OneAPI</div>
@@ -791,6 +805,19 @@ PIGLIT: &#123;&quot;result&quot;: &quot;fail&quot; &#125;</code></pre>
             </div>
         </div>
         
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-number">1.</span> <span class="toc-text">ARB_vertex_type_2_10_10_10_rev</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-number">1.1.</span> <span class="toc-text">一、Overview</span></a></li><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-number">1.2.</span> <span class="toc-text">二、Piglit 测试结果</span></a></li><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-number">1.3.</span> <span class="toc-text">三、原因分析</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-number">2.</span> <span class="toc-text">Border Color</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-number">2.1.</span> <span class="toc-text">一、Overview</span></a></li><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-number">2.2.</span> <span class="toc-text">二、原因分析</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-number">3.</span> <span class="toc-text">ARB_seamless_cube_map</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-number">3.1.</span> <span class="toc-text">一、Overview</span></a></li><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-number">3.2.</span> <span class="toc-text">二、Piglit测试</span></a></li><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-number">3.3.</span> <span class="toc-text">三、原因分析</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-number">4.</span> <span class="toc-text">Provoking Vertex</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-number">4.1.</span> <span class="toc-text">一、Overview</span></a></li><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-number">4.2.</span> <span class="toc-text">二、Piglit 测试结果</span></a></li><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-number">4.3.</span> <span class="toc-text">三、原因分析</span></a></li><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-number">4.4.</span> <span class="toc-text">四、进一步验证</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-number">5.</span> <span class="toc-text">arb_texture_float</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-number">5.1.</span> <span class="toc-text">一、FBO Blending Formats</span></a></li><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-number">5.2.</span> <span class="toc-text">二、Piglit 测试结果</span></a></li><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-number">5.3.</span> <span class="toc-text">三、原因分析</span></a></li></ol></li></ol>
+                    </div>
+                </span>
+            </div>
+        </div>
         
     </div>
 </aside>

@@ -62,6 +62,8 @@
 	        
 				<li><a href="/categories/ns/">网络研究</a></li>
 	        
+				<li><a href="/categories/ipfs/">IPFS项目</a></li>
+	        
 			</ul>
 		</nav>
 		<nav class="header-smart-menu">
@@ -116,6 +118,8 @@
 			
 				
 			
+				
+			
 			
 			
 			<nav class="header-nav">
@@ -132,11 +136,13 @@
 				<ul style="width: 70%">
 				
 				
-					<li style="width: 33.333333333333336%"><a href="/">主页</a></li>
+					<li style="width: 25%"><a href="/">主页</a></li>
 		        
-					<li style="width: 33.333333333333336%"><a href="/categories/something/">随笔</a></li>
+					<li style="width: 25%"><a href="/categories/something/">随笔</a></li>
 		        
-					<li style="width: 33.333333333333336%"><a href="/categories/ns/">网络研究</a></li>
+					<li style="width: 25%"><a href="/categories/ns/">网络研究</a></li>
+		        
+					<li style="width: 25%"><a href="/categories/ipfs/">IPFS项目</a></li>
 		        
 				</ul>
 			</nav>
@@ -152,6 +158,100 @@
           </div>
           <div id="js-content" class="content-ll">
             
+  
+    <article id="post-CDC" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/01/27/CDC/">CDC</a>
+    </h1>
+  
+
+        
+        <a href="/2021/01/27/CDC/" class="archive-article-date">
+  	<time datetime="2021-01-27T08:21:16.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-01-27</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3><span id="固定长度切块">固定长度切块</span></h3><p>使用预先给定的长度来确定分割点，对文件进行分块。假设给定长度为𝑙，文件起始字节编号为0，则将𝑙,2𝑙,…,𝑘𝑙… 字节作为分割点。除了最后一个分块的长度可能小于𝑙，其余分块的长度均等于𝑙。</p>
+<p>缺点：</p>
+<ul>
+<li>无法应对字节移动问题。假设有两个文件$𝐹_1$,$𝐹_2$，其中 $𝐹_2$ 由 $𝐹_1$ 在起始点插入一个字节得到。如果使用固定长度分块的方法，则 $𝐹_2$ 从第2个字节开始，每个字节都是 $𝐹_1$对应字节后移一个字节。因此 $𝐹_2$ 所有的分割点都与文件 $𝐹_1$ 不同。这种情况下，两个文件实际只有一个字节的差别，但是得到的所有分块都不相同，数据去重效果较差。</li>
+</ul>
+<h3><span id="基于hash的cdc-rabin">基于hash的CDC （Rabin）</span></h3><p>使用Rabin滚动哈希的方法来确定分割点，对文件进行分块。该方法给定一个滑动窗。滑动窗从文件起始字节开始，逐个字节移动。每移动一个字节，计算滑动窗内数据的哈希值$ℎ$。如果哈希值满足预先设定的过滤条件，则将当前窗口位置标记为分割点。例如给定两个整数$𝑟,𝐷$，满足$$ℎ 𝑚𝑜𝑑 𝐷=𝑟$$，则该点可以作为一个分割点。</p>
+<p>优点：</p>
+<ul>
+<li>分割点的确定由文件内容决定，而不是由文件中的偏移量决定。因此在某点插入和删除数据时，不会影响该点后面的分割点的确定，解决了文件分块中字节移动问题。</li>
+</ul>
+<p>缺点：</p>
+<ul>
+<li>窗口每向前滑动一个字节，都要重新计算窗口内数据的哈希值，因此导致算法的计算负载过高，吞吐量较低。</li>
+</ul>
+<h3><span id="基于极值的cdc-ae-ram">基于极值的CDC (AE、RAM)</span></h3><p>不使用数据的hash值来确定分割点，而是将字节内容看作数值，使用特定的字节作为分割点。例如AE算法，使用两个窗口，左边是变长窗口，右边是定长窗口，极值字节在两个窗口中间。当极值字节中的内容大于两边的窗口的所有字节的数值，则定长窗口结束点作为分割点。RAM算法则是在搜索开始阶段放置定长窗口，紧接着是一个变长窗口，最后将极值字节放在边界。当极值字节大于定长窗口中的最大值，则作为一个分割点。</p>
+<p>优点：</p>
+<ul>
+<li>基于极值的分块方法避免了逐个字节滚动计算哈希值，而是进行字节内容的大小比较，算法性能有较大提升。基于极值的方法产生的分块长度比基于hash的方法更稳定，出现过长分块的概率较低，有利于提高去重效率。</li>
+<li>缺点：</li>
+<li>基于极值的方法需要在某一窗口内找到最大值，如果插入数据导致窗口内的最大值发生变化，则可能会影响到现有分割点的位置。当分割点位置发生变化，则后续的分块可能发生移位现象。因此基于极值的方法在一定程度上降低了抵抗字节移位的能力，降低了去重效率。</li>
+</ul>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/ipfs//" class="article-tag-list-link color5">ipfs</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2021/01/27/CDC/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
   
     <article id="post-Zink-Failcase-分析" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
@@ -173,7 +273,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="OpenGL-fail-case-分析"><a href="#OpenGL-fail-case-分析" class="headerlink" title="OpenGL fail case 分析"></a>OpenGL fail case 分析</h1><h2 id="ARB-vertex-type-2-10-10-10-rev"><a href="#ARB-vertex-type-2-10-10-10-rev" class="headerlink" title="ARB_vertex_type_2_10_10_10_rev"></a>ARB_vertex_type_2_10_10_10_rev</h2><h3 id="一、Overview"><a href="#一、Overview" class="headerlink" title="一、Overview"></a><strong>一、Overview</strong></h3><p>该特性提供两种新的顶点属性数据格式：</p>
+        <h2 id="ARB-vertex-type-2-10-10-10-rev"><a href="#ARB-vertex-type-2-10-10-10-rev" class="headerlink" title="ARB_vertex_type_2_10_10_10_rev"></a>ARB_vertex_type_2_10_10_10_rev</h2><h3 id="一、Overview"><a href="#一、Overview" class="headerlink" title="一、Overview"></a><strong>一、Overview</strong></h3><p>该特性提供两种新的顶点属性数据格式：</p>
 <ul>
 <li>有符号2.10.10.10顶点数据格式</li>
 <li>无符号2.10.10.10顶点数据格式</li>
