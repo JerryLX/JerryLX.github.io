@@ -173,9 +173,10 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="背景与简介"><a href="#背景与简介" class="headerlink" title="背景与简介"></a>背景与简介</h1><p>对于开发者而言，应对包括CPU、GPU、FPGA等多种架构十分挑战。每一种架构都有自己的库以及编程语言，如CUDA。到目前为止，没有普适的且不影响系统性能的编程模型。这意味着每一种架构都需要使用单独的工具，且代码复用困难。</p>
+        <h1 id="一、背景与简介"><a href="#一、背景与简介" class="headerlink" title="一、背景与简介"></a>一、背景与简介</h1><p>对于开发者而言，应对包括CPU、GPU、FPGA等多种架构十分挑战。每一种架构都有自己的库以及编程语言，如CUDA。到目前为止，没有普适的且不影响系统性能的编程模型。这意味着每一种架构都需要使用单独的工具，且代码复用困难。</p>
 <p>为了提升实现更快的应用程序性能、更高的生产率和更大的创新，OneAPI提供单一的软件抽象层让开发者进行跨不同类型硬件架构的直接编程。其开放、统一的标准保证了跨平台部署的稳定性以及系统的整体性能。</p>
-<h1 id="框架"><a href="#框架" class="headerlink" title="框架"></a>框架</h1><p><img src="/2021/01/17/OneAPI/framework.jpg" alt="oneAPI框架"></p>
+<h1 id="二、框架"><a href="#二、框架" class="headerlink" title="二、框架"></a>二、框架</h1><img src="/2021/01/17/OneAPI/framework.jpg" width="60%" alt="oneAPI框架">
+
 <h2 id="统一编程语言-Data-Parallel-C-DPC"><a href="#统一编程语言-Data-Parallel-C-DPC" class="headerlink" title="统一编程语言 (Data Parallel C++, DPC++)"></a>统一编程语言 (Data Parallel C++, DPC++)</h2><p>**oneAPI规范的核心是DPC++**，它是基于ISO C++和Khronos SYCL标准构建的开放式跨体系结构语言。DPC++扩展了这些标准，并提供了明确的并行构造和卸载（offload）接口，以支持广泛的计算体系结构和处理器，包括cpu和加速器体系结构。oneAPI平台上可以通过Accelerator接口支持其他语言和编程模型。</p>
 <p>其中，SYCL是一个在OpenCL上的C++抽象层，使得用户可以直接用简洁的C++对GPU等进行开发，而无需被OpenCL限制。</p>
         
@@ -204,6 +205,17 @@
 	</div>
 
       
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/something//" class="article-tag-list-link color5">something</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
 
       
         <p class="article-more-link">
@@ -350,25 +362,11 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="PyTorch"><a href="#PyTorch" class="headerlink" title="PyTorch"></a>PyTorch</h2><h3 id="高效的C-内核"><a href="#高效的C-内核" class="headerlink" title="高效的C++内核"></a>高效的C++内核</h3><p>Pytorch的核心库libtorch 使用C++实现了张量数据结构，GPU和CPU操作以及基本的并行原语。<br>不需要持有Python全局解释器锁，使用的PyTorch操作组成的运算可在多线程中执行。</p>
+        <h2 id="一、PyTorch"><a href="#一、PyTorch" class="headerlink" title="一、PyTorch"></a><strong>一、PyTorch</strong></h2><h3 id="高效的C-内核"><a href="#高效的C-内核" class="headerlink" title="高效的C++内核"></a>高效的C++内核</h3><p>Pytorch的核心库libtorch 使用C++实现了张量数据结构，GPU和CPU操作以及基本的并行原语。<br>不需要持有Python全局解释器锁，使用的PyTorch操作组成的运算可在多线程中执行。</p>
 <h3 id="分离控制和数据流"><a href="#分离控制和数据流" class="headerlink" title="分离控制和数据流"></a>分离控制和数据流</h3><p>PyTorch在其控制流和数据流之间保持严格的分离。控制流的解析由运行在CPU上的Python和 C++代码处理，数据流既可以在CPU上也可以在GPU上运行。<br>此外，PyTorch利用CUDA流机制，使CPU上与GPU上的运算可以并行。</p>
-<h3 id="多进程优化"><a href="#多进程优化" class="headerlink" title="多进程优化"></a>多进程优化</h3><p>PyTorch将Python multiprocessing 模块扩展为 torch.multiprocessing，该模块会自动将发送到其他进程的张量数据移动到共享内存，而不是通过进程间通道来发送。</p>
-<h3 id="缓存分配优化"><a href="#缓存分配优化" class="headerlink" title="缓存分配优化"></a>缓存分配优化</h3><p>原生CUDAFREE操作会阻塞其调用者直至队列中所有任务结束，为了解决这一瓶颈，PyTorch实现自己的增量分配器</p>
-<h3 id="内存管理优化"><a href="#内存管理优化" class="headerlink" title="内存管理优化"></a>内存管理优化</h3><p>PyTorch依靠引用计数的方案来跟踪每个张量的使用次数，一旦该计数达到零立即释放底层内存。</p>
-<h2 id="Tensorflow"><a href="#Tensorflow" class="headerlink" title="Tensorflow"></a>Tensorflow</h2><p>提供基于数据流的编程规范，让开发者可以将应用部署在分布式集群或个人计算机甚至移动设备上。</p>
-<h3 id="设计理念："><a href="#设计理念：" class="headerlink" title="设计理念："></a>设计理念：</h3><ul>
-<li><p>基于计算原语的数据流图</p>
-<p>  在tensorflow中，数据流图的没个基点是一个独立的数学操作，如矩阵乘法、卷积等。这使得用户可以轻易的开发新的模型。</p>
-</li>
-<li><p>延期执行</p>
-<p>  tensorflow应用包含两个步骤：1）定义任务为一个数据流图（包括神经网络、更新策略）；2）执行优化后的任务。</p>
-<p>  这样的好处是，tensorflow可以从全局依赖关系的角度对任务进行优化。比如根据依赖关系优化任务的的执行序列，使计算的输出不需要等待，从而提升设备的利用率。</p>
-</li>
-<li><p>公用的加速器抽象</p>
-<p>  为了适用于包括CPU、GPU、TPU等不同加速器，tensorflow采用统一的抽象。每个设备必须支持 1）发布内核用于执行；2）分配内存用于输入输出；3）与host交换内存</p>
-</li>
-</ul>
-<h2 id="二者区别"><a href="#二者区别" class="headerlink" title="二者区别"></a>二者区别</h2>
+        
+          <a class="article-more-a" href="/2021/01/16/PyTorch%20VS%20Tensorflow/#more">more >></a>
+        
       
 
       

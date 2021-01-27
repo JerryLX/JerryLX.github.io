@@ -8,12 +8,12 @@
   <link rel="dns-prefetch" href="http://example.com">
   <title>OneAPI | Jerry Li的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="背景与简介对于开发者而言，应对包括CPU、GPU、FPGA等多种架构十分挑战。每一种架构都有自己的库以及编程语言，如CUDA。到目前为止，没有普适的且不影响系统性能的编程模型。这意味着每一种架构都需要使用单独的工具，且代码复用困难。 为了提升实现更快的应用程序性能、更高的生产率和更大的创新，OneAPI提供单一的软件抽象层让开发者进行跨不同类型硬件架构的直接编程。其开放、统一的标准保证了跨平台部署">
+  <meta name="description" content="一、背景与简介对于开发者而言，应对包括CPU、GPU、FPGA等多种架构十分挑战。每一种架构都有自己的库以及编程语言，如CUDA。到目前为止，没有普适的且不影响系统性能的编程模型。这意味着每一种架构都需要使用单独的工具，且代码复用困难。 为了提升实现更快的应用程序性能、更高的生产率和更大的创新，OneAPI提供单一的软件抽象层让开发者进行跨不同类型硬件架构的直接编程。其开放、统一的标准保证了跨平台">
 <meta property="og:type" content="article">
 <meta property="og:title" content="OneAPI">
 <meta property="og:url" content="http://example.com/2021/01/17/OneAPI/index.html">
 <meta property="og:site_name" content="Jerry Li的博客">
-<meta property="og:description" content="背景与简介对于开发者而言，应对包括CPU、GPU、FPGA等多种架构十分挑战。每一种架构都有自己的库以及编程语言，如CUDA。到目前为止，没有普适的且不影响系统性能的编程模型。这意味着每一种架构都需要使用单独的工具，且代码复用困难。 为了提升实现更快的应用程序性能、更高的生产率和更大的创新，OneAPI提供单一的软件抽象层让开发者进行跨不同类型硬件架构的直接编程。其开放、统一的标准保证了跨平台部署">
+<meta property="og:description" content="一、背景与简介对于开发者而言，应对包括CPU、GPU、FPGA等多种架构十分挑战。每一种架构都有自己的库以及编程语言，如CUDA。到目前为止，没有普适的且不影响系统性能的编程模型。这意味着每一种架构都需要使用单独的工具，且代码复用困难。 为了提升实现更快的应用程序性能、更高的生产率和更大的创新，OneAPI提供单一的软件抽象层让开发者进行跨不同类型硬件架构的直接编程。其开放、统一的标准保证了跨平台">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://example.com/2021/01/17/OneAPI/framework.jpg">
 <meta property="og:image" content="http://example.com/2021/01/17/OneAPI/OneDNN.png">
@@ -21,7 +21,7 @@
 <meta property="og:image" content="http://example.com/2021/01/17/OneAPI/core_queue.png">
 <meta property="og:image" content="http://example.com/2021/01/17/OneAPI/core_module.png">
 <meta property="article:published_time" content="2021-01-17T00:58:11.000Z">
-<meta property="article:modified_time" content="2021-01-18T06:55:49.022Z">
+<meta property="article:modified_time" content="2021-01-18T07:13:08.593Z">
 <meta property="article:author" content="Jerry Li">
 <meta property="article:tag" content="Intel">
 <meta property="article:tag" content="Programming Model">
@@ -180,9 +180,10 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="背景与简介"><a href="#背景与简介" class="headerlink" title="背景与简介"></a>背景与简介</h1><p>对于开发者而言，应对包括CPU、GPU、FPGA等多种架构十分挑战。每一种架构都有自己的库以及编程语言，如CUDA。到目前为止，没有普适的且不影响系统性能的编程模型。这意味着每一种架构都需要使用单独的工具，且代码复用困难。</p>
+        <h1 id="一、背景与简介"><a href="#一、背景与简介" class="headerlink" title="一、背景与简介"></a>一、背景与简介</h1><p>对于开发者而言，应对包括CPU、GPU、FPGA等多种架构十分挑战。每一种架构都有自己的库以及编程语言，如CUDA。到目前为止，没有普适的且不影响系统性能的编程模型。这意味着每一种架构都需要使用单独的工具，且代码复用困难。</p>
 <p>为了提升实现更快的应用程序性能、更高的生产率和更大的创新，OneAPI提供单一的软件抽象层让开发者进行跨不同类型硬件架构的直接编程。其开放、统一的标准保证了跨平台部署的稳定性以及系统的整体性能。</p>
-<h1 id="框架"><a href="#框架" class="headerlink" title="框架"></a>框架</h1><p><img src="/2021/01/17/OneAPI/framework.jpg" alt="oneAPI框架"></p>
+<h1 id="二、框架"><a href="#二、框架" class="headerlink" title="二、框架"></a>二、框架</h1><img src="/2021/01/17/OneAPI/framework.jpg" width="60%" alt="oneAPI框架">
+
 <h2 id="统一编程语言-Data-Parallel-C-DPC"><a href="#统一编程语言-Data-Parallel-C-DPC" class="headerlink" title="统一编程语言 (Data Parallel C++, DPC++)"></a>统一编程语言 (Data Parallel C++, DPC++)</h2><p>**oneAPI规范的核心是DPC++**，它是基于ISO C++和Khronos SYCL标准构建的开放式跨体系结构语言。DPC++扩展了这些标准，并提供了明确的并行构造和卸载（offload）接口，以支持广泛的计算体系结构和处理器，包括cpu和加速器体系结构。oneAPI平台上可以通过Accelerator接口支持其他语言和编程模型。</p>
 <p>其中，SYCL是一个在OpenCL上的C++抽象层，使得用户可以直接用简洁的C++对GPU等进行开发，而无需被OpenCL限制。</p>
 <a id="more"></a>
@@ -198,7 +199,8 @@
 </ul>
 </li>
 <li><p><strong>oneDNN (oneAPI Deep Neural Network Library)</strong></p>
-<p>  <img src="/2021/01/17/OneAPI/OneDNN.png" alt="OneDNN"></p>
+  <img src="/2021/01/17/OneAPI/OneDNN.png" width="60%" alt="OneDNN">
+
 <ul>
 <li><p><strong>Primitive</strong>: 封装特定计算的函子对象，如前向卷积、后向LSTM计算或数据转换操作。</p>
 </li>
@@ -238,7 +240,8 @@
 <li>device对象代表一个支持Level-Zero的物理设备</li>
 <li>Level-Zero启动时，首先调用ZeInit函数加载驱动，进一步发现支持的设备。</li>
 </ul>
-<p><img src="/2021/01/17/OneAPI/core_device.png" alt="driver and device"></p>
+<img src="/2021/01/17/OneAPI/core_device.png" width="60%" alt="driver and device">
+
 <h5 id="Contexts"><a href="#Contexts" class="headerlink" title="Contexts"></a>Contexts</h5><p>context对象是一个逻辑对象，用于驱动管理所有内存、任务队列、同步对象等等。</p>
 <ul>
 <li>context句柄主要用于创建和管理可能由多个设备使用的资源。例如，可以通过context类实现显式地设备间内存共享。</li>
@@ -254,7 +257,8 @@
 <li>Shared：有多个设备/主机共享，可以在主机和1/多个设备间迁移。至少能够被一个host和一个设备访问。</li>
 </ul>
 <p><em>Images</em> 用于存储多维和格式定义的内存内容。不支持主机直接访问内容。然而，当其被复制到主机可访问内存分配时，其内容将被隐式解码。格式描述符是格式、类型和swizzle的组合。格式布局描述组件的数量及其相应的位宽度。类型描述了所有这些组件的数据类型，swizzle关联图像组件如何映射到内核的XYZW/RGBA通道。</p>
-<h4 id="Command-Queues-and-Command-Lists"><a href="#Command-Queues-and-Command-Lists" class="headerlink" title="Command Queues and Command Lists"></a>Command Queues and Command Lists</h4><p><img src="/2021/01/17/OneAPI/core_queue.png" alt="Command Queues and Command Lists"></p>
+<h4 id="Command-Queues-and-Command-Lists"><a href="#Command-Queues-and-Command-Lists" class="headerlink" title="Command Queues and Command Lists"></a>Command Queues and Command Lists</h4><img src="/2021/01/17/OneAPI/core_queue.png" width="60%" alt="Command Queues and Command Lists">
+
 <ul>
 <li> Command Queues主要与物理设备属性相关联，代表了一个对设备的逻辑输入流，其访问物理设备接近零延迟。</li>
 <li> Command Lists 主要与主机线城相关联，代表了一个任务执行序列。</li>
@@ -278,7 +282,8 @@
 <li>Modules代表一个单一的翻译单元，由编译在一起的内核组成。</li>
 <li>Kernels代表模块内的内核，将直接从Command List中启动。</li>
 </ul>
-<p><img src="/2021/01/17/OneAPI/core_module.png" alt="Modules and Kernels"></p>
+<img src="/2021/01/17/OneAPI/core_module.png" width="60%" alt="Modules and Kernels">
+
 <h3 id="工具集"><a href="#工具集" class="headerlink" title="工具集"></a>工具集</h3><p>提供底层设备访问：</p>
 <ul>
 <li>指标报告</li>
@@ -289,7 +294,7 @@
 <li>控制加速器资源的性能和功率分布</li>
 <li>设施维护，如执行硬件诊断、更新固件或重置设备</li>
 </ul>
-<h1 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h1><h2 id="代码迁移工具"><a href="#代码迁移工具" class="headerlink" title="代码迁移工具"></a>代码迁移工具</h2><p>原始CUDA代码</p>
+<h1 id="三、实例"><a href="#三、实例" class="headerlink" title="三、实例"></a>三、实例</h1><h2 id="代码迁移工具"><a href="#代码迁移工具" class="headerlink" title="代码迁移工具"></a>代码迁移工具</h2><p>原始CUDA代码</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cuda.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> vector_size = <span class="number">256</span>;</span><br><span class="line"></span><br><span class="line"><span class="function">__global__ <span class="keyword">void</span> <span class="title">SimpleAddKernel</span><span class="params">(<span class="keyword">float</span> *A, <span class="keyword">int</span> offset)</span> </span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  A[threadIdx.x] = threadIdx.x + offset;</span><br><span class="line"> </span><br><span class="line">&#125;<span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="keyword">float</span> *d_A;</span><br><span class="line">  <span class="keyword">int</span> offset = <span class="number">10000</span>;</span><br><span class="line"></span><br><span class="line">  cudaMalloc( &amp;d_A, vector_size * <span class="keyword">sizeof</span>( <span class="keyword">float</span> ) );</span><br><span class="line">  SimpleAddKernel&lt;&lt;&lt;<span class="number">1</span>, vector_size&gt;&gt;&gt;(d_A, offset);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">float</span> result[vector_size] = &#123; &#125;;</span><br><span class="line">  cudaMemcpy(result, d_A, vector_size*<span class="keyword">sizeof</span>(<span class="keyword">float</span>), cudaMemcpyDeviceToHost);</span><br><span class="line"></span><br><span class="line">  cudaFree( d_A );</span><br><span class="line">   </span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; vector_size; ++i) &#123;</span><br><span class="line">    <span class="keyword">if</span> (i % <span class="number">8</span> == <span class="number">0</span>) <span class="built_in">printf</span>( <span class="string">&quot;\n&quot;</span> );</span><br><span class="line">    <span class="built_in">printf</span>( <span class="string">&quot;%.1f &quot;</span>, result[i] );</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>迁移后代码</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;CL/sycl.hpp&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;dpct/dpct.hpp&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> vector_size = <span class="number">256</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">SimpleAddKernel</span><span class="params">(<span class="keyword">float</span> *A, <span class="keyword">int</span> offset, sycl::nd_item&lt;<span class="number">3</span>&gt; item_ct1)</span></span></span><br><span class="line"><span class="function"></span>&#123; </span><br><span class="line">  A[item_ct1.get_local_id(<span class="number">2</span>)] = item_ct1.get_local_id(<span class="number">2</span>) + offset;</span><br><span class="line"> </span><br><span class="line">&#125;<span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  dpct::device_ext &amp;dev_ct1 = dpct::get_current_device();</span><br><span class="line">  sycl::<span class="built_in">queue</span> &amp;q_ct1 = dev_ct1.default_queue();</span><br><span class="line">  <span class="keyword">float</span> *d_A;</span><br><span class="line">  <span class="keyword">int</span> offset = <span class="number">10000</span>;</span><br><span class="line"></span><br><span class="line">  d_A = sycl::malloc_device&lt;<span class="keyword">float</span>&gt;(vector_size, q_ct1);</span><br><span class="line">  q_ct1.submit([&amp;](sycl::handler &amp;cgh) &#123;</span><br><span class="line">    cgh.parallel_for(sycl::nd_range(sycl::range(<span class="number">1</span>, <span class="number">1</span>, vector_size),</span><br><span class="line">                                    sycl::range(<span class="number">1</span>, <span class="number">1</span>, vector_size)),</span><br><span class="line">                     [=](sycl::nd_item&lt;<span class="number">3</span>&gt; item_ct1) &#123;</span><br><span class="line">                       SimpleAddKernel(d_A, offset, item_ct1);</span><br><span class="line">                     &#125;);</span><br><span class="line">  &#125;);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">float</span> result[vector_size] = &#123; &#125;;</span><br><span class="line">  q_ct1.<span class="built_in">memcpy</span>(result, d_A, vector_size * <span class="keyword">sizeof</span>(<span class="keyword">float</span>)).wait();</span><br><span class="line"></span><br><span class="line">  sycl::<span class="built_in">free</span>(d_A, q_ct1);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; vector_size; ++i) &#123;</span><br><span class="line">    <span class="keyword">if</span> (i % <span class="number">8</span> == <span class="number">0</span>) <span class="built_in">printf</span>( <span class="string">&quot;\n&quot;</span> );</span><br><span class="line">    <span class="built_in">printf</span>( <span class="string">&quot;%.1f &quot;</span>, result[i] );</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -316,6 +321,17 @@
 	</div>
 
       
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/something//" class="article-tag-list-link color5">something</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
 
       
 
