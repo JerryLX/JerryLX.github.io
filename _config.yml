@@ -103,7 +103,8 @@ deploy:
   repository: git@github.com:JerryLX/JerryLX.github.io.git
   branch: master
 
-
+toc:
+  maxdepth: 3
 
 # yilia主题所需新增内容
 jsonContent:
