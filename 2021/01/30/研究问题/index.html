@@ -6,17 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>CDC | Jerry Li的博客</title>
+  <title>研究问题 | Jerry Li的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="固定长度切块使用预先给定的长度来确定分割点，对文件进行分块。假设给定长度为𝑙，文件起始字节编号为0，则将𝑙,2𝑙,…,𝑘𝑙… 字节作为分割点。除了最后一个分块的长度可能小于𝑙，其余分块的长度均等于𝑙。 缺点：  无法应对字节移动问题。假设有两个文件$𝐹_1$,$𝐹_2$，其中 $𝐹_2$ 由 $𝐹_1$ 在起始点插入一个字节得到。如果使用固定长度分块的方法，则 $𝐹_2$">
+  <meta name="description" content="问题总结一、swarm连接构建基于兴趣的overlay构建格式化的overlay构建（基于节点ID）二、传输优化PubSub IPFS   PolderCast  三、激励机制直接互惠机制直接互惠机制指的是参与者的合作意愿收到过往交互历史的影响。  Tit-for-tat (BitTorrent)  方法： 在最近的时间区间（10-20s），选择$N-k$个贡献带宽最大的节点提供数据，另外$k$个">
 <meta property="og:type" content="article">
-<meta property="og:title" content="CDC">
-<meta property="og:url" content="http://example.com/2021/01/27/CDC/index.html">
+<meta property="og:title" content="研究问题">
+<meta property="og:url" content="http://example.com/2021/01/30/%E7%A0%94%E7%A9%B6%E9%97%AE%E9%A2%98/index.html">
 <meta property="og:site_name" content="Jerry Li的博客">
-<meta property="og:description" content="固定长度切块使用预先给定的长度来确定分割点，对文件进行分块。假设给定长度为𝑙，文件起始字节编号为0，则将𝑙,2𝑙,…,𝑘𝑙… 字节作为分割点。除了最后一个分块的长度可能小于𝑙，其余分块的长度均等于𝑙。 缺点：  无法应对字节移动问题。假设有两个文件$𝐹_1$,$𝐹_2$，其中 $𝐹_2$ 由 $𝐹_1$ 在起始点插入一个字节得到。如果使用固定长度分块的方法，则 $𝐹_2$">
+<meta property="og:description" content="问题总结一、swarm连接构建基于兴趣的overlay构建格式化的overlay构建（基于节点ID）二、传输优化PubSub IPFS   PolderCast  三、激励机制直接互惠机制直接互惠机制指的是参与者的合作意愿收到过往交互历史的影响。  Tit-for-tat (BitTorrent)  方法： 在最近的时间区间（10-20s），选择$N-k$个贡献带宽最大的节点提供数据，另外$k$个">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2021-01-27T08:21:16.000Z">
-<meta property="article:modified_time" content="2021-01-27T08:45:34.152Z">
+<meta property="article:published_time" content="2021-01-30T03:50:26.000Z">
+<meta property="article:modified_time" content="2021-01-31T06:58:14.049Z">
 <meta property="article:author" content="Jerry Li">
 <meta property="article:tag" content="智能网络,人工智能,程序猿">
 <meta name="twitter:card" content="summary">
@@ -159,47 +159,45 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-CDC" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-研究问题" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      CDC
+      研究问题
     </h1>
   
 
         
-        <a href="/2021/01/27/CDC/" class="archive-article-date">
-  	<time datetime="2021-01-27T08:21:16.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-01-27</time>
+        <a href="/2021/01/30/%E7%A0%94%E7%A9%B6%E9%97%AE%E9%A2%98/" class="archive-article-date">
+  	<time datetime="2021-01-30T03:50:26.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-01-30</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="固定长度切块"><a href="#固定长度切块" class="headerlink" title="固定长度切块"></a>固定长度切块</h3><p>使用预先给定的长度来确定分割点，对文件进行分块。假设给定长度为𝑙，文件起始字节编号为0，则将𝑙,2𝑙,…,𝑘𝑙… 字节作为分割点。除了最后一个分块的长度可能小于𝑙，其余分块的长度均等于𝑙。</p>
-<p>缺点：</p>
-<ul>
-<li>无法应对字节移动问题。假设有两个文件$𝐹_1$,$𝐹_2$，其中 $𝐹_2$ 由 $𝐹_1$ 在起始点插入一个字节得到。如果使用固定长度分块的方法，则 $𝐹_2$ 从第2个字节开始，每个字节都是 $𝐹_1$对应字节后移一个字节。因此 $𝐹_2$ 所有的分割点都与文件 $𝐹_1$ 不同。这种情况下，两个文件实际只有一个字节的差别，但是得到的所有分块都不相同，数据去重效果较差。</li>
+        <h2 id="问题总结"><a href="#问题总结" class="headerlink" title="问题总结"></a>问题总结</h2><h3 id="一、swarm连接构建"><a href="#一、swarm连接构建" class="headerlink" title="一、swarm连接构建"></a>一、swarm连接构建</h3><h4 id="基于兴趣的overlay构建"><a href="#基于兴趣的overlay构建" class="headerlink" title="基于兴趣的overlay构建"></a>基于兴趣的overlay构建</h4><h4 id="格式化的overlay构建（基于节点ID）"><a href="#格式化的overlay构建（基于节点ID）" class="headerlink" title="格式化的overlay构建（基于节点ID）"></a>格式化的overlay构建（基于节点ID）</h4><h3 id="二、传输优化"><a href="#二、传输优化" class="headerlink" title="二、传输优化"></a>二、传输优化</h3><h4 id="PubSub"><a href="#PubSub" class="headerlink" title="PubSub"></a>PubSub</h4><ul>
+<li><a href="/public/2021/01/31/IPFS-pubsub/index.html"><strong>IPFS</strong></a></li>
 </ul>
-<h3 id="基于hash的CDC-（Rabin）"><a href="#基于hash的CDC-（Rabin）" class="headerlink" title="基于hash的CDC （Rabin）"></a>基于hash的CDC （Rabin）</h3><p>使用Rabin滚动哈希的方法来确定分割点，对文件进行分块。该方法给定一个滑动窗。滑动窗从文件起始字节开始，逐个字节移动。每移动一个字节，计算滑动窗内数据的哈希值$ℎ$。如果哈希值满足预先设定的过滤条件，则将当前窗口位置标记为分割点。例如给定两个整数$𝑟,𝐷$，满足$$ℎ 𝑚𝑜𝑑 𝐷=𝑟$$，则该点可以作为一个分割点。</p>
-<p>优点：</p>
 <ul>
-<li>分割点的确定由文件内容决定，而不是由文件中的偏移量决定。因此在某点插入和删除数据时，不会影响该点后面的分割点的确定，解决了文件分块中字节移动问题。</li>
+<li><strong>PolderCast</strong></li>
 </ul>
-<p>缺点：</p>
+<h3 id="三、激励机制"><a href="#三、激励机制" class="headerlink" title="三、激励机制"></a>三、激励机制</h3><h4 id="直接互惠机制"><a href="#直接互惠机制" class="headerlink" title="直接互惠机制"></a>直接互惠机制</h4><p>直接互惠机制指的是参与者的合作意愿收到过往交互历史的影响。</p>
 <ul>
-<li>窗口每向前滑动一个字节，都要重新计算窗口内数据的哈希值，因此导致算法的计算负载过高，吞吐量较低。</li>
+<li><p><strong>Tit-for-tat (BitTorrent)</strong><br>  <strong>方法：</strong> 在最近的时间区间（10-20s），选择$N-k$个贡献带宽最大的节点提供数据，另外$k$个随机选择其它节点。<br>  <strong>目标：</strong> 最终系统将收敛至纳什均衡，每个节点与自己相似贡献度的节点建立swarm<br>  <strong>缺点：</strong> 无法保证公平性。由于该方法同时仅于一小部分节点进行数据交换，大部分时间和带宽浪费在寻找与自己发送速率相当的节点上。即使找到了发送速率较高的节点，该连接随时会断开，因为它也在寻找更好的邻居。</p>
+</li>
+<li><p><strong>Block-based TFT</strong><br>  <strong>方法：</strong> 同时与大量邻居交互数据，当某个节点的赤字超过固定阈值时停止数据的发送。<br>  <strong>缺点：</strong> 固定的阈值使资源利用率受限，高速率节点很快就停止数据的发送</p>
+</li>
+<li><p><strong>FairTorrent</strong><br>  <strong>方法：</strong> 本地维护赤字账本，将数据发送给赤字最低的请求者</p>
+</li>
+<li><p><a href="/public/2021/01/29/T-Chain-ICDCS-2017/index.html">T-Chain</a><br>  <strong>方法：</strong> 节点在获取数据密码前需要先有工作证明</p>
+</li>
 </ul>
-<h3 id="基于极值的CDC-AE、RAM"><a href="#基于极值的CDC-AE、RAM" class="headerlink" title="基于极值的CDC (AE、RAM)"></a>基于极值的CDC (AE、RAM)</h3><p>不使用数据的hash值来确定分割点，而是将字节内容看作数值，使用特定的字节作为分割点。例如AE算法，使用两个窗口，左边是变长窗口，右边是定长窗口，极值字节在两个窗口中间。当极值字节中的内容大于两边的窗口的所有字节的数值，则定长窗口结束点作为分割点。RAM算法则是在搜索开始阶段放置定长窗口，紧接着是一个变长窗口，最后将极值字节放在边界。当极值字节大于定长窗口中的最大值，则作为一个分割点。</p>
-<p>优点：</p>
-<ul>
-<li>基于极值的分块方法避免了逐个字节滚动计算哈希值，而是进行字节内容的大小比较，算法性能有较大提升。基于极值的方法产生的分块长度比基于hash的方法更稳定，出现过长分块的概率较低，有利于提高去重效率。</li>
-<li>缺点：</li>
-<li>基于极值的方法需要在某一窗口内找到最大值，如果插入数据导致窗口内的最大值发生变化，则可能会影响到现有分割点的位置。当分割点位置发生变化，则后续的分块可能发生移位现象。因此基于极值的方法在一定程度上降低了抵抗字节移位的能力，降低了去重效率。</li>
-</ul>
+<h4 id="间接互惠机制"><a href="#间接互惠机制" class="headerlink" title="间接互惠机制"></a>间接互惠机制</h4><p>基于直接和间接的交互，具有更好的合作潜力</p>
+<h4 id="基于加密的方法"><a href="#基于加密的方法" class="headerlink" title="基于加密的方法"></a>基于加密的方法</h4><p>相比于其它方法能够更好地处理新加入的节点。换句话说，新加入的节点马上可以投入工作，而其他算法对于新加入的节点设置初始值，往往可以免除工作就能获取数据。</p>
 
       
 
@@ -269,7 +267,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2021/01/27/CDC/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2021/01/30/%E7%A0%94%E7%A9%B6%E9%97%AE%E9%A2%98/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -283,18 +281,18 @@
   
 <nav id="article-nav">
   
-    <a href="/2021/01/29/T-Chain-ICDCS-2017/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2021/01/31/IPFS-pubsub/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          T-Chain (ICDCS 2017)
+          IPFS-pubsub
         
       </div>
     </a>
   
   
-    <a href="/2021/01/27/Zink-Failcase-%E5%88%86%E6%9E%90/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Zink Failcase 分析</div>
+    <a href="/2021/01/29/T-Chain-ICDCS-2017/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">T-Chain (ICDCS 2017)</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -321,7 +319,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9B%BA%E5%AE%9A%E9%95%BF%E5%BA%A6%E5%88%87%E5%9D%97"><span class="toc-number">1.</span> <span class="toc-text">固定长度切块</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%BA%E4%BA%8Ehash%E7%9A%84CDC-%EF%BC%88Rabin%EF%BC%89"><span class="toc-number">2.</span> <span class="toc-text">基于hash的CDC （Rabin）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%BA%E4%BA%8E%E6%9E%81%E5%80%BC%E7%9A%84CDC-AE%E3%80%81RAM"><span class="toc-number">3.</span> <span class="toc-text">基于极值的CDC (AE、RAM)</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%97%AE%E9%A2%98%E6%80%BB%E7%BB%93"><span class="toc-number">1.</span> <span class="toc-text">问题总结</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80%E3%80%81swarm%E8%BF%9E%E6%8E%A5%E6%9E%84%E5%BB%BA"><span class="toc-number">1.1.</span> <span class="toc-text">一、swarm连接构建</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9F%BA%E4%BA%8E%E5%85%B4%E8%B6%A3%E7%9A%84overlay%E6%9E%84%E5%BB%BA"><span class="toc-number">1.1.1.</span> <span class="toc-text">基于兴趣的overlay构建</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%A0%BC%E5%BC%8F%E5%8C%96%E7%9A%84overlay%E6%9E%84%E5%BB%BA%EF%BC%88%E5%9F%BA%E4%BA%8E%E8%8A%82%E7%82%B9ID%EF%BC%89"><span class="toc-number">1.1.2.</span> <span class="toc-text">格式化的overlay构建（基于节点ID）</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E4%BC%A0%E8%BE%93%E4%BC%98%E5%8C%96"><span class="toc-number">1.2.</span> <span class="toc-text">二、传输优化</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#PubSub"><span class="toc-number">1.2.1.</span> <span class="toc-text">PubSub</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E6%BF%80%E5%8A%B1%E6%9C%BA%E5%88%B6"><span class="toc-number">1.3.</span> <span class="toc-text">三、激励机制</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%9B%B4%E6%8E%A5%E4%BA%92%E6%83%A0%E6%9C%BA%E5%88%B6"><span class="toc-number">1.3.1.</span> <span class="toc-text">直接互惠机制</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%97%B4%E6%8E%A5%E4%BA%92%E6%83%A0%E6%9C%BA%E5%88%B6"><span class="toc-number">1.3.2.</span> <span class="toc-text">间接互惠机制</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9F%BA%E4%BA%8E%E5%8A%A0%E5%AF%86%E7%9A%84%E6%96%B9%E6%B3%95"><span class="toc-number">1.3.3.</span> <span class="toc-text">基于加密的方法</span></a></li></ol></li></ol></li></ol>
                     </div>
                 </span>
             </div>

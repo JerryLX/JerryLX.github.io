@@ -6,17 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>CDC | Jerry Li的博客</title>
+  <title>IPFS-pubsub | Jerry Li的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="固定长度切块使用预先给定的长度来确定分割点，对文件进行分块。假设给定长度为𝑙，文件起始字节编号为0，则将𝑙,2𝑙,…,𝑘𝑙… 字节作为分割点。除了最后一个分块的长度可能小于𝑙，其余分块的长度均等于𝑙。 缺点：  无法应对字节移动问题。假设有两个文件$𝐹_1$,$𝐹_2$，其中 $𝐹_2$ 由 $𝐹_1$ 在起始点插入一个字节得到。如果使用固定长度分块的方法，则 $𝐹_2$">
+  <meta name="description" content="节点打分1Score(p) &#x3D; TopicCap(Σtᵢ*(w₁(tᵢ)*P₁(tᵢ) + w₂(tᵢ)*P₂(tᵢ) + w₃(tᵢ)*P₃(tᵢ) + w₃b(tᵢ)*P₃b(tᵢ) + w₄(tᵢ)*P₄(tᵢ))) + w₅*P₅ + w₆*P₆ + w₇*P₇ 其中，tᵢ是topic的权重。 参数定义如下:  P₁: Time in Mesh for a topic. 在网格中">
 <meta property="og:type" content="article">
-<meta property="og:title" content="CDC">
-<meta property="og:url" content="http://example.com/2021/01/27/CDC/index.html">
+<meta property="og:title" content="IPFS-pubsub">
+<meta property="og:url" content="http://example.com/2021/01/31/IPFS-pubsub/index.html">
 <meta property="og:site_name" content="Jerry Li的博客">
-<meta property="og:description" content="固定长度切块使用预先给定的长度来确定分割点，对文件进行分块。假设给定长度为𝑙，文件起始字节编号为0，则将𝑙,2𝑙,…,𝑘𝑙… 字节作为分割点。除了最后一个分块的长度可能小于𝑙，其余分块的长度均等于𝑙。 缺点：  无法应对字节移动问题。假设有两个文件$𝐹_1$,$𝐹_2$，其中 $𝐹_2$ 由 $𝐹_1$ 在起始点插入一个字节得到。如果使用固定长度分块的方法，则 $𝐹_2$">
+<meta property="og:description" content="节点打分1Score(p) &#x3D; TopicCap(Σtᵢ*(w₁(tᵢ)*P₁(tᵢ) + w₂(tᵢ)*P₂(tᵢ) + w₃(tᵢ)*P₃(tᵢ) + w₃b(tᵢ)*P₃b(tᵢ) + w₄(tᵢ)*P₄(tᵢ))) + w₅*P₅ + w₆*P₆ + w₇*P₇ 其中，tᵢ是topic的权重。 参数定义如下:  P₁: Time in Mesh for a topic. 在网格中">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2021-01-27T08:21:16.000Z">
-<meta property="article:modified_time" content="2021-01-27T08:45:34.152Z">
+<meta property="article:published_time" content="2021-01-31T06:56:31.000Z">
+<meta property="article:modified_time" content="2021-01-31T07:12:11.558Z">
 <meta property="article:author" content="Jerry Li">
 <meta property="article:tag" content="智能网络,人工智能,程序猿">
 <meta name="twitter:card" content="summary">
@@ -159,46 +159,46 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-CDC" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-IPFS-pubsub" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      CDC
+      IPFS-pubsub
     </h1>
   
 
         
-        <a href="/2021/01/27/CDC/" class="archive-article-date">
-  	<time datetime="2021-01-27T08:21:16.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-01-27</time>
+        <a href="/2021/01/31/IPFS-pubsub/" class="archive-article-date">
+  	<time datetime="2021-01-31T06:56:31.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-01-31</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="固定长度切块"><a href="#固定长度切块" class="headerlink" title="固定长度切块"></a>固定长度切块</h3><p>使用预先给定的长度来确定分割点，对文件进行分块。假设给定长度为𝑙，文件起始字节编号为0，则将𝑙,2𝑙,…,𝑘𝑙… 字节作为分割点。除了最后一个分块的长度可能小于𝑙，其余分块的长度均等于𝑙。</p>
-<p>缺点：</p>
+        <h2 id="节点打分"><a href="#节点打分" class="headerlink" title="节点打分"></a>节点打分</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Score(p) &#x3D; TopicCap(Σtᵢ*(w₁(tᵢ)*P₁(tᵢ) + w₂(tᵢ)*P₂(tᵢ) + w₃(tᵢ)*P₃(tᵢ) + w₃b(tᵢ)*P₃b(tᵢ) + w₄(tᵢ)*P₄(tᵢ))) + w₅*P₅ + w₆*P₆ + w₇*P₇</span><br></pre></td></tr></table></figure>
+<p>其中，<code>tᵢ</code>是topic的权重。</p>
+<p>参数定义如下:</p>
 <ul>
-<li>无法应对字节移动问题。假设有两个文件$𝐹_1$,$𝐹_2$，其中 $𝐹_2$ 由 $𝐹_1$ 在起始点插入一个字节得到。如果使用固定长度分块的方法，则 $𝐹_2$ 从第2个字节开始，每个字节都是 $𝐹_1$对应字节后移一个字节。因此 $𝐹_2$ 所有的分割点都与文件 $𝐹_1$ 不同。这种情况下，两个文件实际只有一个字节的差别，但是得到的所有分块都不相同，数据去重效果较差。</li>
+<li><code>P₁</code>: <strong>Time in Mesh</strong> for a topic. <strong>在网格中的存在时间。</strong> This is the time a peer has been in the mesh, capped to a small value and mixed with a small positive weight. This is intended to boost peers already in the mesh so that they are not prematurely pruned because of oversubscription.</li>
+<li><code>P₂</code>: <strong>First Message Deliveries</strong> for a topic. <strong>首发消息传递次数。</strong> This is the number of messages first delivered by the peer in the topic, mixed with a positive weight. This is intended to reward peers who first forward a valid message.</li>
+<li><code>P₃</code>: <strong>Mesh Message Delivery Rate</strong> for a topic. <strong>对于不发送数据节点的惩罚因子。</strong> This parameter is a threshold for the expected message delivery rate within the mesh in the topic. If the number of deliveries is above the threshold, then the value is 0. If the number is below the threshold, then the value of the parameter is the square of the deficit. This is intended to penalize peers in the mesh who are not delivering the expected number of messages so that they can be removed from the mesh. The parameter is mixed with a negative weight.</li>
+<li><code>P₃b</code>: <strong>Mesh Message Delivery Failures</strong> for a topic. <strong>发送失败次数</strong>。This is a sticky parameter that counts the number of mesh message delivery failures. Whenever a peer is pruned with a negative score, the parameter is augmented by the rate deficit at the time of prune. This is intended to keep history of prunes so that a peer that was pruned because of underdelivery cannot quickly get re-grafted into the mesh. The parameter is mixed with negative weight.</li>
+<li><code>P₄</code>: <strong>Invalid Messages</strong> for a topic. <strong>无效消息数量。</strong> This is the number of invalid messages delivered in the topic.<br>This is intended to penalize peers who transmit invalid messages, according to application-specific<br>validation rules. It is mixed with a negative weight.</li>
+<li><code>P₅</code>: <strong>Application-Specific</strong> score. This is the score component assigned to the peer by the application<br>itself, using application-specific rules. The weight is positive, but the parameter itself has an<br>arbitrary real value, so that the application can signal misbehaviour with a negative score or gate<br>peers before an application-specific handshake is completed.</li>
+<li><code>P₆</code>: <strong>IP Colocation Factor</strong>. 防止女巫攻击的相同ip因子。This parameter is a threshold for the number of peers using the same IP address. If the number of peers in the same IP exceeds the threshold, then the value is the square of the surplus, otherwise it is 0. This is intended to make it difficult to carry out sybil attacks by using a small number of IPs. The parameter is mixed with a negative weight.</li>
+<li><code>P₇</code>: <strong>Behavioural Penalty</strong>. <strong>特殊事件的惩罚因子。</strong> This parameter captures penalties applied for misbehaviour. The parameter has an associated (decaying) counter, which is explicitly incremented by the router on specific events. The value of the parameter is the square of the counter and is mixed with a negative weight.</li>
 </ul>
-<h3 id="基于hash的CDC-（Rabin）"><a href="#基于hash的CDC-（Rabin）" class="headerlink" title="基于hash的CDC （Rabin）"></a>基于hash的CDC （Rabin）</h3><p>使用Rabin滚动哈希的方法来确定分割点，对文件进行分块。该方法给定一个滑动窗。滑动窗从文件起始字节开始，逐个字节移动。每移动一个字节，计算滑动窗内数据的哈希值$ℎ$。如果哈希值满足预先设定的过滤条件，则将当前窗口位置标记为分割点。例如给定两个整数$𝑟,𝐷$，满足$$ℎ 𝑚𝑜𝑑 𝐷=𝑟$$，则该点可以作为一个分割点。</p>
-<p>优点：</p>
-<ul>
-<li>分割点的确定由文件内容决定，而不是由文件中的偏移量决定。因此在某点插入和删除数据时，不会影响该点后面的分割点的确定，解决了文件分块中字节移动问题。</li>
-</ul>
-<p>缺点：</p>
-<ul>
-<li>窗口每向前滑动一个字节，都要重新计算窗口内数据的哈希值，因此导致算法的计算负载过高，吞吐量较低。</li>
-</ul>
-<h3 id="基于极值的CDC-AE、RAM"><a href="#基于极值的CDC-AE、RAM" class="headerlink" title="基于极值的CDC (AE、RAM)"></a>基于极值的CDC (AE、RAM)</h3><p>不使用数据的hash值来确定分割点，而是将字节内容看作数值，使用特定的字节作为分割点。例如AE算法，使用两个窗口，左边是变长窗口，右边是定长窗口，极值字节在两个窗口中间。当极值字节中的内容大于两边的窗口的所有字节的数值，则定长窗口结束点作为分割点。RAM算法则是在搜索开始阶段放置定长窗口，紧接着是一个变长窗口，最后将极值字节放在边界。当极值字节大于定长窗口中的最大值，则作为一个分割点。</p>
-<p>优点：</p>
-<ul>
-<li>基于极值的分块方法避免了逐个字节滚动计算哈希值，而是进行字节内容的大小比较，算法性能有较大提升。基于极值的方法产生的分块长度比基于hash的方法更稳定，出现过长分块的概率较低，有利于提高去重效率。</li>
-<li>缺点：</li>
-<li>基于极值的方法需要在某一窗口内找到最大值，如果插入数据导致窗口内的最大值发生变化，则可能会影响到现有分割点的位置。当分割点位置发生变化，则后续的分块可能发生移位现象。因此基于极值的方法在一定程度上降低了抵抗字节移位的能力，降低了去重效率。</li>
+<h2 id="分数阈值"><a href="#分数阈值" class="headerlink" title="分数阈值"></a>分数阈值</h2><ul>
+<li><code>0</code>: 最基本的阈值，如果分数低于0，那么对等方将会被移出网格。需要注意的是，即便移出了网格它的分数记录也会在一段时间内被保留，这样也可以防止它短时间内再次加入。</li>
+<li><code>gossipThreshold</code>: 如果低于该阈值，那么不会向该对等方发送闲话，同时收到来自该对等方的闲话也应直接丢弃而不会处理。该值为负数，因为在网格外的对等方大多都分数不高，如果大于0 则能发送闲话的对等方将非常少，不利于维护更新。</li>
+<li><code>publishThreshold</code>: 如果低于该阈值，那么就不能收到来自主题的消息，该值且应低于闲话阈值。</li>
+<li><code>graylistThreshold</code>: 如果低于该阈值，那么将被拉黑，来自它的控制消息也将被忽略（也就是说加入请求也会被忽略），该值应低于发布阈值。</li>
+<li><code>acceptPXThreshold</code>: 如果低于该阈值，那么就不会接受对等交换该阈值为正。</li>
+<li><code>opportunisticGraftThreshold</code>: 网格中所有对等方的分数中位数。如果中位数低于阈值，那么说明后面有很多表现不那么好的对等方，这时我们就会对网格进行修整，引入一些分数高于此阈值的新对等点，并对分数低的对等点进行剪切，此阈值也为正。</li>
 </ul>
 
       
@@ -269,7 +269,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2021/01/27/CDC/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2021/01/31/IPFS-pubsub/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -283,18 +283,18 @@
   
 <nav id="article-nav">
   
-    <a href="/2021/01/29/T-Chain-ICDCS-2017/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2021/03/09/rtp/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          T-Chain (ICDCS 2017)
+          RTP
         
       </div>
     </a>
   
   
-    <a href="/2021/01/27/Zink-Failcase-%E5%88%86%E6%9E%90/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Zink Failcase 分析</div>
+    <a href="/2021/01/30/%E7%A0%94%E7%A9%B6%E9%97%AE%E9%A2%98/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">研究问题</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -321,7 +321,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9B%BA%E5%AE%9A%E9%95%BF%E5%BA%A6%E5%88%87%E5%9D%97"><span class="toc-number">1.</span> <span class="toc-text">固定长度切块</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%BA%E4%BA%8Ehash%E7%9A%84CDC-%EF%BC%88Rabin%EF%BC%89"><span class="toc-number">2.</span> <span class="toc-text">基于hash的CDC （Rabin）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%BA%E4%BA%8E%E6%9E%81%E5%80%BC%E7%9A%84CDC-AE%E3%80%81RAM"><span class="toc-number">3.</span> <span class="toc-text">基于极值的CDC (AE、RAM)</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%8A%82%E7%82%B9%E6%89%93%E5%88%86"><span class="toc-number">1.</span> <span class="toc-text">节点打分</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%86%E6%95%B0%E9%98%88%E5%80%BC"><span class="toc-number">2.</span> <span class="toc-text">分数阈值</span></a></li></ol>
                     </div>
                 </span>
             </div>
