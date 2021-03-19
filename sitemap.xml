@@ -2,6 +2,27 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://example.com/2021/01/16/PyTorch%20VS%20Tensorflow/</loc>
+    
+    <lastmod>2021-03-19</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://example.com/2021/03/14/Sol-Fast-Distributed-Computation/</loc>
+    
+    <lastmod>2021-03-14</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://example.com/2021/01/16/%E6%8B%A5%E5%A1%9E%E6%8E%A7%E5%88%B6/</loc>
+    
+    <lastmod>2021-03-14</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://example.com/2021/03/09/rtp/</loc>
     
     <lastmod>2021-03-09</lastmod>
@@ -44,23 +65,9 @@
   </url>
   
   <url>
-    <loc>http://example.com/2021/01/16/PyTorch%20VS%20Tensorflow/</loc>
-    
-    <lastmod>2021-01-27</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://example.com/2021/01/17/OneAPI/</loc>
     
     <lastmod>2021-01-18</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://example.com/2021/01/16/%E6%8B%A5%E5%A1%9E%E6%8E%A7%E5%88%B6/</loc>
-    
-    <lastmod>2021-01-16</lastmod>
     
   </url>
   
@@ -74,7 +81,7 @@
 
   <url>
     <loc>http://example.com/</loc>
-    <lastmod>2021-03-09</lastmod>
+    <lastmod>2021-03-19</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
@@ -82,49 +89,56 @@
   
   <url>
     <loc>http://example.com/tags/Intel/</loc>
-    <lastmod>2021-03-09</lastmod>
+    <lastmod>2021-03-19</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://example.com/tags/Programming-Model/</loc>
-    <lastmod>2021-03-09</lastmod>
+    <lastmod>2021-03-19</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://example.com/tags/AI/</loc>
-    <lastmod>2021-03-09</lastmod>
+    <lastmod>2021-03-19</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://example.com/tags/computing-framework/</loc>
-    <lastmod>2021-03-09</lastmod>
+    <lastmod>2021-03-19</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://example.com/tags/%E6%8B%A5%E5%A1%9E%E6%8E%A7%E5%88%B6/</loc>
-    <lastmod>2021-03-09</lastmod>
+    <lastmod>2021-03-19</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://example.com/tags/OpenGL/</loc>
-    <lastmod>2021-03-09</lastmod>
+    <lastmod>2021-03-19</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://example.com/tags/video-streaming/</loc>
-    <lastmod>2021-03-09</lastmod>
+    <lastmod>2021-03-19</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://example.com/tags/%E5%88%86%E5%B8%83%E5%BC%8F%E8%AE%A1%E7%AE%97/</loc>
+    <lastmod>2021-03-19</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
@@ -133,21 +147,21 @@
   
   <url>
     <loc>http://example.com/categories/something/</loc>
-    <lastmod>2021-03-09</lastmod>
+    <lastmod>2021-03-19</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://example.com/categories/ipfs/</loc>
-    <lastmod>2021-03-09</lastmod>
+    <lastmod>2021-03-19</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://example.com/categories/ns/</loc>
-    <lastmod>2021-03-09</lastmod>
+    <lastmod>2021-03-19</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
