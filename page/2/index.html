@@ -179,11 +179,78 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="一、PyTorch"><a href="#一、PyTorch" class="headerlink" title="一、PyTorch"></a><strong>一、PyTorch</strong></h2><h3 id="高效的C-内核"><a href="#高效的C-内核" class="headerlink" title="高效的C++内核"></a>高效的C++内核</h3><p>Pytorch的核心库libtorch 使用C++实现了张量数据结构，GPU和CPU操作以及基本的并行原语。<br>不需要持有Python全局解释器锁，使用的PyTorch操作组成的运算可在多线程中执行。</p>
+        <a id="more"></a>
+<h2 id="一、PyTorch"><a href="#一、PyTorch" class="headerlink" title="一、PyTorch"></a><strong>一、PyTorch</strong></h2><h3 id="高效的C-内核"><a href="#高效的C-内核" class="headerlink" title="高效的C++内核"></a>高效的C++内核</h3><p>Pytorch的核心库libtorch 使用C++实现了张量数据结构，GPU和CPU操作以及基本的并行原语。<br>不需要持有Python全局解释器锁，使用的PyTorch操作组成的运算可在多线程中执行。</p>
 <h3 id="分离控制和数据流"><a href="#分离控制和数据流" class="headerlink" title="分离控制和数据流"></a>分离控制和数据流</h3><p>PyTorch在其控制流和数据流之间保持严格的分离。控制流的解析由运行在CPU上的Python和 C++代码处理，数据流既可以在CPU上也可以在GPU上运行。<br>此外，PyTorch利用CUDA流机制，使CPU上与GPU上的运算可以并行。</p>
-        
-          <a class="article-more-a" href="/2021/01/16/PyTorch%20VS%20Tensorflow/#more">more >></a>
-        
+<!--more-->
+
+<h3 id="多进程优化"><a href="#多进程优化" class="headerlink" title="多进程优化"></a>多进程优化</h3><p>PyTorch将Python multiprocessing 模块扩展为 torch.multiprocessing，该模块会自动将发送到其他进程的张量数据移动到共享内存，而不是通过进程间通道来发送。</p>
+<h3 id="缓存分配优化"><a href="#缓存分配优化" class="headerlink" title="缓存分配优化"></a>缓存分配优化</h3><p>原生CUDAFREE操作会阻塞其调用者直至队列中所有任务结束，为了解决这一瓶颈，PyTorch实现自己的增量分配器</p>
+<h3 id="内存管理优化"><a href="#内存管理优化" class="headerlink" title="内存管理优化"></a>内存管理优化</h3><p>PyTorch依靠引用计数的方案来跟踪每个张量的使用次数，一旦该计数达到零立即释放底层内存。</p>
+<h2 id="二、Tensorflow"><a href="#二、Tensorflow" class="headerlink" title="二、Tensorflow"></a><strong>二、Tensorflow</strong></h2><ul>
+<li>异构环境中的大规模机器学习系统</li>
+<li>使用数据流图表示“计算”、“状态”、“改变状态的操作”</li>
+<li>将图中的节点映射到一个集群中的多个机器、一台机器中的多个计算设备（CPU、GPU、TPU等）。</li>
+</ul>
+<h3 id="设计理念："><a href="#设计理念：" class="headerlink" title="设计理念："></a>设计理念：</h3><ul>
+<li><p>基于计算原语的数据流图</p>
+<p>  在TensorFlow中，数据流图的每个节点是一个独立的操作，如矩阵乘法、卷积等。这使得用户可以轻易地开发新的模型。</p>
+</li>
+<li><p>延期执行</p>
+<p>  将执行推迟到整个程序可用之后，能够利用全局信息对执行过程进行优化，提高性能。举例来说：通过任务依赖关系优化并行度。</p>
+</li>
+</ul>
+<ul>
+<li>公用的加速器抽象<ul>
+<li>统一的设备抽象：任意设备(CPU,GPU,TPU……)，只要实现规定的接口，就能够被程序使用。同一个程序在不同设备上不用修改就能充分发挥硬件特性，达到高性能。</li>
+<li>统一的数据类型：原始值封装成张量，作为所有设备都能理解的数据交换格式。</li>
+</ul>
+</li>
+</ul>
+<h3 id="架构"><a href="#架构" class="headerlink" title="架构"></a>架构</h3><img src="/2021/01/16/PyTorch%20VS%20Tensorflow/framework.jpg" width="60%" alt="整体架构">
+
+<ul>
+<li>用户层：用户层包括一些训练和推理、预测的工具库，以及提供了python、c++等客户端API。</li>
+<li>C API：隔离用户层和核心层。</li>
+<li>核心层：考虑可移植性和性能,核心库用C++实现. 可在Linux. Mac OS X、Windows,、Android、and iOS等各种操作系统运行。 以及x86、ARM等各种架构的CPU，Kepler、Maxwell、Pascal等各种架构GPU上运行. 开源后在其他架构也有实现。<ul>
+<li>Distributed master: 作用是将用户需求翻译成一组任务。能够将计算图根据参与的硬件进行剪枝和划分。另外，由于master能够看到全局的计算步骤，所以能够进行一些标准的优化操作，例如公共表达式消除、常量合并等。 然后协调优化后的子图的执行。</li>
+<li>Dataflow executor: 作用是处理从master得到的需求. 调度kernel的执行。 Dataflow executor能够将kernel分配到各个设备上。</li>
+<li>Kernel: 是操作在某种硬件设备上的特定实现，包含200多种操作，包括数学运算，数组复制，控制流，状态管理。</li>
+<li>设备和网络: 每个设备实现send和recv接口. CPU和GPU使用cudaMemcpyAsync() API，GPU和GPU之间使用DMA。任务之间传输可以使用多种协议,例如基于TCP的gRPC，基于融合以太网(Converged Ethernet)的RDMA，在GPU和GPU之间也可以使用Collective operations 进行通信优化</li>
+</ul>
+</li>
+</ul>
+<h3 id="分布式训练"><a href="#分布式训练" class="headerlink" title="分布式训练"></a>分布式训练</h3><ul>
+<li>模型并行：网络很大时，由于内存、显存限制，模型的不同部分分散到多个设备并行训练。缺点是层与层之间存在先后约束，并行度较低。</li>
+<li>数据并行：一般使用数据并行，每个设备训练不同的batch，然后搜集这些梯度进行参数更新。</li>
+</ul>
+<h3 id="多设备执行"><a href="#多设备执行" class="headerlink" title="多设备执行"></a>多设备执行</h3><ul>
+<li><p>任务放置策略：预估张量的大小和运行时间，使用贪心算法选择能够最快完成任务的设备。</p>
+<ul>
+<li>部署算法首先对计算图进行模拟运行。从计算图的源节点开始，模拟每个行为在各个设备上执行的运行时间，该时间包含了通讯开销以及计算开销。模拟所有设备后，选择运行时间最短的设备进行部署。</li>
+<li>模拟计算任务在各个设备的开销可以通过静态评估（根据任务类型）或模拟执行动态评估。</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>设备间通信：放置策略确定后，不同设备之间插入send/recv操作，通信方式可以是TCP、gRPC、RDMA等</p>
+<ul>
+<li>当任务部署策略计算完成后，计算图被切分成若干子图分布在各个计算设备上，连接各个计算子图的是自动创建的send/recv节点。</li>
+</ul>
+</li>
+</ul>
+<h3 id="Kernel-实现"><a href="#Kernel-实现" class="headerlink" title="Kernel 实现"></a>Kernel 实现</h3><ul>
+<li>Kernel是“操作”在某种硬件设备上的特定实现，是实现异构设备执行的基础。</li>
+<li>Kernel(CPU)：基于Eigen::Tensor实现，Eigen是一个C++模板技术，能够生成高效的并发代码。</li>
+<li>Kernel(GPU)：可以使用Eigen技术，也可以直接使用cuBLAS，cuDNN，cuNCCL实现。也可以使用基于OpenCL的计算设备。</li>
+<li>其他硬件实现：需要实现规定的接口，至少包括：<ul>
+<li>执行接口</li>
+<li>为数据分配内存</li>
+<li>与主机内存之间数据传送</li>
+</ul>
+</li>
+</ul>
+
       
 
       

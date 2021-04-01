@@ -179,7 +179,8 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>大规模分布式计算时大数据、人工智能等领域不可缺少的环节。然而，分布式计算节点之间可能存在长时延、低带宽。这些限制严重降低了分布式计算的效率。作者在该文中提出了两方面的优化：</p>
+        <a id="more"></a>
+<h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>大规模分布式计算时大数据、人工智能等领域不可缺少的环节。然而，分布式计算节点之间可能存在长时延、低带宽。这些限制严重降低了分布式计算的效率。作者在该文中提出了两方面的优化：</p>
 <ol>
 <li>提出“早绑定”的控制平面决策，以降低时延。<ul>
 <li>在任务调度时，提前把任务分配给worker。这里有一个权衡: 分配太早可能导致次优决策，分配太晚导致worker闲置和较低资源使用效率</li>
@@ -278,7 +279,8 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>RTP(Real-time Transport Protocol)是用于Internet上针对多媒体数据流的一种传输协议，由两个紧密链接部分组成:</p>
+        <a id="more"></a>
+<h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>RTP(Real-time Transport Protocol)是用于Internet上针对多媒体数据流的一种传输协议，由两个紧密链接部分组成:</p>
 <ul>
 <li>RTP： 传送具有实时属性的数据；</li>
 <li>RTP控制协议（RTCP）：监控服务质量并传送正在进行的会话参与者的相关信息。</li>
@@ -450,7 +452,9 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="节点打分"><a href="#节点打分" class="headerlink" title="节点打分"></a>节点打分</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Score(p) &#x3D; TopicCap(Σtᵢ*(w₁(tᵢ)*P₁(tᵢ) + w₂(tᵢ)*P₂(tᵢ) + w₃(tᵢ)*P₃(tᵢ) + w₃b(tᵢ)*P₃b(tᵢ) + w₄(tᵢ)*P₄(tᵢ))) + w₅*P₅ + w₆*P₆ + w₇*P₇</span><br></pre></td></tr></table></figure>
+        <a id="more"></a>
+
+<h2 id="节点打分"><a href="#节点打分" class="headerlink" title="节点打分"></a>节点打分</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Score(p) &#x3D; TopicCap(Σtᵢ*(w₁(tᵢ)*P₁(tᵢ) + w₂(tᵢ)*P₂(tᵢ) + w₃(tᵢ)*P₃(tᵢ) + w₃b(tᵢ)*P₃b(tᵢ) + w₄(tᵢ)*P₄(tᵢ))) + w₅*P₅ + w₆*P₆ + w₇*P₇</span><br></pre></td></tr></table></figure>
 <p>其中，<code>tᵢ</code>是topic的权重。</p>
 <p>参数定义如下:</p>
 <ul>
@@ -544,7 +548,8 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="问题总结"><a href="#问题总结" class="headerlink" title="问题总结"></a>问题总结</h2><h3 id="一、swarm连接构建"><a href="#一、swarm连接构建" class="headerlink" title="一、swarm连接构建"></a>一、swarm连接构建</h3><h4 id="基于兴趣的overlay构建"><a href="#基于兴趣的overlay构建" class="headerlink" title="基于兴趣的overlay构建"></a>基于兴趣的overlay构建</h4><h4 id="格式化的overlay构建（基于节点ID）"><a href="#格式化的overlay构建（基于节点ID）" class="headerlink" title="格式化的overlay构建（基于节点ID）"></a>格式化的overlay构建（基于节点ID）</h4><h3 id="二、传输优化"><a href="#二、传输优化" class="headerlink" title="二、传输优化"></a>二、传输优化</h3><h4 id="PubSub"><a href="#PubSub" class="headerlink" title="PubSub"></a>PubSub</h4><ul>
+        <a id="more"></a>
+<h2 id="问题总结"><a href="#问题总结" class="headerlink" title="问题总结"></a>问题总结</h2><h3 id="一、swarm连接构建"><a href="#一、swarm连接构建" class="headerlink" title="一、swarm连接构建"></a>一、swarm连接构建</h3><h4 id="基于兴趣的overlay构建"><a href="#基于兴趣的overlay构建" class="headerlink" title="基于兴趣的overlay构建"></a>基于兴趣的overlay构建</h4><h4 id="格式化的overlay构建（基于节点ID）"><a href="#格式化的overlay构建（基于节点ID）" class="headerlink" title="格式化的overlay构建（基于节点ID）"></a>格式化的overlay构建（基于节点ID）</h4><h3 id="二、传输优化"><a href="#二、传输优化" class="headerlink" title="二、传输优化"></a>二、传输优化</h3><h4 id="PubSub"><a href="#PubSub" class="headerlink" title="PubSub"></a>PubSub</h4><ul>
 <li><a href="/public/2021/01/31/IPFS-pubsub/index.html"><strong>IPFS</strong></a></li>
 </ul>
 <ul>
@@ -636,7 +641,8 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="Overview"><a href="#Overview" class="headerlink" title="Overview"></a>Overview</h2><p>一种为协助计算通用的激励机制，具有如下特点：</p>
+        <a id="more"></a>
+<h2 id="Overview"><a href="#Overview" class="headerlink" title="Overview"></a>Overview</h2><p>一种为协助计算通用的激励机制，具有如下特点：</p>
 <ul>
 <li>强大的激励能力</li>
 <li>快速，不需要bootstrapping</li>
@@ -737,12 +743,13 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="固定长度切块"><a href="#固定长度切块" class="headerlink" title="固定长度切块"></a>固定长度切块</h3><p>使用预先给定的长度来确定分割点，对文件进行分块。假设给定长度为𝑙，文件起始字节编号为0，则将𝑙,2𝑙,…,𝑘𝑙… 字节作为分割点。除了最后一个分块的长度可能小于𝑙，其余分块的长度均等于𝑙。</p>
+        <a id="more"></a>
+<h2 id="固定长度切块"><a href="#固定长度切块" class="headerlink" title="固定长度切块"></a>固定长度切块</h2><p>使用预先给定的长度来确定分割点，对文件进行分块。假设给定长度为𝑙，文件起始字节编号为0，则将𝑙,2𝑙,…,𝑘𝑙… 字节作为分割点。除了最后一个分块的长度可能小于𝑙，其余分块的长度均等于𝑙。</p>
 <p>缺点：</p>
 <ul>
 <li>无法应对字节移动问题。假设有两个文件$𝐹_1$,$𝐹_2$，其中 $𝐹_2$ 由 $𝐹_1$ 在起始点插入一个字节得到。如果使用固定长度分块的方法，则 $𝐹_2$ 从第2个字节开始，每个字节都是 $𝐹_1$对应字节后移一个字节。因此 $𝐹_2$ 所有的分割点都与文件 $𝐹_1$ 不同。这种情况下，两个文件实际只有一个字节的差别，但是得到的所有分块都不相同，数据去重效果较差。</li>
 </ul>
-<h3 id="基于hash的CDC-（Rabin）"><a href="#基于hash的CDC-（Rabin）" class="headerlink" title="基于hash的CDC （Rabin）"></a>基于hash的CDC （Rabin）</h3><p>使用Rabin滚动哈希的方法来确定分割点，对文件进行分块。该方法给定一个滑动窗。滑动窗从文件起始字节开始，逐个字节移动。每移动一个字节，计算滑动窗内数据的哈希值$ℎ$。如果哈希值满足预先设定的过滤条件，则将当前窗口位置标记为分割点。例如给定两个整数$𝑟,𝐷$，满足$$ℎ 𝑚𝑜𝑑 𝐷=𝑟$$，则该点可以作为一个分割点。</p>
+<h2 id="基于hash的CDC-（Rabin）"><a href="#基于hash的CDC-（Rabin）" class="headerlink" title="基于hash的CDC （Rabin）"></a>基于hash的CDC （Rabin）</h2><p>使用Rabin滚动哈希的方法来确定分割点，对文件进行分块。该方法给定一个滑动窗。滑动窗从文件起始字节开始，逐个字节移动。每移动一个字节，计算滑动窗内数据的哈希值$ℎ$。如果哈希值满足预先设定的过滤条件，则将当前窗口位置标记为分割点。例如给定两个整数$𝑟,𝐷$，满足$$ℎ 𝑚𝑜𝑑 𝐷=𝑟$$，则该点可以作为一个分割点。</p>
 <p>优点：</p>
 <ul>
 <li>分割点的确定由文件内容决定，而不是由文件中的偏移量决定。因此在某点插入和删除数据时，不会影响该点后面的分割点的确定，解决了文件分块中字节移动问题。</li>
@@ -751,7 +758,7 @@
 <ul>
 <li>窗口每向前滑动一个字节，都要重新计算窗口内数据的哈希值，因此导致算法的计算负载过高，吞吐量较低。</li>
 </ul>
-<h3 id="基于极值的CDC-AE、RAM"><a href="#基于极值的CDC-AE、RAM" class="headerlink" title="基于极值的CDC (AE、RAM)"></a>基于极值的CDC (AE、RAM)</h3><p>不使用数据的hash值来确定分割点，而是将字节内容看作数值，使用特定的字节作为分割点。例如AE算法，使用两个窗口，左边是变长窗口，右边是定长窗口，极值字节在两个窗口中间。当极值字节中的内容大于两边的窗口的所有字节的数值，则定长窗口结束点作为分割点。RAM算法则是在搜索开始阶段放置定长窗口，紧接着是一个变长窗口，最后将极值字节放在边界。当极值字节大于定长窗口中的最大值，则作为一个分割点。</p>
+<h2 id="基于极值的CDC-AE、RAM"><a href="#基于极值的CDC-AE、RAM" class="headerlink" title="基于极值的CDC (AE、RAM)"></a>基于极值的CDC (AE、RAM)</h2><p>不使用数据的hash值来确定分割点，而是将字节内容看作数值，使用特定的字节作为分割点。例如AE算法，使用两个窗口，左边是变长窗口，右边是定长窗口，极值字节在两个窗口中间。当极值字节中的内容大于两边的窗口的所有字节的数值，则定长窗口结束点作为分割点。RAM算法则是在搜索开始阶段放置定长窗口，紧接着是一个变长窗口，最后将极值字节放在边界。当极值字节大于定长窗口中的最大值，则作为一个分割点。</p>
 <p>优点：</p>
 <ul>
 <li>基于极值的分块方法避免了逐个字节滚动计算哈希值，而是进行字节内容的大小比较，算法性能有较大提升。基于极值的方法产生的分块长度比基于hash的方法更稳定，出现过长分块的概率较低，有利于提高去重效率。</li>
@@ -831,7 +838,8 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="ARB-vertex-type-2-10-10-10-rev"><a href="#ARB-vertex-type-2-10-10-10-rev" class="headerlink" title="ARB_vertex_type_2_10_10_10_rev"></a>ARB_vertex_type_2_10_10_10_rev</h2><h3 id="一、Overview"><a href="#一、Overview" class="headerlink" title="一、Overview"></a><strong>一、Overview</strong></h3><p>该特性提供两种新的顶点属性数据格式：</p>
+        <a id="more"></a>
+<h2 id="ARB-vertex-type-2-10-10-10-rev"><a href="#ARB-vertex-type-2-10-10-10-rev" class="headerlink" title="ARB_vertex_type_2_10_10_10_rev"></a>ARB_vertex_type_2_10_10_10_rev</h2><h3 id="一、Overview"><a href="#一、Overview" class="headerlink" title="一、Overview"></a><strong>一、Overview</strong></h3><p>该特性提供两种新的顶点属性数据格式：</p>
 <ul>
 <li>有符号2.10.10.10顶点数据格式</li>
 <li>无符号2.10.10.10顶点数据格式</li>
@@ -840,10 +848,500 @@
 <h3 id="二、Piglit-测试结果"><a href="#二、Piglit-测试结果" class="headerlink" title="二、Piglit 测试结果"></a><strong>二、Piglit 测试结果</strong></h3><ol>
 <li><p><code>./bin/arb_vertex_type_2_10_10_10_rev-array_types -auto -fbo</code></p>
 <p> 测试结果：</p>
- <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">testing: RGBA SINT </span><br><span class="line">testing: RGBA SNORM </span><br><span class="line">testing: RGBA UINT </span><br><span class="line">testing: RGBA UNORM </span><br><span class="line">testing: BGRA SNORM </span><br><span class="line">Probe color at (85,5)   </span><br><span class="line">Expected: 0.000000 0.250000 0.500000 1.000000   </span><br><span class="line">Observed: 0.501961 0.250980 0.000000 1.000000 </span><br><span class="line">testing: BGRA UNORM</span><br></pre></td></tr></table></figure></li></ol>
-        
-          <a class="article-more-a" href="/2021/01/27/Zink-Failcase-%E5%88%86%E6%9E%90/#more">more >></a>
-        
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">testing: RGBA SINT </span><br><span class="line">testing: RGBA SNORM </span><br><span class="line">testing: RGBA UINT </span><br><span class="line">testing: RGBA UNORM </span><br><span class="line">testing: BGRA SNORM </span><br><span class="line">Probe color at (85,5)   </span><br><span class="line">Expected: 0.000000 0.250000 0.500000 1.000000   </span><br><span class="line">Observed: 0.501961 0.250980 0.000000 1.000000 </span><br><span class="line">testing: BGRA UNORM</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>./bin/draw-vertices-2101010 -auto</code></p>
+<p> 测试结果：</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">Int vertices - 2&#x2F;10&#x2F;10&#x2F;10</span><br><span class="line">Unsigned Int vertices - 2&#x2F;10&#x2F;10&#x2F;10</span><br><span class="line">Int Color - 2&#x2F;10&#x2F;10&#x2F;10</span><br><span class="line">Probe color at (45,5)</span><br><span class="line">Expected: 1.000000 0.000000 0.000000 0.333000</span><br><span class="line">Observed: 1.000000 0.000000 0.000000 0.000000</span><br><span class="line">warning: driver uses GL 4.2+ rules for signed normalized to float conversions</span><br><span class="line">Unsigned Int Color - 2&#x2F;10&#x2F;10&#x2F;10</span><br><span class="line">Int BGRA Color - 2&#x2F;10&#x2F;10&#x2F;10</span><br><span class="line">Probe color at (85,5)</span><br><span class="line">Expected: 0.000000 0.000000 1.000000 0.333000</span><br><span class="line">Observed: 1.000000 0.000000 0.000000 0.000000</span><br><span class="line">Probe color at (85,5)</span><br><span class="line">Expected: 0.000000 0.000000 1.000000 0.000000</span><br><span class="line">Observed: 1.000000 0.000000 0.000000 0.000000</span><br><span class="line">Unsigned Int BGRA Color - 2&#x2F;10&#x2F;10&#x2F;10</span><br><span class="line">Int 2&#x2F;10&#x2F;10&#x2F;10 - test ABI</span><br><span class="line">Unsigned 2&#x2F;10&#x2F;10&#x2F;10 - test ABI</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h3 id="三、原因分析"><a href="#三、原因分析" class="headerlink" title="三、原因分析"></a><strong>三、原因分析</strong></h3><p>注意到测试结果中B和R位置发生了交换, 而在Zink 中，该特性与Vulkan映射如下：</p>
+<pre><code>[PIPE_FORMAT_R10G10B10A2_UNORM] = VK_FORMAT_A2B10G10R10_UNORM_PACK32,
+[PIPE_FORMAT_R10G10B10A2_SNORM] = VK_FORMAT_A2B10G10R10_SNORM_PACK32,
+[PIPE_FORMAT_B10G10R10A2_UNORM] = VK_FORMAT_A2R10G10B10_UNORM_PACK32,
+[PIPE_FORMAT_B10G10R10A2_SNORM] = VK_FORMAT_A2B10G10R10_SNORM_PACK32,
+[PIPE_FORMAT_R10G10B10A2_USCALED] = VK_FORMAT_A2B10G10R10_USCALED_PACK32,
+[PIPE_FORMAT_R10G10B10A2_SSCALED] = VK_FORMAT_A2B10G10R10_SSCALED_PACK32,
+[PIPE_FORMAT_B10G10R10A2_USCALED] = VK_FORMAT_A2R10G10B10_USCALED_PACK32,
+[PIPE_FORMAT_B10G10R10A2_SSCALED] = VK_FORMAT_A2B10G10R10_SSCALED_PACK32,
+[PIPE_FORMAT_R10G10B10A2_UINT] = VK_FORMAT_A2B10G10R10_UINT_PACK32,
+[PIPE_FORMAT_B10G10R10A2_UINT] = VK_FORMAT_A2R10G10B10_UINT_PACK32,</code></pre>
+<p>通过对比分析，上述代码中的如下两个对应关系存在问题：</p>
+<pre><code>[PIPE_FORMAT_B10G10R10A2_SNORM] = VK_FORMAT_A2B10G10R10_SNORM_PACK32,
+[PIPE_FORMAT_B10G10R10A2_SSCALED] = VK_FORMAT_A2B10G10R10_SSCALED_PACK32,</code></pre>
+<p>应修改为：</p>
+<pre><code>[PIPE_FORMAT_B10G10R10A2_SNORM] = VK_FORMAT_A2R10G10B10_SNORM_PACK32,
+[PIPE_FORMAT_B10G10R10A2_SSCALED] = VK_FORMAT_A2R10G10B10_SSCALED_PACK32,</code></pre>
+<p>修改后，Piglit相关测试通过：</p>
+<ol>
+<li><p><code>./bin/arb_vertex_type_2_10_10_10_rev-array_types -auto -fbo</code></p>
+<p> 测试结果：</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">    testing: RGBA SINT</span><br><span class="line">    testing: RGBA SNORM</span><br><span class="line">    testing: RGBA UINT</span><br><span class="line">    testing: RGBA UNORM</span><br><span class="line">    testing: BGRA SNORM</span><br><span class="line">    testing: BGRA UNORM</span><br><span class="line">    PIGLIT: &#123;&quot;result&quot;: &quot;pass&quot; &#125;</span><br><span class="line"></span><br><span class="line">2. &#96;&#96;&#96;.&#x2F;bin&#x2F;draw-vertices-2101010 -auto&#96;&#96;&#96;</span><br><span class="line">    </span><br><span class="line">    测试结果：</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p> testing: RGBA SINT<br> testing: RGBA SNORM<br> testing: RGBA UINT<br> testing: RGBA UNORM<br> testing: BGRA SNORM<br> testing: BGRA UNORM<br> PIGLIT: {“result”: “pass” }</p>
+</li>
+</ol>
+<h2 id="Border-Color"><a href="#Border-Color" class="headerlink" title="Border Color"></a>Border Color</h2><h3 id="一、Overview-1"><a href="#一、Overview-1" class="headerlink" title="一、Overview"></a><strong>一、Overview</strong></h3><p>目前大多数bordercolor相关测试均无法通过，但相关测试在去除bordercolor参数后即可通过。包括：</p>
+<p><code>arb_texture_float</code> 相关:</p>
+<ol>
+<li><code>./bin/texwrap GL_ARB_texture_float bordercolor swizzled -auto -fbo</code></li>
+<li><code>./bin/texwrap GL_ARB_texture_float bordercolor -auto -fbo</code></li>
+</ol>
+<p><code>arb_texture_rectangle</code> 相关:</p>
+<ol>
+<li><code>./bin/texwrap RECT GL_RGBA8 bordercolor -auto -fbo</code></li>
+<li><code>./bin/texwrap RECT GL_RGBA8 proj bordercolor -auto -fbo</code></li>
+</ol>
+<p><code>arb_texture_rg</code> 相关:</p>
+<ol>
+<li><code>./bin/texwrap GL_ARB_texture_rg bordercolor swizzled -auto -fbo</code></li>
+<li><code>./bin/texwrap GL_ARB_texture_rg bordercolor -auto -fbo</code></li>
+<li><code>./bin/texwrap GL_ARB_texture_rg-float bordercolor swizzled -auto -fbo</code></li>
+<li><code>./bin/texwrap GL_ARB_texture_rg-float bordercolor -auto -fbo</code></li>
+</ol>
+<p><code>ext_packed_float</code> 相关:</p>
+<ol>
+<li><code>./bin/texwrap GL_EXT_packed_float bordercolor swizzled -auto -fbo</code></li>
+<li><code>./bin/texwrap GL_EXT_packed_float bordercolor -auto -fbo</code></li>
+</ol>
+<p>测试结果样例：</p>
+<pre><code>Testing GL_ARB_texture_float.
+Testing the border color only.
+Testing GL_ALPHA16F_ARB, border color only
+Fail with LINEAR and GL_CLAMP at (128,125) @ 11,0
+Expected: 0 0 0 229
+Observed: 0 0 0 255
+PIGLIT: &#123;&quot;subtest&quot;: &#123;&quot;GL_ALPHA16F_ARB, border color only&quot; : &quot;fail&quot;&#125;&#125;
+Testing GL_LUMINANCE16F_ARB, border color only
+Fail with LINEAR and GL_CLAMP at (95,125) @ 0,0
+Expected: 19 19 19 255
+Observed: 0 0 0 255
+PIGLIT: &#123;&quot;subtest&quot;: &#123;&quot;GL_LUMINANCE16F_ARB, border color only&quot; : &quot;fail&quot;&#125;&#125;
+Testing GL_LUMINANCE_ALPHA16F_ARB, border color only
+Fail with LINEAR and GL_CLAMP at (95,125) @ 0,0
+Expected: 19 19 19 216
+Observed: 0 0 0 255
+PIGLIT: &#123;&quot;subtest&quot;: &#123;&quot;GL_LUMINANCE_ALPHA16F_ARB, border color only&quot; : &quot;fail&quot;&#125;&#125;
+Testing GL_INTENSITY16F_ARB, border color only
+Fail with LINEAR and GL_CLAMP at (95,125) @ 0,0
+Expected: 19 19 19 19
+Observed: 0 0 0 0
+PIGLIT: &#123;&quot;subtest&quot;: &#123;&quot;GL_INTENSITY16F_ARB, border color only&quot; : &quot;fail&quot;&#125;&#125;
+Testing GL_RGB16F, border color only
+Fail with LINEAR and GL_CLAMP at (95,125) @ 0,0
+Expected: 19 172 95 255
+Observed: 0 0 0 255
+PIGLIT: &#123;&quot;subtest&quot;: &#123;&quot;GL_RGB16F, border color only&quot; : &quot;fail&quot;&#125;&#125;
+Testing GL_RGBA16F, border color only
+Fail with LINEAR and GL_CLAMP at (95,125) @ 0,0
+Expected: 19 172 95 216
+Observed: 0 0 0 255
+PIGLIT: &#123;&quot;subtest&quot;: &#123;&quot;GL_RGBA16F, border color only&quot; : &quot;fail&quot;&#125;&#125;
+Testing GL_ALPHA32F_ARB, border color only
+Fail with LINEAR and GL_CLAMP at (95,125) @ 0,0
+Expected: 0 0 0 216
+Observed: 0 0 0 255
+PIGLIT: &#123;&quot;subtest&quot;: &#123;&quot;GL_ALPHA32F_ARB, border color only&quot; : &quot;fail&quot;&#125;&#125;
+Testing GL_LUMINANCE32F_ARB, border color only
+Fail with LINEAR and GL_CLAMP at (95,125) @ 0,0
+Expected: 19 19 19 255
+Observed: 0 0 0 255
+PIGLIT: &#123;&quot;subtest&quot;: &#123;&quot;GL_LUMINANCE32F_ARB, border color only&quot; : &quot;fail&quot;&#125;&#125;
+Testing GL_LUMINANCE_ALPHA32F_ARB, border color only
+Fail with LINEAR and GL_CLAMP at (95,125) @ 0,0
+Expected: 19 19 19 216
+Observed: 0 0 0 255
+PIGLIT: &#123;&quot;subtest&quot;: &#123;&quot;GL_LUMINANCE_ALPHA32F_ARB, border color only&quot; : &quot;fail&quot;&#125;&#125;
+Testing GL_INTENSITY32F_ARB, border color only
+Fail with LINEAR and GL_CLAMP at (95,125) @ 0,0
+Expected: 19 19 19 19
+Observed: 0 0 0 0
+PIGLIT: &#123;&quot;subtest&quot;: &#123;&quot;GL_INTENSITY32F_ARB, border color only&quot; : &quot;fail&quot;&#125;&#125;
+Testing GL_RGB32F, border color only
+Fail with LINEAR and GL_CLAMP at (95,125) @ 0,0
+Expected: 19 172 95 255
+Observed: 0 0 0 255
+PIGLIT: &#123;&quot;subtest&quot;: &#123;&quot;GL_RGB32F, border color only&quot; : &quot;fail&quot;&#125;&#125;
+Testing GL_RGBA32F, border color only
+Fail with LINEAR and GL_CLAMP at (95,125) @ 0,0
+Expected: 19 172 95 216
+Observed: 0 0 0 255
+PIGLIT: &#123;&quot;subtest&quot;: &#123;&quot;GL_RGBA32F, border color only&quot; : &quot;fail&quot;&#125;&#125;
+PIGLIT: &#123;&quot;result&quot;: &quot;fail&quot; &#125;</code></pre>
+<h3 id="二、原因分析"><a href="#二、原因分析" class="headerlink" title="二、原因分析"></a><strong>二、原因分析</strong></h3><ol>
+<li><p>上述测试去除bordercolor参数后均能通过，初步分析相关特性已实现，问题出在bordercolor上</p>
+</li>
+<li><p>失败样例均为LINEAR + GL_CLAMP</p>
+</li>
+<li><p>Zink到Vulkan 纹理相关转换如下</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">static VkSamplerAddressMode</span><br><span class="line">sampler_address_mode(enum pipe_tex_wrap filter)</span><br><span class="line">&#123;</span><br><span class="line">    switch (filter) &#123;</span><br><span class="line">    case PIPE_TEX_WRAP_REPEAT: return VK_SAMPLER_ADDRESS_MODE_REPEAT;</span><br><span class="line">    case PIPE_TEX_WRAP_CLAMP: return VK_SAMPLER_ADDRESS_MODE_CLAMP_TO_EDGE; &#x2F;* not technically correct, but kinda works *&#x2F;</span><br><span class="line">    case PIPE_TEX_WRAP_CLAMP_TO_EDGE: return VK_SAMPLER_ADDRESS_MODE_CLAMP_TO_EDGE;</span><br><span class="line">    case PIPE_TEX_WRAP_CLAMP_TO_BORDER: return VK_SAMPLER_ADDRESS_MODE_CLAMP_TO_BORDER;</span><br><span class="line">    case PIPE_TEX_WRAP_MIRROR_REPEAT: return VK_SAMPLER_ADDRESS_MODE_MIRRORED_REPEAT;</span><br><span class="line">    case PIPE_TEX_WRAP_MIRROR_CLAMP: return VK_SAMPLER_ADDRESS_MODE_MIRROR_CLAMP_TO_EDGE; &#x2F;* not technically correct, but kinda works *&#x2F;</span><br><span class="line">    case PIPE_TEX_WRAP_MIRROR_CLAMP_TO_EDGE: return VK_SAMPLER_ADDRESS_MODE_MIRROR_CLAMP_TO_EDGE;</span><br><span class="line">    case PIPE_TEX_WRAP_MIRROR_CLAMP_TO_BORDER: return VK_SAMPLER_ADDRESS_MODE_MIRROR_CLAMP_TO_EDGE; &#x2F;* not technically correct, but kinda works *&#x2F;</span><br><span class="line">    &#125;</span><br><span class="line">    unreachable(&quot;unexpected wrap&quot;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p> 注意到zink中的PIPE_TEX_WRAP_CLAMP映射到VK_SAMPLER_ADDRESS_MODE_CLAMP_TO_EDGE，该处的注释也标识了这样技术上会存在一些问题，初步怀疑是由此处导致</p>
+<p> 注：Vulkan 纹理支持：</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">typedef enum VkSamplerAddressMode &#123;</span><br><span class="line">    VK_SAMPLER_ADDRESS_MODE_REPEAT &#x3D; 0,</span><br><span class="line">    VK_SAMPLER_ADDRESS_MODE_MIRRORED_REPEAT &#x3D; 1,</span><br><span class="line">    VK_SAMPLER_ADDRESS_MODE_CLAMP_TO_EDGE &#x3D; 2,</span><br><span class="line">    VK_SAMPLER_ADDRESS_MODE_CLAMP_TO_BORDER &#x3D; 3,</span><br><span class="line">    &#x2F;&#x2F; Provided by VK_VERSION_1_2, VK_KHR_sampler_mirror_clamp_to_edge</span><br><span class="line">    VK_SAMPLER_ADDRESS_MODE_MIRROR_CLAMP_TO_EDGE &#x3D; 4,</span><br><span class="line">    VK_SAMPLER_ADDRESS_MODE_MIRROR_CLAMP_TO_EDGE_KHR &#x3D; VK_SAMPLER_ADDRESS_MODE_MIRROR_CLAMP_TO_EDGE,</span><br><span class="line">&#125; VkSamplerAddressMode;</span><br></pre></td></tr></table></figure>
+<p> 缺少<code>PIPE_TEX_WRAP_CLAMP</code>和<code>PIPE_TEX_WRAP_MIRROR_CLAMP</code>以及<code>PIPE_TEX_WRAP_MIRROR_CLAMP_TO_BORDER</code>的直接对应</p>
+</li>
+<li><p>CLAMP, CLAMP_TO_EDGE区别</p>
+<ul>
+<li>GL_CLAMP ：在边界处双线性处理，</li>
+<li>GL_CLAMP_TO_EDGE：边界处采用纹理边缘自己的的颜色</li>
+</ul>
+</li>
+</ol>
+<pre><code>WRT the CLAMP_TO_EDGE and CLAMP distinction, we have a little test app which illustrates this to some degree. Note that many implementations don’t get GL_CLAMP right, but this matters little in games since the GL_CLAMP_TO_EDGE behavior is what the overwhelming majority of developers expect when using GL_CLAMP. TRIBES, for example, shipped with this wrong and had to issue a patch using the GL_CLAMP_TO_EDGE extension to eliminate the black grid lines that showed up on their terrain on implementations which did GL_CLAMP right.
+
+请注意，许多实现都无法正确使用GL_CLAMP，但这在游戏中意义不大，因为GL_CLAMP_TO_EDGE行为是绝大多数开发人员在使用GL_CLAMP时所期望的行为。 例如，TRIBES附带此错误，必须使用GL_CLAMP_TO_EDGE扩展程序发布修补程序，以消除在正确执行GL_CLAMP的实现中出现在其地形上的黑色网格线。</code></pre>
+<ol>
+<li><p>Zink针对性处理</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"> static inline bool</span><br><span class="line"> wrap_needs_border_color(unsigned wrap)</span><br><span class="line"> &#123;</span><br><span class="line">     return wrap &#x3D;&#x3D; PIPE_TEX_WRAP_CLAMP || wrap &#x3D;&#x3D; PIPE_TEX_WRAP_CLAMP_TO_BORDER ||</span><br><span class="line">             wrap &#x3D;&#x3D; PIPE_TEX_WRAP_MIRROR_CLAMP || wrap &#x3D;&#x3D; PIPE_TEX_WRAP_MIRROR_CLAMP_TO_BORDER;</span><br><span class="line"> &#125;</span><br><span class="line"></span><br><span class="line"> need_custom |&#x3D; wrap_needs_border_color(state-&gt;wrap_s);</span><br><span class="line"> need_custom |&#x3D; wrap_needs_border_color(state-&gt;wrap_t);</span><br><span class="line"> need_custom |&#x3D; wrap_needs_border_color(state-&gt;wrap_r);</span><br><span class="line"></span><br><span class="line"> if (screen-&gt;info.have_EXT_custom_border_color &amp;&amp;</span><br><span class="line">     screen-&gt;info.border_color_feats.customBorderColorWithoutFormat &amp;&amp; need_custom) &#123;</span><br><span class="line">     cbci.sType &#x3D; VK_STRUCTURE_TYPE_SAMPLER_CUSTOM_BORDER_COLOR_CREATE_INFO_EXT;</span><br><span class="line">     cbci.format &#x3D; VK_FORMAT_UNDEFINED;</span><br><span class="line">     &#x2F;* these are identical unions *&#x2F;</span><br><span class="line">     memcpy(&amp;cbci.customBorderColor, &amp;state-&gt;border_color, sizeof(union pipe_color_union));</span><br><span class="line">     sci.pNext &#x3D; &amp;cbci;</span><br><span class="line">     sci.borderColor &#x3D; VK_BORDER_COLOR_INT_CUSTOM_EXT;</span><br><span class="line">     UNUSED uint32_t check &#x3D; p_atomic_inc_return(&amp;screen-&gt;cur_custom_border_color_samplers);</span><br><span class="line">     assert(check &lt;&#x3D; screen-&gt;info.border_color_props.maxCustomBorderColorSamplers);</span><br><span class="line">     *custom_border_color &#x3D; true;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p> 通过代码调试，发现测试中customBorderColor存储的是float，参考panfrost对应代码：</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">cfg.border_color_r &#x3D; cso-&gt;border_color.f[0];</span><br><span class="line">cfg.border_color_g &#x3D; cso-&gt;border_color.f[1];</span><br><span class="line">cfg.border_color_b &#x3D; cso-&gt;border_color.f[2];</span><br><span class="line">cfg.border_color_a &#x3D; cso-&gt;border_color.f[3];</span><br></pre></td></tr></table></figure>
+<p> 怀疑zink中使用的类型错误，<br> <code>sci.borderColor = VK_BORDER_COLOR_INT_CUSTOM_EXT;</code>应该为<code>sci.borderColor = VK_BORDER_COLOR_FLOAT_CUSTOM_EXT;</code></p>
+</li>
+</ol>
+<h2 id="ARB-seamless-cube-map"><a href="#ARB-seamless-cube-map" class="headerlink" title="ARB_seamless_cube_map"></a>ARB_seamless_cube_map</h2><h3 id="一、Overview-2"><a href="#一、Overview-2" class="headerlink" title="一、Overview"></a>一、Overview</h3><p>立方体贴图是一种纹理类型，类似于二维纹理有两个维度。但是，每个mipmap级别有6个面，每个面与其他面具有相同的大小。立方体贴图的宽度和高度必须相同（即：立方体贴图是正方形）。</p>
+<p>seamless特性影响的是采样的范围。在cubemap中，面之间不起作用，这将在立方体贴图的面上形成一个接缝。这在过去是一个硬件限制，但现代硬件能够跨立方体面边界进行插值。</p>
+<h3 id="二、Piglit测试"><a href="#二、Piglit测试" class="headerlink" title="二、Piglit测试"></a>二、Piglit测试</h3><p>初始化纹理：</p>
+<pre><code>glBindTexture(GL_TEXTURE_CUBE_MAP_ARB, 1);
+glTexParameteri(GL_TEXTURE_CUBE_MAP_ARB, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
+glTexParameteri(GL_TEXTURE_CUBE_MAP_ARB, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
+glTexParameteri(GL_TEXTURE_CUBE_MAP_ARB, GL_TEXTURE_WRAP_R, GL_CLAMP_TO_EDGE);
+glTexParameteri(GL_TEXTURE_CUBE_MAP_ARB, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+glTexParameteri(GL_TEXTURE_CUBE_MAP_ARB, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+
+for (i = 0; i &lt; 6; i++) &#123;
+    glTexImage2D(targets[i], 0, GL_RGBA8, 1, 1, 0, GL_RGB, GL_FLOAT, colors[i]);
+&#125;</code></pre>
+<p>纹理是6张大小为1*1的图，即一个像素点，点的颜色为：</p>
+<pre><code>static const float colors[6][3] = &#123;
+    &#123;1, 0, 0&#125;,
+    &#123;0, 1, 1&#125;,
+    &#123;0, 1, 0&#125;,
+    &#123;1, 0, 1&#125;,
+    &#123;0, 0, 1&#125;,
+    &#123;1, 1, 0&#125;
+&#125;;</code></pre>
+<p>测试一共分为4组：</p>
+<pre><code>glClear(GL_COLOR_BUFFER_BIT);
+
+draw_quad(10, 10, 0.99, 0, 1);
+draw_quad(40, 10, 1, 0, 0.99);
+
+glEnable(GL_TEXTURE_CUBE_MAP_SEAMLESS);
+draw_quad(70, 10, 0.99, 0, 1);
+draw_quad(100, 10, 1, 0, 0.99);
+glDisable(GL_TEXTURE_CUBE_MAP_SEAMLESS);
+
+pass = piglit_probe_pixel_rgb(20, 20, colors[4]) &amp;&amp; pass;
+pass = piglit_probe_pixel_rgb(50, 20, colors[0]) &amp;&amp; pass;
+pass = piglit_probe_pixel_rgb(80, 20, violet) &amp;&amp; pass;
+pass = piglit_probe_pixel_rgb(110, 20, violet) &amp;&amp; pass;</code></pre>
+<p>测试结果中，反而是是开启了GL_TEXTURE_CUBE_MAP_SEAMLESS的两组测试通过，没有开启GL_TEXTURE_CUBE_MAP_SEAMLESS的测试失败：</p>
+<pre><code>Mesa: User error: GL_INVALID_OPERATION in glBindTexture(target mismatch)
+Probe color at (20,20)
+Expected: 0.000000 0.000000 1.000000
+Observed: 0.498039 0.000000 0.501961
+Probe color at (50,20)
+Expected: 1.000000 0.000000 0.000000
+Observed: 0.501961 0.000000 0.498039
+PIGLIT: &#123;&quot;result&quot;: &quot;fail&quot; &#125;</code></pre>
+<h3 id="三、原因分析-1"><a href="#三、原因分析-1" class="headerlink" title="三、原因分析"></a>三、原因分析</h3><p>失败样例中，测试分别以（10，10）和（40，10）为顶点，20为边长绘制矩形，采样坐标位于矩形正中间，zink输出的结果为期望结果与相邻纹理图片的线性采样。</p>
+<p>在OpenGL中，创建纹理需要同时创建图像与制定采样参数；在Vulkan中，图像与采样器是分开创建/设计的。目前Vulkan的采样器包含如下参数</p>
+<ul>
+<li>sType - Type of the structure. It should be equal to a VK_STRUCTURE_TYPE_SAMPLER_CREATE_INFO value.</li>
+<li>spNext - Pointer reserved for extensions.</li>
+<li>flags - Must be set to zero. This parameter is reserved for future use.</li>
+<li>magFilter - Type of filtering (nearest or linear) used for magnification.</li>
+<li>minFilter - Type of filtering (nearest or linear) used for minification.</li>
+<li>mipmapMode - Type of filtering (nearest or linear) used for mipmap lookup.</li>
+<li>addressModeU - Addressing mode for U coordinates that are outside of a &lt;0.0; 1.0&gt; range.</li>
+<li>addressModeV - Addressing mode for V coordinates that are outside of a &lt;0.0; 1.0&gt; range.</li>
+<li>addressModeW - Addressing mode for W coordinates that are outside of a &lt;0.0; 1.0&gt; range.</li>
+<li>mipLodBias - Value of bias added to mipmap’s level of detail calculations. If we want to offset fetching data from a specific mipmap, we can provide a value other than 0.0.</li>
+<li>anisotropyEnable - Parameter defining whether anisotropic filtering should be used.</li>
+<li>maxAnisotropy - Maximal allowed value used for anisotropic filtering (clamping value).</li>
+<li>compareEnable - Enables comparison against a reference value during texture lookups.</li>
+<li>compareOp–Type of comparison performed during lookups if the compareEnable parameter is set to true.</li>
+<li>minLod - Minimal allowed level of detail used during data fetching. If calculated level of detail (mipmap level) is lower than this value, it will be clamped.</li>
+<li>maxLod - Maximal allowed level of detail used during data fetching. If the calculated level of detail (mipmap level) is greater than this value, it will be clamped.</li>
+<li>borderColor - Specifies predefined color of border pixels. Border color is used when address mode includes clamping to border colors.</li>
+<li>unnormalizedCoordinates - Usually (when this parameter is set to false) we provide texture coordinates using a normalized &lt;0.0; 1.0&gt; range. When set to true, this parameter allows us to specify that we want to use unnormalized coordinates and address texture using texels (in a &lt;0; texture dimension&gt; range, similar to OpenGL’s rectangle textures).</li>
+</ul>
+<p>换言之，Vulkan目前缺乏立方体问题采样相关参数设置，默认使用的是跨立方体面边界采样插值。<br>这样做的好处是能够使立方体贴图的边缘更加平滑。</p>
+<h2 id="Provoking-Vertex"><a href="#Provoking-Vertex" class="headerlink" title="Provoking Vertex"></a>Provoking Vertex</h2><h3 id="一、Overview-3"><a href="#一、Overview-3" class="headerlink" title="一、Overview"></a>一、Overview</h3><p><a target="_blank" rel="noopener" href="https://www.khronos.org/opengl/wiki/Primitive#Provoking_vertex">Provoking Vertex</a> 是输出图元中的一个顶点，该顶点对图元有特殊的意义。例如，当开启平面着色时，只有 provoking vertex 的颜色会被使用，该图元生成的每个片段的输入也都是 provoking vertex 的输出。</p>
+<table>
+<thead>
+<tr>
+<th>Primitive type</th>
+<th align="center"><code>GL_FIRST_VERTEX_CONVENTION</code></th>
+<th align="center"><code>GL_LAST_VERTEX_CONVENTION</code></th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>GL_POINTS</code></td>
+<td align="center"><code>i</code></td>
+<td align="center"><code>i</code></td>
+</tr>
+<tr>
+<td><code>GL_LINES</code></td>
+<td align="center"><code>2i - 1</code></td>
+<td align="center"><code>2i</code></td>
+</tr>
+<tr>
+<td><code>GL_LINE_LOOP</code></td>
+<td align="center"><code>i</code></td>
+<td align="center"><code>i​ + 1, if i​ &lt; the number of vertices. 1 if i​ is equal to the number of vertices.</code></td>
+</tr>
+<tr>
+<td><code>GL_LINE_STRIP</code></td>
+<td align="center"><code>i</code></td>
+<td align="center"><code>i + 1</code></td>
+</tr>
+<tr>
+<td><code>GL_TRIANGLES</code></td>
+<td align="center"><code>3i - 2</code></td>
+<td align="center"><code>3i</code></td>
+</tr>
+<tr>
+<td><code>GL_TRIANGLE_STRIP</code></td>
+<td align="center"><code>i</code></td>
+<td align="center"><code>i + 2</code></td>
+</tr>
+<tr>
+<td><code>GL_TRIANGLE_FAN</code></td>
+<td align="center"><code>i + 1</code></td>
+<td align="center"><code>i + 2</code></td>
+</tr>
+<tr>
+<td><code>GL_LINES_ADJACENCY</code></td>
+<td align="center"><code>4i - 2</code></td>
+<td align="center"><code>4i - 1</code></td>
+</tr>
+<tr>
+<td><code>GL_LINE_STRIP_ADJACENCY</code></td>
+<td align="center"><code>i + 1</code></td>
+<td align="center"><code>i + 2</code></td>
+</tr>
+<tr>
+<td><code>GL_TRIANGLES_ADJACENCY</code></td>
+<td align="center"><code>6i - 5</code></td>
+<td align="center"><code>6i - 1</code></td>
+</tr>
+<tr>
+<td><code>GL_TRIANGLE_STRIP_ADJACENCY</code></td>
+<td align="center"><code>2i - 1</code></td>
+<td align="center"><code>2i + 3</code></td>
+</tr>
+</tbody></table>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://www.khronos.org/registry/OpenGL/extensions/ARB/ARB_provoking_vertex.txt">ARB_provoking_vertex Overview</a><br>This extension provides an alternative provoking vertex convention<br>    for rendering lines, triangles, and (optionally depending on the<br>    implementation) quads.</p>
+</blockquote>
+<h3 id="二、Piglit-测试结果-1"><a href="#二、Piglit-测试结果-1" class="headerlink" title="二、Piglit 测试结果"></a>二、Piglit 测试结果</h3><p><code>./bin/arb-provoking-vertex-clipped-geometry-flatshading -auto</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Probe color at (158,79)</span><br><span class="line">  Expected: 1.000000 0.000000 0.000000</span><br><span class="line">  Observed: 0.000000 0.000000 1.000000</span><br><span class="line">PIGLIT: &#123;&quot;result&quot;: &quot;fail&quot; &#125;</span><br></pre></td></tr></table></figure>
+<p><code>./bin/arb-provoking-vertex-render -auto</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br></pre></td><td class="code"><pre><span class="line">GL_QUADS_FOLLOW_PROVOKING_VERTEX_CONVENTION &#x3D; 0</span><br><span class="line">Probe color at (40,80)</span><br><span class="line">  Expected: 0.000000 1.000000 0.000000</span><br><span class="line">  Observed: 1.000000 0.000000 0.000000</span><br><span class="line">Probe color at (120,80)</span><br><span class="line">  Expected: 1.000000 1.000000 0.000000</span><br><span class="line">  Observed: 0.000000 0.000000 1.000000</span><br><span class="line">Failure for GL_LINES, GL_LAST_VERTEX_CONVENTION</span><br><span class="line">Probe color at (40,80)</span><br><span class="line">  Expected: 0.000000 1.000000 0.000000</span><br><span class="line">  Observed: 1.000000 0.000000 0.000000</span><br><span class="line">Probe color at (120,80)</span><br><span class="line">  Expected: 0.000000 0.000000 1.000000</span><br><span class="line">  Observed: 0.000000 1.000000 0.000000</span><br><span class="line">Failure for GL_LINE_STRIP, GL_LAST_VERTEX_CONVENTION</span><br><span class="line">Probe color at (40,80)</span><br><span class="line">  Expected: 0.000000 1.000000 0.000000</span><br><span class="line">  Observed: 1.000000 0.000000 0.000000</span><br><span class="line">Probe color at (120,80)</span><br><span class="line">  Expected: 0.000000 0.000000 1.000000</span><br><span class="line">  Observed: 0.000000 1.000000 0.000000</span><br><span class="line">Failure for GL_LINE_LOOP, GL_LAST_VERTEX_CONVENTION</span><br><span class="line">Probe color at (40,79)</span><br><span class="line">  Expected: 0.000000 0.000000 1.000000</span><br><span class="line">  Observed: 1.000000 0.000000 0.000000</span><br><span class="line">Probe color at (120,79)</span><br><span class="line">  Expected: 1.000000 0.000000 0.000000</span><br><span class="line">  Observed: 0.000000 1.000000 0.000000</span><br><span class="line">Failure for GL_TRIANGLES, GL_LAST_VERTEX_CONVENTION</span><br><span class="line">Probe color at (40,79)</span><br><span class="line">  Expected: 0.000000 0.000000 1.000000</span><br><span class="line">  Observed: 1.000000 0.000000 0.000000</span><br><span class="line">Probe color at (120,79)</span><br><span class="line">  Expected: 1.000000 1.000000 0.000000</span><br><span class="line">  Observed: 0.000000 1.000000 0.000000</span><br><span class="line">Failure for GL_TRIANGLE_STRIP, GL_LAST_VERTEX_CONVENTION</span><br><span class="line">Probe color at (40,79)</span><br><span class="line">  Expected: 0.000000 0.000000 1.000000</span><br><span class="line">  Observed: 0.000000 1.000000 0.000000</span><br><span class="line">Probe color at (120,79)</span><br><span class="line">  Expected: 1.000000 1.000000 0.000000</span><br><span class="line">  Observed: 0.000000 0.000000 1.000000</span><br><span class="line">Failure for GL_TRIANGLE_FAN, GL_LAST_VERTEX_CONVENTION</span><br><span class="line">Probe color at (40,79)</span><br><span class="line">  Expected: 1.000000 1.000000 0.000000</span><br><span class="line">  Observed: 1.000000 0.000000 0.000000</span><br><span class="line">Probe color at (120,79)</span><br><span class="line">  Expected: 1.000000 0.000000 0.000000</span><br><span class="line">  Observed: 0.000000 1.000000 0.000000</span><br><span class="line">Failure for GL_QUADS, GL_FIRST_VERTEX_CONVENTION</span><br><span class="line">Probe color at (40,79)</span><br><span class="line">  Expected: 1.000000 1.000000 0.000000</span><br><span class="line">  Observed: 0.000000 1.000000 0.000000</span><br><span class="line">Probe color at (120,79)</span><br><span class="line">  Expected: 1.000000 0.000000 0.000000</span><br><span class="line">  Observed: 0.000000 1.000000 0.000000</span><br><span class="line">Failure for GL_QUADS, GL_LAST_VERTEX_CONVENTION</span><br><span class="line">Probe color at (40,79)</span><br><span class="line">  Expected: 1.000000 1.000000 0.000000</span><br><span class="line">  Observed: 1.000000 0.000000 0.000000</span><br><span class="line">Probe color at (120,79)</span><br><span class="line">  Expected: 1.000000 0.000000 0.000000</span><br><span class="line">  Observed: 0.000000 0.000000 1.000000</span><br><span class="line">Failure for GL_QUAD_STRIP, GL_FIRST_VERTEX_CONVENTION</span><br><span class="line">Probe color at (40,79)</span><br><span class="line">  Expected: 1.000000 1.000000 0.000000</span><br><span class="line">  Observed: 0.000000 0.000000 1.000000</span><br><span class="line">Probe color at (120,79)</span><br><span class="line">  Expected: 1.000000 0.000000 0.000000</span><br><span class="line">  Observed: 0.000000 1.000000 0.000000</span><br><span class="line">Failure for GL_QUAD_STRIP, GL_LAST_VERTEX_CONVENTION</span><br><span class="line">Probe color at (40,79)</span><br><span class="line">  Expected: 1.000000 0.000000 0.000000</span><br><span class="line">  Observed: 0.000000 1.000000 0.000000</span><br><span class="line">Probe color at (120,79)</span><br><span class="line">  Expected: 1.000000 0.000000 0.000000</span><br><span class="line">  Observed: 0.000000 0.000000 1.000000</span><br><span class="line">Failure for GL_POLYGON, GL_LAST_VERTEX_CONVENTION</span><br><span class="line">PIGLIT: &#123;&quot;result&quot;: &quot;fail&quot; &#125;</span><br></pre></td></tr></table></figure>
+<p><code>./bin/provoking-vertex -auto</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Probe color at (225,90)</span><br><span class="line">  Expected: 0.000000 0.000000 0.900000</span><br><span class="line">  Observed: 0.898039 0.000000 0.000000</span><br><span class="line">PIGLIT: &#123;&quot;result&quot;: &quot;fail&quot; &#125;</span><br></pre></td></tr></table></figure>
+<h3 id="三、原因分析-2"><a href="#三、原因分析-2" class="headerlink" title="三、原因分析"></a>三、原因分析</h3><p>OpenGL 的 provoking vertex 支持 <code>GL_FIRST_VERTEX_CONVENTION</code> 和 <code>GL_LAST_VERTEX_CONVENTION</code> 两种模式，为了排查问题，对这两种分别进行了测试。</p>
+<p><code>./bin/arb-provoking-vertex-clipped-geometry-flatshading -auto</code> 的关键绘图指令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">glProvokingVertexEXT(GL_LAST_VERTEX_CONVENTION_EXT);</span><br><span class="line"></span><br><span class="line">const int y1 &#x3D; piglit_height &#x2F; 3;</span><br><span class="line"></span><br><span class="line">glBegin(GL_TRIANGLE_STRIP);</span><br><span class="line">    glColor3fv(cyan);</span><br><span class="line">    glVertex3i(piglit_width + 1, y1, 0);</span><br><span class="line">    glColor3fv(yellow);</span><br><span class="line">    glVertex3i(piglit_width + 2, y1, 0);</span><br><span class="line">    glColor3fv(blue);</span><br><span class="line">    glVertex3i(piglit_width + 3, y1, 0);</span><br><span class="line">    glColor3fv(green);</span><br><span class="line">    glVertex3i(piglit_width &#x2F; 2, y1 * 2, 0);</span><br><span class="line">    glColor3fv(red);</span><br><span class="line">    glVertex3i(piglit_width - 1, y1 * 2, 0);</span><br><span class="line">glEnd();</span><br></pre></td></tr></table></figure>
+<p>使用的是 <code>GL_LAST_VERTEX_CONVENTION</code>，修改成 <code>GL_FIRST_VERTEX_CONVENTION</code> 的等价形式：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">glProvokingVertexEXT(GL_FIRST_VERTEX_CONVENTION_EXT);</span><br><span class="line"></span><br><span class="line">const int y1 &#x3D; piglit_height &#x2F; 3;</span><br><span class="line"></span><br><span class="line">glBegin(GL_TRIANGLE_STRIP);</span><br><span class="line">    glColor3fv(blue);</span><br><span class="line">    glVertex3i(piglit_width + 1, y1, 0);</span><br><span class="line">    glColor3fv(green);</span><br><span class="line">    glVertex3i(piglit_width + 2, y1, 0);</span><br><span class="line">    glColor3fv(red);</span><br><span class="line">    glVertex3i(piglit_width + 3, y1, 0);</span><br><span class="line">    glColor3fv(green);</span><br><span class="line">    glVertex3i(piglit_width &#x2F; 2, y1 * 2, 0);</span><br><span class="line">    glColor3fv(red);</span><br><span class="line">    glVertex3i(piglit_width - 1, y1 * 2, 0);</span><br><span class="line">glEnd();</span><br></pre></td></tr></table></figure>
+<p>测试通过：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">PIGLIT: &#123;&quot;result&quot;: &quot;pass&quot; &#125;</span><br></pre></td></tr></table></figure>
+<p>等价的绘图指令，<code>GL_FIRST_VERTEX_CONVENTION</code> 设置能通过，而 <code>GL_LAST_VERTEX_CONVENTION</code> 设置无法通过，初步怀疑是 zink 对 <code>GL_LAST_VERTEX_CONVENTION</code> 的处理有问题。</p>
+<p>搜索 zink 和 vulkan 与 provoking vertex 相关的<a target="_blank" rel="noopener" href="https://github.com/KhronosGroup/Vulkan-Docs/issues/1173">资料</a>发现：</p>
+<blockquote>
+<p>For API comparison purposes, in D3D, Metal, and Vulkan the first vertex is always the provoking vertex while in OpenGL both the first vertex or the last vertex can be the provoking vertex.</p>
+</blockquote>
+<p>说的是 vulkan 只支持以第一个顶点作为 provoking vertex。</p>
+<p>所以最终问题定位到了 vulkan，vulkan 不支持与 <code>GL_LAST_VERTEX_CONVENTION</code> 相对应的绘图设置。</p>
+<h3 id="四、进一步验证"><a href="#四、进一步验证" class="headerlink" title="四、进一步验证"></a>四、进一步验证</h3><p><code>./bin/arb-provoking-vertex-render -auto</code> 测试中 quads 和 <code>GL_LAST_VERTEX_CONVENTION</code> 相关的注释掉：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">static</span> <span class="keyword">const</span> GLenum modes[] = &#123;</span><br><span class="line">    GL_LINES,</span><br><span class="line">    GL_LINE_STRIP,</span><br><span class="line">    GL_LINE_LOOP,</span><br><span class="line">    GL_TRIANGLES,</span><br><span class="line">    GL_TRIANGLE_STRIP,</span><br><span class="line">    GL_TRIANGLE_FAN,</span><br><span class="line">    <span class="comment">// GL_QUADS,</span></span><br><span class="line">    <span class="comment">// GL_QUAD_STRIP,</span></span><br><span class="line">    GL_POLYGON</span><br><span class="line"></span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">int</span> i;</span><br><span class="line"><span class="keyword">bool</span> pass = <span class="literal">true</span>;</span><br><span class="line"></span><br><span class="line">glViewport(<span class="number">0</span>, <span class="number">0</span>, piglit_width, piglit_height);</span><br><span class="line">glShadeModel(GL_FLAT);</span><br><span class="line"></span><br><span class="line">glGetBooleanv(GL_QUADS_FOLLOW_PROVOKING_VERTEX_CONVENTION, &amp;quads_pv);</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">&quot;GL_QUADS_FOLLOW_PROVOKING_VERTEX_CONVENTION = %u\n&quot;</span>, quads_pv);</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; ARRAY_SIZE(modes); i++) &#123;</span><br><span class="line">    pass = test_mode(modes[i], GL_FIRST_VERTEX_CONVENTION) &amp;&amp; pass;</span><br><span class="line">    <span class="comment">// pass = test_mode(modes[i], GL_LAST_VERTEX_CONVENTION) &amp;&amp; pass;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">pass = piglit_check_gl_error(GL_NO_ERROR) &amp;&amp; pass;</span><br><span class="line"></span><br><span class="line">piglit_report_result(pass ? PIGLIT_PASS : PIGLIT_FAIL);</span><br></pre></td></tr></table></figure>
+<p>测试结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">GL_QUADS_FOLLOW_PROVOKING_VERTEX_CONVENTION &#x3D; 0</span><br><span class="line">PIGLIT: &#123;&quot;result&quot;: &quot;pass&quot; &#125;</span><br></pre></td></tr></table></figure>
+<p><code>./bin/provoking-vertex -auto</code> 测试中注释掉 <code>GL_LAST_VERTEX_CONVENTION</code> 相关的：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line">pass = pass &amp;&amp; piglit_probe_pixel_rgb(<span class="number">150</span>, <span class="number">90</span>, red);</span><br><span class="line">pass = pass &amp;&amp; piglit_probe_pixel_rgb(<span class="number">150</span>, <span class="number">170</span>, red);</span><br><span class="line"></span><br><span class="line"><span class="comment">// pass = pass &amp;&amp; piglit_probe_pixel_rgb(225, 90, blue);</span></span><br><span class="line"><span class="comment">// pass = pass &amp;&amp; piglit_probe_pixel_rgb(225, 170, blue);</span></span><br><span class="line"></span><br><span class="line">glFinish();</span><br><span class="line">piglit_present_results();</span><br></pre></td></tr></table></figure>
+<p>测试结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">PIGLIT: &#123;&quot;result&quot;: &quot;pass&quot; &#125;</span><br></pre></td></tr></table></figure>
+<h2 id="arb-texture-float"><a href="#arb-texture-float" class="headerlink" title="arb_texture_float"></a>arb_texture_float</h2><p>此扩展添加了带有 16 位和 32 位浮点数的纹理内部格式。32 位浮点数采用标准 IEEE 浮点格式。16 位浮点数具有 1 个符号位，5 个指数位和 10 个尾数位。</p>
+<h3 id="一、FBO-Blending-Formats"><a href="#一、FBO-Blending-Formats" class="headerlink" title="一、FBO Blending Formats"></a>一、FBO Blending Formats</h3><p>将源纹理 ($s$) 和目标纹理 ($d$) 通过指定的混合方式进行混合（先绘制目标纹理，再绘制源纹理）。</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>CLEAR</code></td>
+<td>$0$</td>
+</tr>
+<tr>
+<td><code>NOR</code></td>
+<td>$\neg (s \lor d)$</td>
+</tr>
+<tr>
+<td><code>AND_INVERTED</code></td>
+<td>$\neg s \land d$</td>
+</tr>
+<tr>
+<td><code>COPY_INVERTED</code></td>
+<td>$\neg s$</td>
+</tr>
+<tr>
+<td><code>AND_REVERSE</code></td>
+<td>$s \land \neg d$</td>
+</tr>
+<tr>
+<td><code>INVERT</code></td>
+<td>$\neg d$</td>
+</tr>
+<tr>
+<td><code>XOR</code></td>
+<td>$s \oplus d$</td>
+</tr>
+<tr>
+<td><code>NAND</code></td>
+<td>$\neg (s \land d)$</td>
+</tr>
+<tr>
+<td><code>AND</code></td>
+<td>$s \land d$</td>
+</tr>
+<tr>
+<td><code>EQUIV</code></td>
+<td>$\neg (s \oplus d)$</td>
+</tr>
+<tr>
+<td><code>NOOP</code></td>
+<td>$d$</td>
+</tr>
+<tr>
+<td><code>OR_INVERTED</code></td>
+<td>$\neg s \lor d$</td>
+</tr>
+<tr>
+<td><code>COPY</code></td>
+<td>$s$</td>
+</tr>
+<tr>
+<td><code>OR_REVERSE</code></td>
+<td>$s \lor \neg d$</td>
+</tr>
+<tr>
+<td><code>OR</code></td>
+<td>$s \lor d$</td>
+</tr>
+<tr>
+<td><code>SET</code></td>
+<td>$1$</td>
+</tr>
+</tbody></table>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">Accepted by the &lt;internalFormat&gt; parameter of TexImage1D,</span><br><span class="line">TexImage2D, and TexImage3D:</span><br><span class="line"></span><br><span class="line">    RGBA32F_ARB                      0x8814</span><br><span class="line">    RGB32F_ARB                       0x8815</span><br><span class="line">    ALPHA32F_ARB                     0x8816</span><br><span class="line">    INTENSITY32F_ARB                 0x8817</span><br><span class="line">    LUMINANCE32F_ARB                 0x8818</span><br><span class="line">    LUMINANCE_ALPHA32F_ARB           0x8819</span><br><span class="line">    RGBA16F_ARB                      0x881A</span><br><span class="line">    RGB16F_ARB                       0x881B</span><br><span class="line">    ALPHA16F_ARB                     0x881C</span><br><span class="line">    INTENSITY16F_ARB                 0x881D</span><br><span class="line">    LUMINANCE16F_ARB                 0x881E</span><br><span class="line">    LUMINANCE_ALPHA16F_ARB           0x881F</span><br></pre></td></tr></table></figure>
+<h3 id="二、Piglit-测试结果-2"><a href="#二、Piglit-测试结果-2" class="headerlink" title="二、Piglit 测试结果"></a>二、Piglit 测试结果</h3><p><code>./bin/fbo-blending-formats GL_ARB_texture_float -auto -fbo</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line">Using test set: GL_ARB_texture_float</span><br><span class="line">Testing GL_RGB16F</span><br><span class="line">Probe color at (192,0)</span><br><span class="line">  Expected: 0.800000 0.300000 0.500000 1.000000</span><br><span class="line">  Observed: 0.849609 0.349854 0.599609 1.000000</span><br><span class="line">  when testing FBO result, blending with DST_ALPHA.</span><br><span class="line">PIGLIT: &#123;&quot;subtest&quot;: &#123;&quot;GL_RGB16F&quot; : &quot;fail&quot;&#125;&#125;</span><br><span class="line">Testing GL_RGBA16F</span><br><span class="line">PIGLIT: &#123;&quot;subtest&quot;: &#123;&quot;GL_RGBA16F&quot; : &quot;pass&quot;&#125;&#125;</span><br><span class="line">Testing GL_ALPHA16F_ARB</span><br><span class="line">PIGLIT: &#123;&quot;subtest&quot;: &#123;&quot;GL_ALPHA16F_ARB&quot; : &quot;pass&quot;&#125;&#125;</span><br><span class="line">Testing GL_LUMINANCE16F_ARB</span><br><span class="line">Probe color at (192,0)</span><br><span class="line">  Expected: 0.800000 0.000000 0.000000 1.000000</span><br><span class="line">  Observed: 0.849609 0.000000 0.000000 1.000000</span><br><span class="line">  when testing FBO result, blending with DST_ALPHA.</span><br><span class="line">PIGLIT: &#123;&quot;subtest&quot;: &#123;&quot;GL_LUMINANCE16F_ARB&quot; : &quot;fail&quot;&#125;&#125;</span><br><span class="line">Testing GL_LUMINANCE_ALPHA16F_ARB</span><br><span class="line">PIGLIT: &#123;&quot;subtest&quot;: &#123;&quot;GL_LUMINANCE_ALPHA16F_ARB&quot; : &quot;pass&quot;&#125;&#125;</span><br><span class="line">Testing GL_INTENSITY16F_ARB</span><br><span class="line">Probe color at (192,0)</span><br><span class="line">  Expected: 0.810000 0.000000 0.000000 1.000000</span><br><span class="line">  Observed: 0.849609 0.000000 0.000000 1.000000</span><br><span class="line">  when testing FBO result, blending with DST_ALPHA.</span><br><span class="line">PIGLIT: &#123;&quot;subtest&quot;: &#123;&quot;GL_INTENSITY16F_ARB&quot; : &quot;fail&quot;&#125;&#125;</span><br><span class="line">Testing GL_RGB32F</span><br><span class="line">Probe color at (192,0)</span><br><span class="line">  Expected: 0.800000 0.300000 0.500000 1.000000</span><br><span class="line">  Observed: 0.850000 0.350000 0.600000 1.000000</span><br><span class="line">  when testing FBO result, blending with DST_ALPHA.</span><br><span class="line">PIGLIT: &#123;&quot;subtest&quot;: &#123;&quot;GL_RGB32F&quot; : &quot;fail&quot;&#125;&#125;</span><br><span class="line">Testing GL_RGBA32F</span><br><span class="line">PIGLIT: &#123;&quot;subtest&quot;: &#123;&quot;GL_RGBA32F&quot; : &quot;pass&quot;&#125;&#125;</span><br><span class="line">Testing GL_ALPHA32F_ARB</span><br><span class="line">PIGLIT: &#123;&quot;subtest&quot;: &#123;&quot;GL_ALPHA32F_ARB&quot; : &quot;pass&quot;&#125;&#125;</span><br><span class="line">Testing GL_LUMINANCE32F_ARB</span><br><span class="line">Probe color at (192,0)</span><br><span class="line">  Expected: 0.800000 0.000000 0.000000 1.000000</span><br><span class="line">  Observed: 0.850000 0.000000 0.000000 1.000000</span><br><span class="line">  when testing FBO result, blending with DST_ALPHA.</span><br><span class="line">PIGLIT: &#123;&quot;subtest&quot;: &#123;&quot;GL_LUMINANCE32F_ARB&quot; : &quot;fail&quot;&#125;&#125;</span><br><span class="line">Testing GL_LUMINANCE_ALPHA32F_ARB</span><br><span class="line">PIGLIT: &#123;&quot;subtest&quot;: &#123;&quot;GL_LUMINANCE_ALPHA32F_ARB&quot; : &quot;pass&quot;&#125;&#125;</span><br><span class="line">Testing GL_INTENSITY32F_ARB</span><br><span class="line">Probe color at (192,0)</span><br><span class="line">  Expected: 0.810000 0.000000 0.000000 1.000000</span><br><span class="line">  Observed: 0.850000 0.000000 0.000000 1.000000</span><br><span class="line">  when testing FBO result, blending with DST_ALPHA.</span><br><span class="line">PIGLIT: &#123;&quot;subtest&quot;: &#123;&quot;GL_INTENSITY32F_ARB&quot; : &quot;fail&quot;&#125;&#125;</span><br><span class="line">PIGLIT: &#123;&quot;result&quot;: &quot;fail&quot; &#125;</span><br></pre></td></tr></table></figure>
+<h3 id="三、原因分析-3"><a href="#三、原因分析-3" class="headerlink" title="三、原因分析"></a>三、原因分析</h3><table>
+<thead>
+<tr>
+<th>Pass 的格式</th>
+<th>Fail 的格式</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>RGBA16F</code></td>
+<td><code>RGB16F</code></td>
+</tr>
+<tr>
+<td><code>ALPHA16F</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>LUMINANCE_ALPHA16F</code></td>
+<td><code>LUMINANCE16F</code></td>
+</tr>
+<tr>
+<td></td>
+<td><code>INTENSITY16F</code></td>
+</tr>
+<tr>
+<td><code>RGBA32F</code></td>
+<td><code>RGB32F</code></td>
+</tr>
+<tr>
+<td><code>ALPHA32F</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>LUMINANCE_ALPHA32F</code></td>
+<td><code>LUMINANCE32F</code></td>
+</tr>
+<tr>
+<td></td>
+<td><code>INTENSITY32F</code></td>
+</tr>
+</tbody></table>
+<p>混合函数 (<code>glBlendFunc(blendsrc, blenddst)</code>)：</p>
+<table>
+<thead>
+<tr>
+<th><code>blendsrc</code></th>
+<th><code>blenddst</code></th>
+<th>结果（仅考虑 Fail 的格式）</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>GL_CONSTANT_COLOR</code></td>
+<td><code>GL_ONE_MINUS_CONSTANT_COLOR</code></td>
+<td>Pass</td>
+</tr>
+<tr>
+<td><code>GL_DST_COLOR</code></td>
+<td><code>GL_ONE_MINUS_DST_COLOR</code></td>
+<td>Pass</td>
+</tr>
+<tr>
+<td><code>GL_SRC_COLOR</code></td>
+<td><code>GL_ONE_MINUS_SRC_COLOR</code></td>
+<td>Pass</td>
+</tr>
+<tr>
+<td><code>GL_DST_ALPHA</code></td>
+<td><code>GL_ONE_MINUS_DST_ALPHA</code></td>
+<td>Fail</td>
+</tr>
+<tr>
+<td><code>GL_SRC_ALPHA</code></td>
+<td><code>GL_ONE_MINUS_SRC_ALPHA</code></td>
+<td>Pass</td>
+</tr>
+</tbody></table>
+<p>也就是说，失败的 case 都是格式中没有 alpha 通道且混合函数为 <code>glBlendFunc(GL_DST_ALPHA, GL_ONE_MINUS_DST_ALPHA)</code>。</p>
+<p>该混合函数下没有 alpha 通道的混合规则：</p>
+<blockquote>
+<p>When there are no bits for the alpha channel, we always expect to read an alpha value of 1.0.</p>
+</blockquote>
+<blockquote>
+<p>DST_ALPHA/ONE_MINUS_DST_ALPHA with an implicit destination alpha value of 1.0 means that the result color should be identical to the source color, (if there are any bits to store that color that is).</p>
+</blockquote>
+<p>为了发现问题，选择了 <code>RGB16F</code> 和 <code>RGBA16F</code> 两种格式使用 GDB 一步步调试与纹理格式相关的函数调用，发现在函数 <code>teximage (src/mesa/main/teximage.c)</code> 中</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">texFormat &#x3D; _mesa_choose_texture_format(ctx, texObj, target, level,</span><br><span class="line">                                        internalFormat, format, type);</span><br></pre></td></tr></table></figure>
+<p>返回了相同的 PIPE 格式 <code>PIPE_FORMAT_R16G16B16A16_FLOAT</code>。</p>
+<p>进一步追踪调用栈：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">#0  0x00007ffff6b85abe in zink_is_format_supported (pscreen&#x3D;0x7ffff6f8f7c0 &lt;format_info&gt;, format&#x3D;6408,</span><br><span class="line">    target&#x3D;4294957840, sample_count&#x3D;0, storage_sample_count&#x3D;4294958032, bind&#x3D;0)</span><br><span class="line">    at ..&#x2F;src&#x2F;gallium&#x2F;drivers&#x2F;zink&#x2F;zink_screen.c:713</span><br><span class="line">#1  0x00007ffff619ca3e in find_supported_format (screen&#x3D;0x5555555d3f10, formats&#x3D;0x7ffff6c79ae8 &lt;format_map+6344&gt;,</span><br><span class="line">    target&#x3D;PIPE_TEXTURE_2D, sample_count&#x3D;0, storage_sample_count&#x3D;0, bindings&#x3D;10, allow_dxt&#x3D;1 &#39;\001&#39;)</span><br><span class="line">    at ..&#x2F;src&#x2F;mesa&#x2F;state_tracker&#x2F;st_format.c:1066</span><br><span class="line">#2  0x00007ffff619cc58 in st_choose_format (st&#x3D;0x555555d94ff0, internalFormat&#x3D;34843, format&#x3D;6408, type&#x3D;5126,</span><br><span class="line">    target&#x3D;PIPE_TEXTURE_2D, sample_count&#x3D;0, storage_sample_count&#x3D;0, bindings&#x3D;10, swap_bytes&#x3D;false, allow_dxt&#x3D;true)</span><br><span class="line">    at ..&#x2F;src&#x2F;mesa&#x2F;state_tracker&#x2F;st_format.c:1162</span><br><span class="line">#3  0x00007ffff619d05c in st_ChooseTextureFormat (ctx&#x3D;0x555555d32af0, target&#x3D;3553, internalFormat&#x3D;34843, format&#x3D;6408,</span><br><span class="line">    type&#x3D;5126) at ..&#x2F;src&#x2F;mesa&#x2F;state_tracker&#x2F;st_format.c:1327</span><br><span class="line">#4  0x00007ffff648bdef in _mesa_choose_texture_format (ctx&#x3D;0x555555d32af0, texObj&#x3D;0x555555dbba90, target&#x3D;3553, level&#x3D;0,</span><br><span class="line">    internalFormat&#x3D;34843, format&#x3D;6408, type&#x3D;5126) at ..&#x2F;src&#x2F;mesa&#x2F;main&#x2F;teximage.c:2834</span><br><span class="line">#5  0x00007ffff648c88a in teximage (no_error&#x3D;false, pixels&#x3D;0x0, imageSize&#x3D;0, type&#x3D;5126, format&#x3D;6408, border&#x3D;0, depth&#x3D;1,</span><br><span class="line">    height&#x3D;256, width&#x3D;256, internalFormat&#x3D;34843, level&#x3D;0, target&#x3D;3553, texObj&#x3D;0x555555dbba90, dims&#x3D;2,</span><br><span class="line">    compressed&#x3D;0 &#39;\000&#39;, ctx&#x3D;0x555555d32af0) at ..&#x2F;src&#x2F;mesa&#x2F;main&#x2F;teximage.c:3065</span><br><span class="line">#6  teximage_err (ctx&#x3D;0x555555d32af0, compressed&#x3D;0 &#39;\000&#39;, dims&#x3D;2, target&#x3D;3553, level&#x3D;0, internalFormat&#x3D;34843,</span><br><span class="line">    width&#x3D;256, height&#x3D;256, depth&#x3D;1, border&#x3D;0, format&#x3D;6408, type&#x3D;5126, imageSize&#x3D;0, pixels&#x3D;0x0)</span><br><span class="line">    at ..&#x2F;src&#x2F;mesa&#x2F;main&#x2F;teximage.c:3195</span><br><span class="line">#7  0x00007ffff648f284 in _mesa_TexImage2D (target&#x3D;3553, level&#x3D;0, internalFormat&#x3D;34843, width&#x3D;256, height&#x3D;256, border&#x3D;0,</span><br><span class="line">    format&#x3D;6408, type&#x3D;5126, pixels&#x3D;0x0) at ..&#x2F;src&#x2F;mesa&#x2F;main&#x2F;teximage.c:3266</span><br><span class="line">#8  0x0000555555558b6e in test_format (format&#x3D;0x55555555a780 &lt;arb_texture_float&gt;)</span><br><span class="line">    at &#x2F;home&#x2F;zink&#x2F;piglit&#x2F;tests&#x2F;fbo&#x2F;fbo-blending-formats.c:154</span><br><span class="line">#9  0x0000555555557bbb in fbo_formats_display (test_format&#x3D;0x555555557f29 &lt;test_format&gt;)</span><br><span class="line">    at &#x2F;home&#x2F;zink&#x2F;piglit&#x2F;tests&#x2F;fbo&#x2F;fbo-formats.h:712</span><br><span class="line">#10 0x0000555555559a4d in piglit_display () at &#x2F;home&#x2F;zink&#x2F;piglit&#x2F;tests&#x2F;fbo&#x2F;fbo-blending-formats.c:422</span><br><span class="line">#11 0x00007ffff7f0591e in run_test (gl_fw&#x3D;0x55555556feb0, argc&#x3D;2, argv&#x3D;0x7fffffffe2b8)</span><br><span class="line">    at &#x2F;home&#x2F;zink&#x2F;piglit&#x2F;tests&#x2F;util&#x2F;piglit-framework-gl&#x2F;piglit_fbo_framework.c:52</span><br><span class="line">#12 0x00007ffff7ef5e26 in piglit_gl_test_run (argc&#x3D;2, argv&#x3D;0x7fffffffe2b8, config&#x3D;0x7fffffffe160)</span><br><span class="line">    at &#x2F;home&#x2F;zink&#x2F;piglit&#x2F;tests&#x2F;util&#x2F;piglit-framework-gl.c:229</span><br><span class="line">#13 0x0000555555557d25 in main (argc&#x3D;2, argv&#x3D;0x7fffffffe2b8) at &#x2F;home&#x2F;zink&#x2F;piglit&#x2F;tests&#x2F;fbo&#x2F;fbo-blending-formats.c:46</span><br></pre></td></tr></table></figure>
+<p>定位到了 zink 层面的函数 <code>zink_is_format_supported</code>，里面有部分代码：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> ((bind &amp; PIPE_BIND_SAMPLER_VIEW) || (bind &amp; PIPE_BIND_RENDER_TARGET)) &#123;</span><br><span class="line">    <span class="comment">/* if this is a 3-component texture, force gallium to give us 4 components by rejecting this one */</span></span><br><span class="line">    <span class="keyword">unsigned</span> bpb = util_format_get_blocksizebits(format);</span><br><span class="line">    <span class="keyword">if</span> (bpb == <span class="number">24</span> || bpb == <span class="number">48</span> || bpb == <span class="number">96</span>)</span><br><span class="line">      <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>按照代码的逻辑，不支持 3 个通道的纹理格式，会强制转换为 4 通道。为了测试是否是该问题，将里面的判断注释了：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> ((bind &amp; PIPE_BIND_SAMPLER_VIEW) || (bind &amp; PIPE_BIND_RENDER_TARGET)) &#123;</span><br><span class="line">    <span class="comment">/* if this is a 3-component texture, force gallium to give us 4 components by rejecting this one */</span></span><br><span class="line">    <span class="comment">// unsigned bpb = util_format_get_blocksizebits(format);</span></span><br><span class="line">    <span class="comment">// if (bpb == 24 || bpb == 48 || bpb == 96)</span></span><br><span class="line">    <span class="comment">//   return false;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>重新编译 mesa，运行 piglit 测试：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line">Using test set: GL_ARB_texture_float</span><br><span class="line">Testing GL_RGB16F</span><br><span class="line">PIGLIT: &#123;&quot;subtest&quot;: &#123;&quot;GL_RGB16F&quot; : &quot;pass&quot;&#125;&#125;</span><br><span class="line">Testing GL_RGBA16F</span><br><span class="line">PIGLIT: &#123;&quot;subtest&quot;: &#123;&quot;GL_RGBA16F&quot; : &quot;pass&quot;&#125;&#125;</span><br><span class="line">Testing GL_ALPHA16F_ARB</span><br><span class="line">PIGLIT: &#123;&quot;subtest&quot;: &#123;&quot;GL_ALPHA16F_ARB&quot; : &quot;pass&quot;&#125;&#125;</span><br><span class="line">Testing GL_LUMINANCE16F_ARB</span><br><span class="line">Probe color at (192,0)</span><br><span class="line">  Expected: 0.800000 0.000000 0.000000 1.000000</span><br><span class="line">  Observed: 0.849609 0.000000 0.000000 1.000000</span><br><span class="line">  when testing FBO result, blending with DST_ALPHA.</span><br><span class="line">PIGLIT: &#123;&quot;subtest&quot;: &#123;&quot;GL_LUMINANCE16F_ARB&quot; : &quot;fail&quot;&#125;&#125;</span><br><span class="line">Testing GL_LUMINANCE_ALPHA16F_ARB</span><br><span class="line">PIGLIT: &#123;&quot;subtest&quot;: &#123;&quot;GL_LUMINANCE_ALPHA16F_ARB&quot; : &quot;pass&quot;&#125;&#125;</span><br><span class="line">Testing GL_INTENSITY16F_ARB</span><br><span class="line">Probe color at (192,0)</span><br><span class="line">  Expected: 0.810000 0.000000 0.000000 1.000000</span><br><span class="line">  Observed: 0.849609 0.000000 0.000000 1.000000</span><br><span class="line">  when testing FBO result, blending with DST_ALPHA.</span><br><span class="line">PIGLIT: &#123;&quot;subtest&quot;: &#123;&quot;GL_INTENSITY16F_ARB&quot; : &quot;fail&quot;&#125;&#125;</span><br><span class="line">Testing GL_RGB32F</span><br><span class="line">Probe color at (192,0)</span><br><span class="line">  Expected: 0.800000 0.300000 0.500000 1.000000</span><br><span class="line">  Observed: 0.850000 0.350000 0.600000 1.000000</span><br><span class="line">  when testing FBO result, blending with DST_ALPHA.</span><br><span class="line">PIGLIT: &#123;&quot;subtest&quot;: &#123;&quot;GL_RGB32F&quot; : &quot;fail&quot;&#125;&#125;</span><br><span class="line">Testing GL_RGBA32F</span><br><span class="line">PIGLIT: &#123;&quot;subtest&quot;: &#123;&quot;GL_RGBA32F&quot; : &quot;pass&quot;&#125;&#125;</span><br><span class="line">Testing GL_ALPHA32F_ARB</span><br><span class="line">PIGLIT: &#123;&quot;subtest&quot;: &#123;&quot;GL_ALPHA32F_ARB&quot; : &quot;pass&quot;&#125;&#125;</span><br><span class="line">Testing GL_LUMINANCE32F_ARB</span><br><span class="line">Probe color at (192,0)</span><br><span class="line">  Expected: 0.800000 0.000000 0.000000 1.000000</span><br><span class="line">  Observed: 0.850000 0.000000 0.000000 1.000000</span><br><span class="line">  when testing FBO result, blending with DST_ALPHA.</span><br><span class="line">PIGLIT: &#123;&quot;subtest&quot;: &#123;&quot;GL_LUMINANCE32F_ARB&quot; : &quot;fail&quot;&#125;&#125;</span><br><span class="line">Testing GL_LUMINANCE_ALPHA32F_ARB</span><br><span class="line">PIGLIT: &#123;&quot;subtest&quot;: &#123;&quot;GL_LUMINANCE_ALPHA32F_ARB&quot; : &quot;pass&quot;&#125;&#125;</span><br><span class="line">Testing GL_INTENSITY32F_ARB</span><br><span class="line">Probe color at (192,0)</span><br><span class="line">  Expected: 0.810000 0.000000 0.000000 1.000000</span><br><span class="line">  Observed: 0.850000 0.000000 0.000000 1.000000</span><br><span class="line">  when testing FBO result, blending with DST_ALPHA.</span><br><span class="line">PIGLIT: &#123;&quot;subtest&quot;: &#123;&quot;GL_INTENSITY32F_ARB&quot; : &quot;fail&quot;&#125;&#125;</span><br><span class="line">PIGLIT: &#123;&quot;result&quot;: &quot;fail&quot; &#125;</span><br></pre></td></tr></table></figure>
+<p>发现格式 <code>RGB16F</code> 的测试确实通过了。</p>
+<p>为了验证其他格式，在一番探索之后（主要是 vulkan 还不支持许多 GL 的格式），在 mesa 上层加入了一些代码：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">texFormat = _mesa_choose_texture_format(ctx, texObj, target, level,</span><br><span class="line">                                        internalFormat, format, type);</span><br><span class="line"><span class="keyword">switch</span> (internalFormat) &#123;</span><br><span class="line"><span class="keyword">case</span> GL_RGB16F: texFormat = PIPE_FORMAT_R16G16B16_FLOAT; <span class="keyword">break</span>;</span><br><span class="line"><span class="keyword">case</span> GL_RGBA16F: texFormat = PIPE_FORMAT_R16G16B16A16_FLOAT; <span class="keyword">break</span>;</span><br><span class="line"><span class="keyword">case</span> GL_ALPHA16F_ARB: texFormat = PIPE_FORMAT_R16G16B16A16_FLOAT; <span class="keyword">break</span>;</span><br><span class="line"><span class="keyword">case</span> GL_LUMINANCE16F_ARB: texFormat = PIPE_FORMAT_R16G16B16_FLOAT; <span class="keyword">break</span>;</span><br><span class="line"><span class="keyword">case</span> GL_LUMINANCE_ALPHA16F_ARB: texFormat = PIPE_FORMAT_R16G16B16A16_FLOAT; <span class="keyword">break</span>;</span><br><span class="line"><span class="keyword">case</span> GL_INTENSITY16F_ARB: texFormat = PIPE_FORMAT_R16G16B16_FLOAT; <span class="keyword">break</span>;</span><br><span class="line"><span class="keyword">case</span> GL_RGB32F: texFormat = PIPE_FORMAT_R32G32B32_FLOAT; <span class="keyword">break</span>;</span><br><span class="line"><span class="keyword">case</span> GL_RGBA32F: texFormat = PIPE_FORMAT_R32G32B32A32_FLOAT; <span class="keyword">break</span>;</span><br><span class="line"><span class="keyword">case</span> GL_ALPHA32F_ARB: texFormat = PIPE_FORMAT_R32G32B32A32_FLOAT; <span class="keyword">break</span>;</span><br><span class="line"><span class="keyword">case</span> GL_LUMINANCE32F_ARB: texFormat = PIPE_FORMAT_R32G32B32_FLOAT; <span class="keyword">break</span>;</span><br><span class="line"><span class="keyword">case</span> GL_LUMINANCE_ALPHA32F_ARB: texFormat = PIPE_FORMAT_R32G32B32A32_FLOAT; <span class="keyword">break</span>;</span><br><span class="line"><span class="keyword">case</span> GL_INTENSITY32F_ARB: texFormat = PIPE_FORMAT_R32G32B32_FLOAT; <span class="keyword">break</span>;</span><br><span class="line"><span class="keyword">default</span>: <span class="keyword">break</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>进行强制的格式转换。</p>
+<p>编译后测试：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">Using test set: GL_ARB_texture_float</span><br><span class="line">Testing GL_RGB16F</span><br><span class="line">PIGLIT: &#123;&quot;subtest&quot;: &#123;&quot;GL_RGB16F&quot; : &quot;pass&quot;&#125;&#125;</span><br><span class="line">Testing GL_RGBA16F</span><br><span class="line">PIGLIT: &#123;&quot;subtest&quot;: &#123;&quot;GL_RGBA16F&quot; : &quot;pass&quot;&#125;&#125;</span><br><span class="line">Testing GL_ALPHA16F_ARB</span><br><span class="line">PIGLIT: &#123;&quot;subtest&quot;: &#123;&quot;GL_ALPHA16F_ARB&quot; : &quot;pass&quot;&#125;&#125;</span><br><span class="line">Testing GL_LUMINANCE16F_ARB</span><br><span class="line">PIGLIT: &#123;&quot;subtest&quot;: &#123;&quot;GL_LUMINANCE16F_ARB&quot; : &quot;pass&quot;&#125;&#125;</span><br><span class="line">Testing GL_LUMINANCE_ALPHA16F_ARB</span><br><span class="line">PIGLIT: &#123;&quot;subtest&quot;: &#123;&quot;GL_LUMINANCE_ALPHA16F_ARB&quot; : &quot;pass&quot;&#125;&#125;</span><br><span class="line">Testing GL_INTENSITY16F_ARB</span><br><span class="line">PIGLIT: &#123;&quot;subtest&quot;: &#123;&quot;GL_INTENSITY16F_ARB&quot; : &quot;pass&quot;&#125;&#125;</span><br><span class="line">Testing GL_RGB32F - fbo incomplete (status &#x3D; GL_FRAMEBUFFER_UNSUPPORTED)</span><br><span class="line">PIGLIT: &#123;&quot;subtest&quot;: &#123;&quot;GL_RGB32F&quot; : &quot;skip&quot;&#125;&#125;</span><br><span class="line">Testing GL_RGBA32F</span><br><span class="line">PIGLIT: &#123;&quot;subtest&quot;: &#123;&quot;GL_RGBA32F&quot; : &quot;pass&quot;&#125;&#125;</span><br><span class="line">Testing GL_ALPHA32F_ARB</span><br><span class="line">PIGLIT: &#123;&quot;subtest&quot;: &#123;&quot;GL_ALPHA32F_ARB&quot; : &quot;pass&quot;&#125;&#125;</span><br><span class="line">Testing GL_LUMINANCE32F_ARB - fbo incomplete (status &#x3D; GL_FRAMEBUFFER_UNSUPPORTED)</span><br><span class="line">PIGLIT: &#123;&quot;subtest&quot;: &#123;&quot;GL_LUMINANCE32F_ARB&quot; : &quot;skip&quot;&#125;&#125;</span><br><span class="line">Testing GL_LUMINANCE_ALPHA32F_ARB</span><br><span class="line">PIGLIT: &#123;&quot;subtest&quot;: &#123;&quot;GL_LUMINANCE_ALPHA32F_ARB&quot; : &quot;pass&quot;&#125;&#125;</span><br><span class="line">Testing GL_INTENSITY32F_ARB - fbo incomplete (status &#x3D; GL_FRAMEBUFFER_UNSUPPORTED)</span><br><span class="line">PIGLIT: &#123;&quot;subtest&quot;: &#123;&quot;GL_INTENSITY32F_ARB&quot; : &quot;skip&quot;&#125;&#125;</span><br><span class="line">PIGLIT: &#123;&quot;result&quot;: &quot;pass&quot; &#125;</span><br></pre></td></tr></table></figure>
+<p>测试通过。</p>
+
       
 
       
@@ -998,15 +1496,123 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="一、背景与简介"><a href="#一、背景与简介" class="headerlink" title="一、背景与简介"></a>一、背景与简介</h1><p>对于开发者而言，应对包括CPU、GPU、FPGA等多种架构十分挑战。每一种架构都有自己的库以及编程语言，如CUDA。到目前为止，没有普适的且不影响系统性能的编程模型。这意味着每一种架构都需要使用单独的工具，且代码复用困难。</p>
+        <a id="more"></a>
+<h1 id="一、背景与简介"><a href="#一、背景与简介" class="headerlink" title="一、背景与简介"></a>一、背景与简介</h1><p>对于开发者而言，应对包括CPU、GPU、FPGA等多种架构十分挑战。每一种架构都有自己的库以及编程语言，如CUDA。到目前为止，没有普适的且不影响系统性能的编程模型。这意味着每一种架构都需要使用单独的工具，且代码复用困难。</p>
 <p>为了提升实现更快的应用程序性能、更高的生产率和更大的创新，OneAPI提供单一的软件抽象层让开发者进行跨不同类型硬件架构的直接编程。其开放、统一的标准保证了跨平台部署的稳定性以及系统的整体性能。</p>
 <h1 id="二、框架"><a href="#二、框架" class="headerlink" title="二、框架"></a>二、框架</h1><img src="/2021/01/17/OneAPI/framework.jpg" width="60%" alt="oneAPI框架">
 
 <h2 id="统一编程语言-Data-Parallel-C-DPC"><a href="#统一编程语言-Data-Parallel-C-DPC" class="headerlink" title="统一编程语言 (Data Parallel C++, DPC++)"></a>统一编程语言 (Data Parallel C++, DPC++)</h2><p>**oneAPI规范的核心是DPC++**，它是基于ISO C++和Khronos SYCL标准构建的开放式跨体系结构语言。DPC++扩展了这些标准，并提供了明确的并行构造和卸载（offload）接口，以支持广泛的计算体系结构和处理器，包括cpu和加速器体系结构。oneAPI平台上可以通过Accelerator接口支持其他语言和编程模型。</p>
 <p>其中，SYCL是一个在OpenCL上的C++抽象层，使得用户可以直接用简洁的C++对GPU等进行开发，而无需被OpenCL限制。</p>
-        
-          <a class="article-more-a" href="/2021/01/17/OneAPI/#more">more >></a>
-        
+<h2 id="库"><a href="#库" class="headerlink" title="库"></a><strong>库</strong></h2><p>OneAPI为计算和数据密集型领域提供库，包括深度学习、科学计算、视频分析和媒体处理。</p>
+<ul>
+<li><p><strong>oneDPL (oneAPI DPC++ Library)</strong></p>
+<p>包含如下组成：</p>
+<ul>
+<li>C++标准库的子集</li>
+<li>并行 STL 算法的扩展，使其能够运行在oneAPI设备上</li>
+<li>其他未在C++标准及SYCL标准中涉及的扩展</li>
+</ul>
+</li>
+<li><p><strong>oneDNN (oneAPI Deep Neural Network Library)</strong></p>
+  <img src="/2021/01/17/OneAPI/OneDNN.png" width="60%" alt="OneDNN">
+
+<ul>
+<li><p><strong>Primitive</strong>: 封装特定计算的函子对象，如前向卷积、后向LSTM计算或数据转换操作。</p>
+</li>
+<li><p><strong>Engine</strong>: 计算设备的抽象（CPU、指定GPU）</p>
+</li>
+<li><p><strong>Streams</strong>: 封装绑定到特定引擎的执行上下文</p>
+</li>
+<li><p><strong>Memory</strong>: 将句柄封装到特定引擎上分配的内存、张量维度、数据类型和内存格式—这是张量索引映射到线性内存空间中偏移量的方式。内存对象在执行期间传递给Primitive。</p>
+</li>
+</ul>
+</li>
+<li><p><strong>oneCCL (oneAPI Collective Communications Library )</strong></p>
+<p>  提供机器学习应用的通讯原语</p>
+</li>
+<li><p><strong>oneDAL (Data Analytics Library)</strong></p>
+<p>  采用批量、在线和分布式计算处理模式，为数据分析的所有阶段（预处理、转换、分析、建模、验证和决策）提供高度优化的算法模块。</p>
+</li>
+</ul>
+<ul>
+<li><p><strong>oneVPL (Video Processing Library)</strong></p>
+<p>  是一个用于视频解码、编码和处理的编程接口，用于在CPU、GPU和其他加速器上构建便携式媒体管道。它在以媒体为中心的工作负载和视频分析工作负载中提供设备发现和选择，并为零拷贝缓冲区共享提供API原语。oneVPL向后和跨体系结构兼容，确保在当前和下一代硬件上实现最佳执行，而无需更改源代码。</p>
+</li>
+<li><p><strong>oneMKL (Math Kernel Library)</strong></p>
+<p>  定义一组用于高性能计算和其他应用程序的基本数学方法。作为oneAPI的一部分，oneMKL的设计允许在各种计算设备上执行：包括CPU、GPU、FPGA和其他加速器。该功能被细分为几个领域：密集线性代数，稀疏线性代数，离散傅立叶变换，随机数发生器和向量数学。</p>
+</li>
+</ul>
+<h2 id="硬件抽象层-（Level-Zero）"><a href="#硬件抽象层-（Level-Zero）" class="headerlink" title="硬件抽象层 （Level Zero）"></a><strong>硬件抽象层 （Level Zero）</strong></h2><h3 id="核心组成"><a href="#核心组成" class="headerlink" title="核心组成"></a>核心组成</h3><p>Level Zero 核心API针对下列方法提供底层、细粒度、显式的控制：</p>
+<ul>
+<li>设备发现和切分</li>
+<li>内存分配、虚拟化、分配</li>
+<li>Kernel运行和调度</li>
+<li>点对点传输</li>
+<li>跨进程同步</li>
+</ul>
+<h4 id="Drivers-and-Devices"><a href="#Drivers-and-Devices" class="headerlink" title="Drivers and Devices"></a>Drivers and Devices</h4><ul>
+<li>driver对象表示一个物理设备集合，这个集合所有设备使用的相同的Level-Zero 驱动。</li>
+<li>device对象代表一个支持Level-Zero的物理设备</li>
+<li>Level-Zero启动时，首先调用ZeInit函数加载驱动，进一步发现支持的设备。</li>
+</ul>
+<img src="/2021/01/17/OneAPI/core_device.png" width="60%" alt="driver and device">
+
+<h5 id="Contexts"><a href="#Contexts" class="headerlink" title="Contexts"></a>Contexts</h5><p>context对象是一个逻辑对象，用于驱动管理所有内存、任务队列、同步对象等等。</p>
+<ul>
+<li>context句柄主要用于创建和管理可能由多个设备使用的资源。例如，可以通过context类实现显式地设备间内存共享。</li>
+</ul>
+<h4 id="Memory-and-Images"><a href="#Memory-and-Images" class="headerlink" title="Memory and Images"></a>Memory and Images</h4><ul>
+<li>Memory: 线性、非格式化的分配，既可以从host上分配也可以在设备上分配。通过虚拟地址访问。</li>
+<li>Images: 非线性、格式化的分配，只能从设备上进行分配。不透明对象，通过句柄访问。</li>
+</ul>
+<p><em>Memory</em> 分为三种类型：</p>
+<ul>
+<li>Host：由主机所有，从系统内存分配</li>
+<li>Device：由某个设备所有，从该设备本地内存分配</li>
+<li>Shared：有多个设备/主机共享，可以在主机和1/多个设备间迁移。至少能够被一个host和一个设备访问。</li>
+</ul>
+<p><em>Images</em> 用于存储多维和格式定义的内存内容。不支持主机直接访问内容。然而，当其被复制到主机可访问内存分配时，其内容将被隐式解码。格式描述符是格式、类型和swizzle的组合。格式布局描述组件的数量及其相应的位宽度。类型描述了所有这些组件的数据类型，swizzle关联图像组件如何映射到内核的XYZW/RGBA通道。</p>
+<h4 id="Command-Queues-and-Command-Lists"><a href="#Command-Queues-and-Command-Lists" class="headerlink" title="Command Queues and Command Lists"></a>Command Queues and Command Lists</h4><img src="/2021/01/17/OneAPI/core_queue.png" width="60%" alt="Command Queues and Command Lists">
+
+<ul>
+<li> Command Queues主要与物理设备属性相关联，代表了一个对设备的逻辑输入流，其访问物理设备接近零延迟。</li>
+<li> Command Lists 主要与主机线城相关联，代表了一个任务执行序列。</li>
+</ul>
+<h4 id="同步原语"><a href="#同步原语" class="headerlink" title="同步原语"></a>同步原语</h4><ul>
+<li><p>Fence 是一个重量级的同步原语，用于向主机传达命令列表执行已经完成。</p>
+<ul>
+<li>一个fence与一个Command Queues相关联</li>
+<li>只能从设备的Command Queues中发出信号。</li>
+<li>在发出信号之前，fence保证设备和主机之间的执行完成和内存一致性。</li>
+<li>只有两种状态：未信号化和信号化，且不会隐式复位。</li>
+<li>栅栏只能从主机上重置。</li>
+<li>栅栏不能跨进程共享。</li>
+</ul>
+</li>
+<li><p>Events 用于传达细粒度的主机到设备、设备到主机或设备到设备的依赖关系已经完成。</p>
+</li>
+</ul>
+<p>通过Fence和Events可以实现执行栅栏和内存栅栏，其中fence属于隐式、粗粒度控制而event是显示、细粒度的控制</p>
+<h4 id="Modules-and-Kernels"><a href="#Modules-and-Kernels" class="headerlink" title="Modules and Kernels"></a>Modules and Kernels</h4><ul>
+<li>Modules代表一个单一的翻译单元，由编译在一起的内核组成。</li>
+<li>Kernels代表模块内的内核，将直接从Command List中启动。</li>
+</ul>
+<img src="/2021/01/17/OneAPI/core_module.png" width="60%" alt="Modules and Kernels">
+
+<h3 id="工具集"><a href="#工具集" class="headerlink" title="工具集"></a>工具集</h3><p>提供底层设备访问：</p>
+<ul>
+<li>指标报告</li>
+<li>内核分析和调试</li>
+</ul>
+<h3 id="系统管理"><a href="#系统管理" class="headerlink" title="系统管理"></a>系统管理</h3><ul>
+<li>查询加速器资源的性能、电源和运行状况</li>
+<li>控制加速器资源的性能和功率分布</li>
+<li>设施维护，如执行硬件诊断、更新固件或重置设备</li>
+</ul>
+<h1 id="三、实例"><a href="#三、实例" class="headerlink" title="三、实例"></a>三、实例</h1><h2 id="代码迁移工具"><a href="#代码迁移工具" class="headerlink" title="代码迁移工具"></a>代码迁移工具</h2><p>原始CUDA代码</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cuda.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> vector_size = <span class="number">256</span>;</span><br><span class="line"></span><br><span class="line"><span class="function">__global__ <span class="keyword">void</span> <span class="title">SimpleAddKernel</span><span class="params">(<span class="keyword">float</span> *A, <span class="keyword">int</span> offset)</span> </span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  A[threadIdx.x] = threadIdx.x + offset;</span><br><span class="line"> </span><br><span class="line">&#125;<span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="keyword">float</span> *d_A;</span><br><span class="line">  <span class="keyword">int</span> offset = <span class="number">10000</span>;</span><br><span class="line"></span><br><span class="line">  cudaMalloc( &amp;d_A, vector_size * <span class="keyword">sizeof</span>( <span class="keyword">float</span> ) );</span><br><span class="line">  SimpleAddKernel&lt;&lt;&lt;<span class="number">1</span>, vector_size&gt;&gt;&gt;(d_A, offset);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">float</span> result[vector_size] = &#123; &#125;;</span><br><span class="line">  cudaMemcpy(result, d_A, vector_size*<span class="keyword">sizeof</span>(<span class="keyword">float</span>), cudaMemcpyDeviceToHost);</span><br><span class="line"></span><br><span class="line">  cudaFree( d_A );</span><br><span class="line">   </span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; vector_size; ++i) &#123;</span><br><span class="line">    <span class="keyword">if</span> (i % <span class="number">8</span> == <span class="number">0</span>) <span class="built_in">printf</span>( <span class="string">&quot;\n&quot;</span> );</span><br><span class="line">    <span class="built_in">printf</span>( <span class="string">&quot;%.1f &quot;</span>, result[i] );</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>迁移后代码</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;CL/sycl.hpp&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;dpct/dpct.hpp&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> vector_size = <span class="number">256</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">SimpleAddKernel</span><span class="params">(<span class="keyword">float</span> *A, <span class="keyword">int</span> offset, sycl::nd_item&lt;<span class="number">3</span>&gt; item_ct1)</span></span></span><br><span class="line"><span class="function"></span>&#123; </span><br><span class="line">  A[item_ct1.get_local_id(<span class="number">2</span>)] = item_ct1.get_local_id(<span class="number">2</span>) + offset;</span><br><span class="line"> </span><br><span class="line">&#125;<span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  dpct::device_ext &amp;dev_ct1 = dpct::get_current_device();</span><br><span class="line">  sycl::<span class="built_in">queue</span> &amp;q_ct1 = dev_ct1.default_queue();</span><br><span class="line">  <span class="keyword">float</span> *d_A;</span><br><span class="line">  <span class="keyword">int</span> offset = <span class="number">10000</span>;</span><br><span class="line"></span><br><span class="line">  d_A = sycl::malloc_device&lt;<span class="keyword">float</span>&gt;(vector_size, q_ct1);</span><br><span class="line">  q_ct1.submit([&amp;](sycl::handler &amp;cgh) &#123;</span><br><span class="line">    cgh.parallel_for(sycl::nd_range(sycl::range(<span class="number">1</span>, <span class="number">1</span>, vector_size),</span><br><span class="line">                                    sycl::range(<span class="number">1</span>, <span class="number">1</span>, vector_size)),</span><br><span class="line">                     [=](sycl::nd_item&lt;<span class="number">3</span>&gt; item_ct1) &#123;</span><br><span class="line">                       SimpleAddKernel(d_A, offset, item_ct1);</span><br><span class="line">                     &#125;);</span><br><span class="line">  &#125;);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">float</span> result[vector_size] = &#123; &#125;;</span><br><span class="line">  q_ct1.<span class="built_in">memcpy</span>(result, d_A, vector_size * <span class="keyword">sizeof</span>(<span class="keyword">float</span>)).wait();</span><br><span class="line"></span><br><span class="line">  sycl::<span class="built_in">free</span>(d_A, q_ct1);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; vector_size; ++i) &#123;</span><br><span class="line">    <span class="keyword">if</span> (i % <span class="number">8</span> == <span class="number">0</span>) <span class="built_in">printf</span>( <span class="string">&quot;\n&quot;</span> );</span><br><span class="line">    <span class="built_in">printf</span>( <span class="string">&quot;%.1f &quot;</span>, result[i] );</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
 
       
@@ -1094,26 +1700,77 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="Classic-Meets-Modern-a-Pragmatic-Learning-Based-Congestion-Control-for-the-Internet-SIGCOMM-2020"><a href="#Classic-Meets-Modern-a-Pragmatic-Learning-Based-Congestion-Control-for-the-Internet-SIGCOMM-2020" class="headerlink" title="Classic Meets Modern: a Pragmatic Learning-Based Congestion Control for the Internet (SIGCOMM 2020)"></a>Classic Meets Modern: a Pragmatic Learning-Based Congestion Control for the Internet (SIGCOMM 2020)</h2><h3 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h3><p>非机器学习缺点：</p>
+        <a id="more"></a>
+<h1 id="一、基于强化学习的方法"><a href="#一、基于强化学习的方法" class="headerlink" title="一、基于强化学习的方法"></a>一、基于强化学习的方法</h1><h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>基于强化学习的方法包含以下几个步骤：</p>
+<ol>
+<li><strong>定义State。</strong> 将时间切分成连续时间片，对每个时间片内的网络状态建模并表征为向量</li>
+<li><strong>定义Action。</strong> 对发送速率/发送窗口的调整方式</li>
+<li><strong>定义Reward。</strong> 即优化目标，一般为时延、吞吐、丢包的加权</li>
+</ol>
+<p><strong>优点：</strong> 属于离线训练，只需要与环境进行交互</p>
+<p><strong>缺点：</strong> 人为定义的reward方法不具备通用性。在不同的网络环境下采用不同的权重将导致不同的效果。</p>
+<h2 id="相关工作："><a href="#相关工作：" class="headerlink" title="相关工作："></a>相关工作：</h2><table>
+<thead>
+<tr>
+<th>算法名称</th>
+<th>Action</th>
+<th>State</th>
+<th>Reward</th>
+<th>时间片长度</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Aurora (ICML2019)</td>
+<td>对发送速率倍数调整</td>
+<td>时延变化率<br>时延比值（当前平均时延处以历史最低时延）<br>发送速率比值（发送速率处以接收速率）</td>
+<td>10 * throughput-1000 * latency-2000 * loss</td>
+<td>1.5RTT</td>
+</tr>
+<tr>
+<td>MVFST-RL (NIPS2019)</td>
+<td>对发送窗口调整：<br>不变、/2、*2、+10、-10</td>
+<td>几乎所有能用到的状态</td>
+<td>throughput- beta *delay</td>
+<td>100ms</td>
+</tr>
+</tbody></table>
+<h1 id="二、基于在线学习的方法"><a href="#二、基于在线学习的方法" class="headerlink" title="二、基于在线学习的方法"></a>二、基于在线学习的方法</h1><h2 id="简介-1"><a href="#简介-1" class="headerlink" title="简介"></a>简介</h2><p>与强化学习类似，认为定义一个效用函数（utility function)，将时间分成连续时间片，并对每个时间内的状态进行建模。随后根据效用函数对发送速率进行微调。</p>
+<ul>
+<li>微调即测试（1+c）sending_rate 和（1-c）sending_rate，向提升utility的方向进行调整</li>
+</ul>
+<h2 id="相关工作：-1"><a href="#相关工作：-1" class="headerlink" title="相关工作："></a>相关工作：</h2><table>
+<thead>
+<tr>
+<th>算法名称</th>
+<th>效用函数</th>
+<th>特点</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>PCC (NSDI 2015)</td>
+<td>$$x(1-loss)\cdot \frac{1}{1+e^{\alpha*(loss-0.05)}}-x*loss$$</td>
+<td>证明可以实现公平</td>
+</tr>
+<tr>
+<td>PCC Vivace (NSDI 2018)</td>
+<td>$$x-bx\frac{d(RTT)}{dT}-cx*loss$$</td>
+<td>分析不同参数下的算法发送速率收敛情况，可以实现不同流之间带宽分配</td>
+</tr>
+<tr>
+<td>PCC Proteus (SIGCOMM 2020)</td>
+<td>$$u_P = x-b \cdot x\cdot \max\left{0,\frac{d(Rtt)}{d(t)}\right}-c\cdot x\cdot loss$$<br>u_S = u_P-delay\cdot x\cdot \sigma(RTT)</td>
+<td>拾荒者流的效益函数在上述基础上增加惩罚项，即端到端时延的变化，保证普通流对于拾荒者流有更高的抢占能力。<br><strong>拾荒者流仅使用普通流的剩余资源，与其余拾荒者流公平竞争</strong></td>
+</tr>
+</tbody></table>
+<h1 id="三、基于反向强化学习的方法"><a href="#三、基于反向强化学习的方法" class="headerlink" title="三、基于反向强化学习的方法"></a>三、基于反向强化学习的方法</h1><h2 id="Indigo"><a href="#Indigo" class="headerlink" title="Indigo"></a>Indigo</h2><h1 id="四、机器学习方法与传统方法相结合"><a href="#四、机器学习方法与传统方法相结合" class="headerlink" title="四、机器学习方法与传统方法相结合"></a>四、机器学习方法与传统方法相结合</h1><h2 id="背景：Classic-Meets-Modern-SIGCOMM-2020"><a href="#背景：Classic-Meets-Modern-SIGCOMM-2020" class="headerlink" title="背景：Classic Meets Modern (SIGCOMM 2020)"></a>背景：Classic Meets Modern (SIGCOMM 2020)</h2><p><strong>非机器学习缺点：</strong></p>
 <ul>
 <li>将“行为”与“状态/信号”映射，无法适用于复杂异构场景。如，以丢包为拥塞标志的算法不适用于高丢包场景</li>
 </ul>
-<p>机器学习缺点：</p>
+<p><strong>机器学习缺点：</strong></p>
 <ul>
 <li>在每个监控窗口后对发送速率/拥塞窗口进行调整，导致算法无法应对网络快速变化</li>
 </ul>
 <h3 id="基本思想"><a href="#基本思想" class="headerlink" title="基本思想"></a>基本思想</h3><p>在机器学习调整期间使用非机器学习方法对发送速率进行微调</p>
-<h2 id="PCC-Proteus-Scavenger-Transport-And-Beyond-（SIGCOMM-2020）"><a href="#PCC-Proteus-Scavenger-Transport-And-Beyond-（SIGCOMM-2020）" class="headerlink" title="PCC Proteus: Scavenger Transport And Beyond （SIGCOMM 2020）"></a>PCC Proteus: Scavenger Transport And Beyond （SIGCOMM 2020）</h2><h3 id="背景-1"><a href="#背景-1" class="headerlink" title="背景"></a>背景</h3><p>提出拾荒者流概念，与普通数据流相比具有如下特点：</p>
-<ol>
-<li>使用普通流的剩余资源</li>
-<li>与其余拾荒者流公平竞争</li>
-</ol>
-<h3 id="基本思想-1"><a href="#基本思想-1" class="headerlink" title="基本思想"></a>基本思想</h3><p>采用PCC架构，即基于online learning的拥塞控制调整，与PCC, Vivace方法类似，设计效益函数，在每个时间窗口结束时根据计算的效益对发送速率微调。</p>
-<p>为满足拾荒者需求，文中涉及两个效益函数，一个为普通流，另一个为拾荒者流。</p>
-<ol>
-<li>普通流的效益函数考虑了当前发送速率，实验变化率以及丢包率</li>
-<li>拾荒者流的效益函数在上述基础上增加惩罚项，即端到端时延的变化，保证普通流对于拾荒者流有更高的抢占能力。</li>
-</ol>
 
       
 
