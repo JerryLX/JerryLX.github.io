@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://example.com/2021/03/14/Sol-Fast-Distributed-Computation/</loc>
+    
+    <lastmod>2021-04-01</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://example.com/2021/03/09/rtp/</loc>
     
     <lastmod>2021-04-01</lastmod>
@@ -10,13 +17,6 @@
   
   <url>
     <loc>http://example.com/2021/01/27/Zink-Failcase-%E5%88%86%E6%9E%90/</loc>
-    
-    <lastmod>2021-04-01</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://example.com/2021/03/14/Sol-Fast-Distributed-Computation/</loc>
     
     <lastmod>2021-04-01</lastmod>
     
