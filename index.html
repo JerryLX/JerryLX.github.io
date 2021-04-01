@@ -1701,6 +1701,7 @@ PIGLIT: &#123;&quot;result&quot;: &quot;fail&quot; &#125;</code></pre>
     <div class="article-entry" itemprop="articleBody">
       
         <a id="more"></a>
+
 <h1 id="一、基于强化学习的方法"><a href="#一、基于强化学习的方法" class="headerlink" title="一、基于强化学习的方法"></a>一、基于强化学习的方法</h1><h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>基于强化学习的方法包含以下几个步骤：</p>
 <ol>
 <li><strong>定义State。</strong> 将时间切分成连续时间片，对每个时间片内的网络状态建模并表征为向量</li>
@@ -1758,7 +1759,7 @@ PIGLIT: &#123;&quot;result&quot;: &quot;fail&quot; &#125;</code></pre>
 </tr>
 <tr>
 <td>PCC Proteus (SIGCOMM 2020)</td>
-<td>$$u_P = x-b \cdot x\cdot \max\left{0,\frac{d(Rtt)}{d(t)}\right}-c\cdot x\cdot loss$$<br>u_S = u_P-delay\cdot x\cdot \sigma(RTT)</td>
+<td>$$u_P = x-b \cdot x\cdot max \left{0,\frac{d(Rtt)}{d(t)}\right}-c\cdot x\cdot loss$$<br>$$u_S = u_P-delay\cdot x\cdot \sigma(RTT)$$</td>
 <td>拾荒者流的效益函数在上述基础上增加惩罚项，即端到端时延的变化，保证普通流对于拾荒者流有更高的抢占能力。<br><strong>拾荒者流仅使用普通流的剩余资源，与其余拾荒者流公平竞争</strong></td>
 </tr>
 </tbody></table>
