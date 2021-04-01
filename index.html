@@ -180,6 +180,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <a id="more"></a>
+
 <h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>大规模分布式计算时大数据、人工智能等领域不可缺少的环节。然而，分布式计算节点之间可能存在长时延、低带宽。这些限制严重降低了分布式计算的效率。作者在该文中提出了两方面的优化：</p>
 <ol>
 <li>提出“早绑定”的控制平面决策，以降低时延。<ul>
@@ -188,11 +189,11 @@
 </li>
 <li>将传输与计算解耦，以降低低带宽对计算的影响。</li>
 </ol>
-<h2 id="动机"><a href="#动机" class="headerlink" title="动机"></a>动机</h2><img src="/2021/03/14/Sol-Fast-Distributed-Computation/moti1.jpg" width="60%" alt="长时延降低TPC查询时间">
+<h2 id="动机"><a href="#动机" class="headerlink" title="动机"></a>动机</h2><img src="/2021/03/14/Sol-Fast-Distributed-Computation/moti1.jpg" width="40%" alt="长时延降低TPC查询时间">
 
-<img src="/2021/03/14/Sol-Fast-Distributed-Computation/moti2.jpg" width="60%" alt="长时延/低带宽降低CPU占用率">
+<img src="/2021/03/14/Sol-Fast-Distributed-Computation/moti2.jpg" width="40%" alt="长时延/低带宽降低CPU占用率">
 
-<h2 id="架构"><a href="#架构" class="headerlink" title="架构"></a>架构</h2><img src="/2021/03/14/Sol-Fast-Distributed-Computation/arch.jpg" width="60%" alt="Sol框架">
+<h2 id="架构"><a href="#架构" class="headerlink" title="架构"></a>架构</h2><img src="/2021/03/14/Sol-Fast-Distributed-Computation/arch.jpg" width="40%" alt="Sol框架">
 
 <p>核心思想是采用逻辑上集中式机构（Centrial Coordinator），</p>
 
@@ -280,6 +281,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <a id="more"></a>
+
 <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>RTP(Real-time Transport Protocol)是用于Internet上针对多媒体数据流的一种传输协议，由两个紧密链接部分组成:</p>
 <ul>
 <li>RTP： 传送具有实时属性的数据；</li>
@@ -300,24 +302,18 @@
 <p>（2）视频流可以随便拖动，既可以从任意时间点向服务器发送请求进行播放，并不需要视频有关键帧。相比而言，HTTP协议下视频需要有关键帧才可以随意拖动。</p>
 <p>（3）RTMP协议支持点播/回放（通俗点将就是支持把flv,f4v,mp4文件放在RTMP服务器，客户端可以直接播放），直播（边录制视频边播放）。</p>
 <h2 id="WebRTC中的RTP协议"><a href="#WebRTC中的RTP协议" class="headerlink" title="WebRTC中的RTP协议"></a>WebRTC中的RTP协议</h2><h3 id="帧数据发送流程"><a href="#帧数据发送流程" class="headerlink" title="帧数据发送流程"></a>帧数据发送流程</h3><ol>
-<li><p>Capture线程从摄像头采集原始数据，得到VideoFrame</p>
-<ul>
+<li>Capture线程从摄像头采集原始数据，得到VideoFrame<ul>
 <li>Capture线程是系统相关的，在Linux系统上可能是调用V4L2接口的线程，而在Mac系统上可能是调用AVFoundation框架的接口。</li>
 </ul>
 </li>
-<li><p>原始数据VideoFrame从Capture线程到达Worker线程</p>
-</li>
-<li><p>Worker线程起搬运工的作用，没有对数据做特别处理，而是转发到Encoder线程。</p>
-<ul>
+<li>原始数据VideoFrame从Capture线程到达Worker线程</li>
+<li>Worker线程起搬运工的作用，没有对数据做特别处理，而是转发到Encoder线程。<ul>
 <li>Encoder线程调用具体的编码器(如VP8, H264)对原始数据VideoFrame进行编码，编码后进行RTP封包形成RTP数据包。</li>
 </ul>
 </li>
-<li><p>RTP数据包发送到Pacer线程进行平滑发送</p>
-</li>
-<li><p>Pacer线程会把RTP数据包推送到Network线程</p>
-</li>
-<li><p>Network线程调用传输层系统函数把数据发送到网络。</p>
-</li>
+<li>RTP数据包发送到Pacer线程进行平滑发送</li>
+<li>Pacer线程会把RTP数据包推送到Network线程</li>
+<li>Network线程调用传输层系统函数把数据发送到网络。</li>
 </ol>
 <h3 id="帧数据接收"><a href="#帧数据接收" class="headerlink" title="帧数据接收"></a>帧数据接收</h3><ol>
 <li>Network线程从网络接收字节流</li>
@@ -839,6 +835,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <a id="more"></a>
+
 <h2 id="ARB-vertex-type-2-10-10-10-rev"><a href="#ARB-vertex-type-2-10-10-10-rev" class="headerlink" title="ARB_vertex_type_2_10_10_10_rev"></a>ARB_vertex_type_2_10_10_10_rev</h2><h3 id="一、Overview"><a href="#一、Overview" class="headerlink" title="一、Overview"></a><strong>一、Overview</strong></h3><p>该特性提供两种新的顶点属性数据格式：</p>
 <ul>
 <li>有符号2.10.10.10顶点数据格式</li>
