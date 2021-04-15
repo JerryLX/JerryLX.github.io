@@ -6,17 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>Category: ns | Jerry Li的博客</title>
+  <title>RDMA | Jerry Li的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="上海交通大学在读博士">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Jerry Li的博客">
-<meta property="og:url" content="http://example.com/categories/ns/index.html">
+  <meta name="description" content="What is RDMARemote Direct Memory Access （RDMA） 通过CPU旁路，直接访问远程服务端的内存，实现低时延网络访问。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="RDMA">
+<meta property="og:url" content="http://example.com/2021/04/01/RDMA/index.html">
 <meta property="og:site_name" content="Jerry Li的博客">
-<meta property="og:description" content="上海交通大学在读博士">
+<meta property="og:description" content="What is RDMARemote Direct Memory Access （RDMA） 通过CPU旁路，直接访问远程服务端的内存，实现低时延网络访问。">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-04-01T13:05:35.000Z">
+<meta property="article:modified_time" content="2021-04-06T03:22:29.544Z">
 <meta property="article:author" content="Jerry Li">
-<meta property="article:tag" content="智能网络,人工智能,程序猿">
+<meta property="article:tag" content="RDMA">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="Jerry Li的博客" type="application/atom+xml">
@@ -157,36 +159,124 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-RDMA" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2021" class="archive-year">2021</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2021/04/01/RDMA/" class="archive-article-date">
-  	<time datetime="2021-04-01T13:05:35.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-04-01</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/04/01/RDMA/">RDMA</a>
+    <h1 class="article-title" itemprop="name">
+      RDMA
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2021/04/01/RDMA/" class="archive-article-date">
+  	<time datetime="2021-04-01T13:05:35.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-04-01</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="What-is-RDMA"><a href="#What-is-RDMA" class="headerlink" title="What is RDMA"></a>What is RDMA</h2><p>Remote Direct Memory Access （RDMA） 通过CPU旁路，直接访问远程服务端的内存，实现低时延网络访问。</p>
+<a id="more"></a>
+
+<h1 id="一、概述"><a href="#一、概述" class="headerlink" title="一、概述"></a>一、概述</h1><h2 id="RDMA-优势"><a href="#RDMA-优势" class="headerlink" title="RDMA 优势"></a>RDMA 优势</h2><p>传统的TCP/IP技术在数据包处理过程中，<strong>要经过操作系统及其他软件层</strong>，占用大量的服务器资源和内存总线带宽，<strong>数据在系统内存、处理器缓存和网络控制器缓存之间来回进行复制移动，给服务器的CPU和内存造成了沉重负担。</strong></p>
+<p>RDMA 将所有传输集成在网卡中。将RDMA协议固化于硬件(即网卡)上，支持Zero-copy和Kernel bypass这两种途径来达到其高性能的远程直接数据存取的目标。 使用RDMA的优势如下：</p>
+<ul>
+<li>零拷贝(Zero-copy) - 应用程序能够直接执行数据传输，在不涉及到网络软件栈的情况下。数据能够被直接发送到缓冲区或者能够直接从缓冲区里接收，而不需要被复制到网络层。</li>
+<li>内核旁路(Kernel bypass) - 应用程序可以直接在用户态执行数据传输，不需要在内核态与用户态之间做上下文切换。</li>
+<li>不需要CPU干预(No CPU involvement) - 应用程序可以访问远程主机内存而不消耗远程主机中的任何CPU。远程主机内存能够被读取而不需要远程主机上的进程（或CPU)参与。远程主机的CPU的缓存(cache)不会被访问的内存内容所填充。</li>
+<li>消息基于事务(Message based transactions) - 数据被处理为离散消息而不是流，消除了应用程序将流切割为不同消息/事务的需求。</li>
+<li>支持分散/聚合条目(Scatter/gather entries support) - RDMA原生态支持分散/聚合。也就是说，读取多个内存缓冲区然后作为一个流发出去或者接收一个流然后写入到多个内存缓冲区里去。</li>
+</ul>
+<p>在具体的远程内存读写中，RDMA操作用于读写操作的远程虚拟内存地址包含在RDMA消息中传送，远程应用程序要做的只是在其本地网卡中注册相应的内存缓冲区。远程节点的CPU除在连接建立、注册调用等之外，在整个RDMA数据传输过程中并不提供服务，因此没有带来任何负载。</p>
+<h2 id="核心概念"><a href="#核心概念" class="headerlink" title="核心概念"></a>核心概念</h2><h3 id="1-Memory-Registration-MR-内存注册"><a href="#1-Memory-Registration-MR-内存注册" class="headerlink" title="1. Memory Registration(MR) | 内存注册"></a>1. Memory Registration(MR) | 内存注册</h3><p>RDMA硬件对用来做数据传输的内存有如下<strong>特殊要求：</strong></p>
+<ul>
+<li>在数据传输过程中，应用程序不能修改数据所在的内存。</li>
+<li>操作系统不能对数据所在的内存进行page out操作 – 物理地址和虚拟地址的映射必须是固定不变的。</li>
+</ul>
+<p><strong>注册流程：</strong></p>
+<ul>
+<li>创建两个key (local和remote)指向需要操作的内存区域</li>
+<li>注册的keys是数据传输请求的一部分</li>
+<li>注册一个Memory Region之后，这个时候这个Memory Region也就有了它自己的属性：<ul>
+<li>context : RDMA操作上下文</li>
+<li>addr : MR被注册的Buffer地址</li>
+<li>length : MR被注册的Buffer长度</li>
+<li>lkey：MR被注册的本地key</li>
+<li>rkey：MR被注册的远程key</li>
+</ul>
+</li>
+</ul>
+<h3 id="2-Queues-队列"><a href="#2-Queues-队列" class="headerlink" title="2. Queues | 队列"></a>2. Queues | 队列</h3><p>RDMA一共支持三种队列，发送队列(SQ)和接收队列(RQ)，完成队列(CQ)。其中，SQ和RQ通常成对创建，被称为Queue Pairs(QP)。</p>
+<p>RDMA是基于消息的传输协议，数据传输都是异步操作。 RDMA操作其实很简单，可以理解为：</p>
+<ul>
+<li>Host提交工作请求(WR)到工作队列(WQ): 工作队列包括发送队列(SQ)和接收队列(RQ)。工作队列的每一个元素叫做WQE, 也就是WR。</li>
+<li>Host从完成队列(CQ）中获取工作完成(WC): 完成队列里的每一个叫做CQE, 也就是WC。</li>
+<li>具有RDMA引擎的硬件(hardware)就是一个队列元素处理器。 RDMA硬件不断地从工作队列(WQ)中去取工作请求(WR)来执行，执行完了就给完成队列(CQ)中放置工作完成(WC)。从生产者-消费者的角度理解就是：</li>
+<li>Host生产WR, 把WR放到WQ中去</li>
+<li>RDMA硬件消费WR</li>
+<li>RDMA硬件生产WC, 把WC放到CQ中去</li>
+<li>Host消费WC</li>
+</ul>
+<h3 id="3-RDMA数据传输"><a href="#3-RDMA数据传输" class="headerlink" title="3. RDMA数据传输"></a>3. RDMA数据传输</h3><ul>
+<li><p>RDMA Send | RDMA发送(/接收)操作 （Send/Recv）</p>
+<p>  跟TCP/IP的send/recv是类似的，不同的是RDMA是基于消息的数据传输协议（而不是基于字节流的传输协议），所有数据包的组装都在RDMA硬件上完成的，也就是说OSI模型中的下面4层(传输层，网络层，数据链路层，物理层)都在RDMA硬件上完成。</p>
+</li>
+<li><p>RDMA Read | RDMA读操作 (Pull)</p>
+<p>  RDMA读操作本质上就是Pull操作, 把远程系统内存里的数据拉回到本地系统的内存里。</p>
+</li>
+<li><p>RDMA Write | RDMA写操作 (Push)</p>
+<p>  RDMA写操作本质上就是Push操作，把本地系统内存里的数据推送到远程系统的内存里。</p>
+</li>
+<li><p>RDMA Write with Immediate Data | 支持立即数的RDMA写操作</p>
+<p>  支持立即数的RDMA写操作本质上就是给远程系统Push(推送)带外(OOB)数据, 这跟TCP里的带外数据是类似的。</p>
+</li>
+</ul>
+<h1 id="二、优化"><a href="#二、优化" class="headerlink" title="二、优化"></a>二、优化</h1><h2 id="Coroutine"><a href="#Coroutine" class="headerlink" title="Coroutine"></a>Coroutine</h2><p>即使RDMA操作的延迟达到几微秒，它仍然高于许多应用程序的执行时间。因此，值得使用Coroutine来进一步隐藏网络延迟，即<strong>以流水线方式从不同事务发送多个请求</strong>。</p>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>FaSST</td>
+<td>使用coroutine来提高其RPC的吞吐量</td>
+</tr>
+<tr>
+<td>FaRM</td>
+<td>使用事件循环来调度带有RDMA操作的事务，从而优化了单边操作和rpc</td>
+</tr>
+<tr>
+<td>DrTM+H</td>
+<td>使用一组协程在每个线程上执行应用程序逻辑。每个协程在发出一些请求（包括单面请求和双面请求）后产生，并继续执行，直到收到单面请求的完成（或双面rpc的回复）。</td>
+</tr>
+</tbody></table>
+<h2 id="Outstanding-requests"><a href="#Outstanding-requests" class="headerlink" title="Outstanding requests"></a>Outstanding requests</h2><p>在同一事务内，多个请求也应该并行。OR的目的是使在一个事务内的请求发出不需要等待一个请求的完成。</p>
+<ul>
+<li>例如，OLTP事务中读写集合是可以事先知道的，因此可以并行化这些读写操作。</li>
+</ul>
+<h2 id="Doorbell-batching"><a href="#Doorbell-batching" class="headerlink" title="Doorbell batching"></a>Doorbell batching</h2><p>有几种方法可以向RNIC发出多个OR：</p>
+<ul>
+<li>根据不同的请求发布多个MMIO，然而MMIO的成本很高，通常需要数百个周期。</li>
+<li>doorbell批处理按门铃通知RNIC使用DMA自己获取多个请求，因为每个批只需要一个MMIO就可以按门铃，该方法可以减少发送方的CPU开销，更好地利用PCIe带宽。<ul>
+<li>只有一个队列对（Queue Pair）的氢气可以被组处理。因此该方法一般是用在双边实现中。</li>
+</ul>
+</li>
+</ul>
+<h2 id="Passive-ACK"><a href="#Passive-ACK" class="headerlink" title="Passive ACK"></a>Passive ACK</h2><p>通过被动ACK方式减少消息传递，降低贷款占用。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -198,7 +288,7 @@
 		</ul>
 	</div>
 
-          
+      
 	<div class="article-category tagcloud">
 		<i class="icon-book icon"></i>
 		<ul class="article-tag-list">
@@ -211,115 +301,117 @@
 	</div>
 
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2021/04/01/RDMA/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2021/04/01/%E6%8B%A5%E5%A1%9E%E6%8E%A7%E5%88%B6/" class="archive-article-date">
-  	<time datetime="2021-04-01T03:21:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-04-01</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2021/04/01/%E6%8B%A5%E5%A1%9E%E6%8E%A7%E5%88%B6/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">拥塞控制</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/04/01/%E6%8B%A5%E5%A1%9E%E6%8E%A7%E5%88%B6/">拥塞控制</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">拥塞控制</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/ns//" class="article-tag-list-link color3">ns</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#What-is-RDMA"><span class="toc-number">1.</span> <span class="toc-text">What is RDMA</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E6%A6%82%E8%BF%B0"><span class="toc-number"></span> <span class="toc-text">一、概述</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#RDMA-%E4%BC%98%E5%8A%BF"><span class="toc-number">1.</span> <span class="toc-text">RDMA 优势</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A0%B8%E5%BF%83%E6%A6%82%E5%BF%B5"><span class="toc-number">2.</span> <span class="toc-text">核心概念</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-Memory-Registration-MR-%E5%86%85%E5%AD%98%E6%B3%A8%E5%86%8C"><span class="toc-number">2.1.</span> <span class="toc-text">1. Memory Registration(MR) | 内存注册</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-Queues-%E9%98%9F%E5%88%97"><span class="toc-number">2.2.</span> <span class="toc-text">2. Queues | 队列</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-RDMA%E6%95%B0%E6%8D%AE%E4%BC%A0%E8%BE%93"><span class="toc-number">2.3.</span> <span class="toc-text">3. RDMA数据传输</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E4%BC%98%E5%8C%96"><span class="toc-number"></span> <span class="toc-text">二、优化</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Coroutine"><span class="toc-number">1.</span> <span class="toc-text">Coroutine</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Outstanding-requests"><span class="toc-number">2.</span> <span class="toc-text">Outstanding requests</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Doorbell-batching"><span class="toc-number">3.</span> <span class="toc-text">Doorbell batching</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Passive-ACK"><span class="toc-number">4.</span> <span class="toc-text">Passive ACK</span></a></li></ol>
+                    </div>
+                </span>
+            </div>
         </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2021/03/14/Sol-Fast-Distributed-Computation/" class="archive-article-date">
-  	<time datetime="2021-03-14T02:07:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-03-14</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/03/14/Sol-Fast-Distributed-Computation/">Sol: Fast Distributed Computation Over Slow Networks (NSDI 2020)</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">分布式计算</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/ns//" class="article-tag-list-link color3">ns</a>
-        		</li>
-      		
-		</ul>
-	</div>
+        
+    </div>
+</aside>
 
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
+
   
   
-    </div></section>
   
 
-    
+  
+
+  
+
+  
 
 
           </div>
@@ -342,10 +434,10 @@
 	var yiliaConfig = {
 		mathjax: true,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
-		isCategory: true,
+		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,
 		root: "/",
