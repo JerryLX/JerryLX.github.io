@@ -6,20 +6,25 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>拥塞控制 | Jerry Li的博客</title>
+  <title>网络系统中的可解释机器学习方法 | Jerry Li的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="基于学习的拥塞控制方法可分为基于强化学习的方法、基于在线学习（Online Learning）的方法、基于逆向强化学习的方法（Inverse Reinforcement Learning）以及机器学习和传统相结合的方法">
+  <meta name="description" content="摘要Interpreting Deep Learning-Based Networking Systems (SIGCOMM 2020) 虽然许多基于深度学习（DL）的网络系统表现出了优异的性能，但底层的深度神经网络（DNN）仍然是黑匣子，对网络运营商来说无法理解。缺乏可解释性使得基于DL的网络系统在实践中难以部署。在该文中，作者提出了Metis框架。该框架提供了两个网络问题跨越本地和全球控制的一">
 <meta property="og:type" content="article">
-<meta property="og:title" content="拥塞控制">
-<meta property="og:url" content="http://example.com/2021/04/01/%E6%8B%A5%E5%A1%9E%E6%8E%A7%E5%88%B6/index.html">
+<meta property="og:title" content="网络系统中的可解释机器学习方法">
+<meta property="og:url" content="http://example.com/2021/04/15/%E7%BD%91%E7%BB%9C%E7%B3%BB%E7%BB%9F%E4%B8%AD%E7%9A%84%E5%8F%AF%E8%A7%A3%E9%87%8A%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E6%96%B9%E6%B3%95/index.html">
 <meta property="og:site_name" content="Jerry Li的博客">
-<meta property="og:description" content="基于学习的拥塞控制方法可分为基于强化学习的方法、基于在线学习（Online Learning）的方法、基于逆向强化学习的方法（Inverse Reinforcement Learning）以及机器学习和传统相结合的方法">
+<meta property="og:description" content="摘要Interpreting Deep Learning-Based Networking Systems (SIGCOMM 2020) 虽然许多基于深度学习（DL）的网络系统表现出了优异的性能，但底层的深度神经网络（DNN）仍然是黑匣子，对网络运营商来说无法理解。缺乏可解释性使得基于DL的网络系统在实践中难以部署。在该文中，作者提出了Metis框架。该框架提供了两个网络问题跨越本地和全球控制的一">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2021-04-01T03:21:24.000Z">
-<meta property="article:modified_time" content="2021-04-21T06:39:48.172Z">
+<meta property="og:image" content="http://example.com/2021/04/15/%E7%BD%91%E7%BB%9C%E7%B3%BB%E7%BB%9F%E4%B8%AD%E7%9A%84%E5%8F%AF%E8%A7%A3%E9%87%8A%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E6%96%B9%E6%B3%95/f3.jpg">
+<meta property="og:image" content="http://example.com/2021/04/15/%E7%BD%91%E7%BB%9C%E7%B3%BB%E7%BB%9F%E4%B8%AD%E7%9A%84%E5%8F%AF%E8%A7%A3%E9%87%8A%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E6%96%B9%E6%B3%95/f4.jpg">
+<meta property="article:published_time" content="2021-04-15T06:00:37.972Z">
+<meta property="article:modified_time" content="2021-04-21T06:39:46.854Z">
 <meta property="article:author" content="Jerry Li">
-<meta property="article:tag" content="拥塞控制">
+<meta property="article:tag" content="机器学习">
+<meta property="article:tag" content="可解释性">
+<meta property="article:tag" content="SIGCOMM">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2021/04/15/%E7%BD%91%E7%BB%9C%E7%B3%BB%E7%BB%9F%E4%B8%AD%E7%9A%84%E5%8F%AF%E8%A7%A3%E9%87%8A%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E6%96%B9%E6%B3%95/f3.jpg">
   
     <link rel="alternative" href="/atom.xml" title="Jerry Li的博客" type="application/atom+xml">
   
@@ -159,119 +164,91 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-拥塞控制" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-网络系统中的可解释机器学习方法" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      拥塞控制
+      网络系统中的可解释机器学习方法
     </h1>
   
 
         
-        <a href="/2021/04/01/%E6%8B%A5%E5%A1%9E%E6%8E%A7%E5%88%B6/" class="archive-article-date">
-  	<time datetime="2021-04-01T03:21:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-04-01</time>
+        <a href="/2021/04/15/%E7%BD%91%E7%BB%9C%E7%B3%BB%E7%BB%9F%E4%B8%AD%E7%9A%84%E5%8F%AF%E8%A7%A3%E9%87%8A%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E6%96%B9%E6%B3%95/" class="archive-article-date">
+  	<time datetime="2021-04-15T06:00:37.972Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-04-15</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>基于学习的拥塞控制方法可分为基于强化学习的方法、基于在线学习（Online Learning）的方法、基于逆向强化学习的方法（Inverse Reinforcement Learning）以及机器学习和传统相结合的方法</p>
+        <h2 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h2><p>Interpreting Deep Learning-Based Networking Systems (SIGCOMM 2020)</p>
+<p>虽然许多基于深度学习（DL）的网络系统表现出了优异的性能，但底层的深度神经网络（DNN）仍然是黑匣子，对网络运营商来说无法理解。缺乏可解释性使得基于DL的网络系统在实践中难以部署。在该文中，作者提出了Metis框架。该框架提供了两个网络问题跨越本地和全球控制的一般类别的解释性。因此，Metis引入了两种不同的基于决策树和超图的解释方法，将DNN策略转化为基于规则的可解释控制器，并在超图分析的基础上突出关键组件。Metis在保证性能几乎不下降的同时提供了人类可读的解释，通过四个具体用例，展示了Metis如何帮助网络运营商设计、调试、部署和自调整基于DL的网络系统。</p>
 <a id="more"></a>
 
-<h1 id="一、基于强化学习的方法"><a href="#一、基于强化学习的方法" class="headerlink" title="一、基于强化学习的方法"></a>一、基于强化学习的方法</h1><h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>基于强化学习的方法包含以下几个步骤：</p>
-<ol>
-<li><strong>定义State。</strong> 将时间切分成连续时间片，对每个时间片内的网络状态建模并表征为向量</li>
-<li><strong>定义Action。</strong> 对发送速率/发送窗口的调整方式</li>
-<li><strong>定义Reward。</strong> 即优化目标，一般为时延、吞吐、丢包的加权</li>
-</ol>
-<p><strong>优点：</strong> 属于离线训练，只需要与环境进行交互</p>
-<p><strong>缺点：</strong> 人为定义的reward方法不具备通用性。在不同的网络环境下采用不同的权重将导致不同的效果。</p>
-<h2 id="相关工作："><a href="#相关工作：" class="headerlink" title="相关工作："></a>相关工作：</h2><table>
-<thead>
-<tr>
-<th>算法名称</th>
-<th>Action</th>
-<th>State</th>
-<th>Reward</th>
-<th>时间片长度</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>Aurora (ICML2019)</td>
-<td>对发送速率倍数调整</td>
-<td>时延变化率<br>时延比值（当前平均时延处以历史最低时延）<br>发送速率比值（发送速率处以接收速率）</td>
-<td>10 * throughput-1000 * latency-2000 * loss</td>
-<td>1.5RTT</td>
-</tr>
-<tr>
-<td>MVFST-RL (NIPS2019)</td>
-<td>对发送窗口调整：<br>不变、/2、*2、+10、-10</td>
-<td>几乎所有能用到的状态</td>
-<td>throughput- beta *delay</td>
-<td>100ms</td>
-</tr>
-</tbody></table>
-<h1 id="二、基于在线学习的方法"><a href="#二、基于在线学习的方法" class="headerlink" title="二、基于在线学习的方法"></a>二、基于在线学习的方法</h1><h2 id="简介-1"><a href="#简介-1" class="headerlink" title="简介"></a>简介</h2><p>与强化学习类似，认为定义一个效用函数（utility function)，将时间分成连续时间片，并对每个时间内的状态进行建模。随后根据效用函数对发送速率进行微调。</p>
-<ul>
-<li>微调即测试（1+c）sending_rate 和（1-c）sending_rate，向提升utility的方向进行调整</li>
-</ul>
-<h2 id="相关工作：-1"><a href="#相关工作：-1" class="headerlink" title="相关工作："></a>相关工作：</h2><table>
-<thead>
-<tr>
-<th>算法名称</th>
-<th>效用函数</th>
-<th>特点</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>PCC (NSDI 2015)</td>
-<td>$$x(1-loss)\cdot \frac{1}{1+e^{\alpha*(loss-0.05)}}-x*loss$$</td>
-<td>证明可以实现公平</td>
-</tr>
-<tr>
-<td>PCC Vivace (NSDI 2018)</td>
-<td>$$x-bx\frac{d(RTT)}{dT}-cx*loss$$</td>
-<td>分析不同参数下的算法发送速率收敛情况，可以实现不同流之间带宽分配</td>
-</tr>
-<tr>
-<td>PCC Proteus (SIGCOMM 2020)</td>
-<td>$$u_P = x-b \cdot x\cdot max { 0,\frac{d(Rtt)}{d(t)} }-c\cdot x\cdot loss$$<br>$$u_S = u_P-delay\cdot x\cdot \sigma(RTT)$$</td>
-<td>拾荒者流的效益函数在上述基础上增加惩罚项，即端到端时延的变化，保证普通流对于拾荒者流有更高的抢占能力。<br><strong>拾荒者流仅使用普通流的剩余资源，与其余拾荒者流公平竞争</strong></td>
-</tr>
-</tbody></table>
-<h1 id="三、基于反向强化学习的方法"><a href="#三、基于反向强化学习的方法" class="headerlink" title="三、基于反向强化学习的方法"></a>三、基于反向强化学习的方法</h1><h2 id="简介-2"><a href="#简介-2" class="headerlink" title="简介"></a>简介</h2><p>强化学习中，reward函数需要手动设置，且无法适用于所有场景。如</p>
-<ul>
-<li>在缓存较小的网络中，时延波动不明显，需要提高时延的权重。否则，训练出的网络模型无法感知拥塞</li>
-<li>反之，在长时延低吞吐网络中，需要降低时延权重，提升吞吐权重。</li>
-</ul>
-<table>
-<thead>
-<tr>
-<th>算法名称</th>
-<th>State</th>
-<th>Action</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>Indigo (NSDI 2018))</td>
-<td>队列时延滑动平均<br>发送速率滑动平均、<br>接受速率滑动平均、<br>当前拥塞窗口大小、<br>前一个action</td>
-<td>对发送窗口调整：<br>不变、/2、*2、+10、-10</td>
-</tr>
-</tbody></table>
-<h1 id="四、机器学习方法与传统方法相结合"><a href="#四、机器学习方法与传统方法相结合" class="headerlink" title="四、机器学习方法与传统方法相结合"></a>四、机器学习方法与传统方法相结合</h1><h2 id="背景：Classic-Meets-Modern-SIGCOMM-2020"><a href="#背景：Classic-Meets-Modern-SIGCOMM-2020" class="headerlink" title="背景：Classic Meets Modern (SIGCOMM 2020)"></a>背景：Classic Meets Modern (SIGCOMM 2020)</h2><p><strong>非机器学习缺点：</strong></p>
-<ul>
-<li>将“行为”与“状态/信号”映射，无法适用于复杂异构场景。如，以丢包为拥塞标志的算法不适用于高丢包场景</li>
-</ul>
-<p><strong>机器学习缺点：</strong></p>
-<ul>
-<li>在每个监控窗口后对发送速率/拥塞窗口进行调整，导致算法无法应对网络快速变化</li>
-</ul>
-<h3 id="基本思想"><a href="#基本思想" class="headerlink" title="基本思想"></a>基本思想</h3><p>在机器学习调整期间使用非机器学习方法对发送速率进行微调</p>
+<h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><h3 id="1-现有系统的缺点"><a href="#1-现有系统的缺点" class="headerlink" title="1. 现有系统的缺点"></a>1. 现有系统的缺点</h3><img src="/2021/04/15/%E7%BD%91%E7%BB%9C%E7%B3%BB%E7%BB%9F%E4%B8%AD%E7%9A%84%E5%8F%AF%E8%A7%A3%E9%87%8A%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E6%96%B9%E6%B3%95/f3.jpg" width="40%">
 
+<p>DNNs的黑盒特性对网络运营商来说缺乏可解释性。如果不理解DNN为什么要做出决策，网络运营商可能就没有足够的信心在实践中采用它们。此外，黑盒属性在调试、在线部署和临时调整方面给联网系统带来了缺点，原因如下。</p>
+<ul>
+<li><strong>不可理解的结构。</strong> DNN可能包含数千到数十亿个神经元，这使得人类网络运营商无法理解它们。由于DNN的复杂结构，当基于DL的网络系统不能按预期运行时，网络运营商将很难定位错误的组件。即使在DNN结构的设计中发现了次优性，网络运营商也面临着重新设计以获得更好性能的挑战。如果网络运营商能够跟踪输入和输出之间的映射函数，那么调试和改进基于DL的网络系统就更容易了。</li>
+<li><strong>重量级部署。</strong> 众所周知，DNN在资源消耗和决策延迟方面都非常庞大。即使使用专用硬件（如GPU），DNN也可能需要几十毫秒的时间来进行决策。相比之下，网络系统，特别是终端设备（如移动电话）或网络内设备（如交换机）上的本地系统，是资源有限的和对时间敏感的。例如，在移动客户机上加载基于DNN的ABR算法会将页面加载时间增加约10秒。现有系统通常只提供“尽力而为”的服务，当无法满足资源和延迟约束时，会回滚到启发式算法，这会降低DNNs的性能。</li>
+<li><strong>不可调整的政策。</strong> 网络系统的实际部署还需要特别调整或添加临时特性。例如，我们可以调整公平调度中不同作业的权重，以跟上工作负载的波动。然而，解释的缺失给网络运营商调整网络系统带来了困难。如果不理解DNNs为什么做出这样的决定，任意的调整可能会导致严重的性能下降。例如，当网络运营商希望手动将流重新路由到远离某条链路的位置时，如果不解释DNN的行为，网络运营商可能不知道如何调整该流。</li>
+</ul>
+<img src="/2021/04/15/%E7%BD%91%E7%BB%9C%E7%B3%BB%E7%BB%9F%E4%B8%AD%E7%9A%84%E5%8F%AF%E8%A7%A3%E9%87%8A%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E6%96%B9%E6%B3%95/f4.jpg" width="40%">
+
+<p>DNNs在网络系统中的应用还处于初级阶段：Pensieve、AuTO、RouteNet的DNNs还不到十层。作为比较，在其他社区中的DNN层的数量正在急剧增加，最近的语言翻译模型甚至包含数十亿个参数。虽然我们并不是说越大越好，但不可否认的是，更大的dnn会加剧问题，并为实际部署基于DL的网络系统制造障碍。</p>
+<h3 id="2-现有可解释性工作的缺陷"><a href="#2-现有可解释性工作的缺陷" class="headerlink" title="2. 现有可解释性工作的缺陷"></a>2. 现有可解释性工作的缺陷</h3><p>对于基于DL的网络系统，现有的解释方法在以下几个方面存在不足：</p>
+<ul>
+<li><p><strong>不同的解释目标。</strong> DNN为什么做出某个决定的问题可能有两个角度的答案。在机器学习领域中，可解释目标是理解ML模型的内在机制（例如，哪些神经元被某些特定的输入特征激活）。这就像是试图了解大脑如何在手术中工作。相反，网络运营商的预期答案是输入和输出之间的关系（例如，哪些输入特征影响决策）。网络运营商需要的是一种解释DNNs输入和输出之间映射的方法。</p>
+</li>
+<li><p><strong>多样化的网络系统。</strong> 基于DL的网络系统具有不同的应用场景，并且基于各种DL方法，例如前馈神经网络（FNN）、递归神经网络（RNN）和图神经网络（GNN）。因此，用单一的解释方法解释不同的基于数据链路的网络系统是不够的。例如，LEMNA只能解释RNN的行为，因此不适用于基于GNN的网络系统。在Metis中，作者将基于DL的网络系统归纳为两类（本地和全局），并为每一类开发相应的技术。</p>
+</li>
+<li><p><strong>非标准状态空间和动作空间。</strong> 现有的解释方法通常采用易于编码的状态空间和动作空间。例如，解释图像分类任务的方法是为基于网格的RGB编码设计的。语言翻译任务的解释方法也是基于矢量化的单词嵌入。然而，网络系统本质上是在非标准的状态空间和行为空间中工作的。例如，RouteNet将拓扑作为输入，并生成可变长度的路由路径。因此，需要专门设计的网络系统解释方法。</p>
+</li>
+</ul>
+<p>为了解释基于DL的网络系统，Metis针对不同的系统引入了基于决策树的方法和基于超图的方法。作者认为，尽管基于DL的网络系统是多样的，但当分为两类（局部和全局）时，每个类别中的共性使我们能够设计特定的解释方法。</p>
+<h3 id="3-网络中的任务分类"><a href="#3-网络中的任务分类" class="headerlink" title="3. 网络中的任务分类"></a>3. 网络中的任务分类</h3><table>
+<thead>
+<tr>
+<th>类别</th>
+<th>场景</th>
+<th>例子</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>局部</td>
+<td>端到端拥塞控制</td>
+<td>Aurora</td>
+</tr>
+<tr>
+<td></td>
+<td>码率调整</td>
+<td>Pensieve</td>
+</tr>
+<tr>
+<td></td>
+<td>流调度</td>
+<td>AuTO</td>
+</tr>
+<tr>
+<td>全局</td>
+<td>集群任务调度</td>
+<td>Decima</td>
+</tr>
+<tr>
+<td></td>
+<td>SDN路由</td>
+<td>RouteNet</td>
+</tr>
+<tr>
+<td></td>
+<td>NFV任务放置</td>
+<td>NFVdeep</td>
+</tr>
+</tbody></table>
+<h2 id="局部优化问题解决方法"><a href="#局部优化问题解决方法" class="headerlink" title="局部优化问题解决方法"></a>局部优化问题解决方法</h2><h2 id="全局游湖问题解决方法"><a href="#全局游湖问题解决方法" class="headerlink" title="全局游湖问题解决方法"></a>全局游湖问题解决方法</h2>
       
 
       
@@ -284,7 +261,15 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">拥塞控制</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">机器学习</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">可解释性</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">SIGCOMM</a>
         		</li>
       		
 		</ul>
@@ -351,7 +336,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2021/04/01/%E6%8B%A5%E5%A1%9E%E6%8E%A7%E5%88%B6/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2021/04/15/%E7%BD%91%E7%BB%9C%E7%B3%BB%E7%BB%9F%E4%B8%AD%E7%9A%84%E5%8F%AF%E8%A7%A3%E9%87%8A%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E6%96%B9%E6%B3%95/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -365,18 +350,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2021/04/01/RDMA/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          RDMA概述
-        
-      </div>
-    </a>
   
-  
-    <a href="/2021/03/14/Sol-Fast-Distributed-Computation/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Sol: Fast Distributed Computation Over Slow Networks (NSDI 2020)</div>
+    <a href="/2021/04/01/RDMA/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">RDMA概述</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -403,7 +379,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E5%9F%BA%E4%BA%8E%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E7%9A%84%E6%96%B9%E6%B3%95"><span class="toc-number">1.</span> <span class="toc-text">一、基于强化学习的方法</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AE%80%E4%BB%8B"><span class="toc-number">1.1.</span> <span class="toc-text">简介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9B%B8%E5%85%B3%E5%B7%A5%E4%BD%9C%EF%BC%9A"><span class="toc-number">1.2.</span> <span class="toc-text">相关工作：</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E5%9F%BA%E4%BA%8E%E5%9C%A8%E7%BA%BF%E5%AD%A6%E4%B9%A0%E7%9A%84%E6%96%B9%E6%B3%95"><span class="toc-number">2.</span> <span class="toc-text">二、基于在线学习的方法</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AE%80%E4%BB%8B-1"><span class="toc-number">2.1.</span> <span class="toc-text">简介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9B%B8%E5%85%B3%E5%B7%A5%E4%BD%9C%EF%BC%9A-1"><span class="toc-number">2.2.</span> <span class="toc-text">相关工作：</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E5%9F%BA%E4%BA%8E%E5%8F%8D%E5%90%91%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E7%9A%84%E6%96%B9%E6%B3%95"><span class="toc-number">3.</span> <span class="toc-text">三、基于反向强化学习的方法</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AE%80%E4%BB%8B-2"><span class="toc-number">3.1.</span> <span class="toc-text">简介</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%9B%9B%E3%80%81%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E6%96%B9%E6%B3%95%E4%B8%8E%E4%BC%A0%E7%BB%9F%E6%96%B9%E6%B3%95%E7%9B%B8%E7%BB%93%E5%90%88"><span class="toc-number">4.</span> <span class="toc-text">四、机器学习方法与传统方法相结合</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%83%8C%E6%99%AF%EF%BC%9AClassic-Meets-Modern-SIGCOMM-2020"><span class="toc-number">4.1.</span> <span class="toc-text">背景：Classic Meets Modern (SIGCOMM 2020)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E6%80%9D%E6%83%B3"><span class="toc-number">4.1.1.</span> <span class="toc-text">基本思想</span></a></li></ol></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%91%98%E8%A6%81"><span class="toc-number">1.</span> <span class="toc-text">摘要</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%83%8C%E6%99%AF"><span class="toc-number">2.</span> <span class="toc-text">背景</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E7%8E%B0%E6%9C%89%E7%B3%BB%E7%BB%9F%E7%9A%84%E7%BC%BA%E7%82%B9"><span class="toc-number">2.1.</span> <span class="toc-text">1. 现有系统的缺点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E7%8E%B0%E6%9C%89%E5%8F%AF%E8%A7%A3%E9%87%8A%E6%80%A7%E5%B7%A5%E4%BD%9C%E7%9A%84%E7%BC%BA%E9%99%B7"><span class="toc-number">2.2.</span> <span class="toc-text">2. 现有可解释性工作的缺陷</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E7%BD%91%E7%BB%9C%E4%B8%AD%E7%9A%84%E4%BB%BB%E5%8A%A1%E5%88%86%E7%B1%BB"><span class="toc-number">2.3.</span> <span class="toc-text">3. 网络中的任务分类</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B1%80%E9%83%A8%E4%BC%98%E5%8C%96%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95"><span class="toc-number">3.</span> <span class="toc-text">局部优化问题解决方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%A8%E5%B1%80%E6%B8%B8%E6%B9%96%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95"><span class="toc-number">4.</span> <span class="toc-text">全局游湖问题解决方法</span></a></li></ol>
                     </div>
                 </span>
             </div>
