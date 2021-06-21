@@ -16,7 +16,7 @@
 <meta property="og:description" content="摘要Analyzing Learning-Based Networked Systems with Formal Verification （INFOCOM 2021） 随着（深度）神经网络在计算机网络领域出现更多应用，神经网络模型对极端情况输入行为的正确性和可预测性变得至关重要。 该文对模型的非平凡属性进行形式化分析，如，输入对抗攻击的弹性。同时，展示了形式验证如何帮助创建代理行为的准确视觉表示">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2021-06-21T05:44:32.000Z">
-<meta property="article:modified_time" content="2021-06-21T07:07:29.264Z">
+<meta property="article:modified_time" content="2021-06-21T13:37:14.043Z">
 <meta property="article:author" content="Jerry Li">
 <meta property="article:tag" content="机器学习">
 <meta property="article:tag" content="可解释性">
@@ -213,7 +213,7 @@
 <p> 将预期的行为形式化为属性，表达为一系列输入和输出的约束。</p>
 </li>
 </ol>
-<p>验证一个属性是否成立即首先将网络和该属性进行编码，生成一个MILP问题，如果该MILP问题无解，则该属性得到验证。</p>
+<p>验证一个属性是否成立即首先将网络和该属性进行编码，生成一个MILP问题，如果该MILP问题无解（即不存在x’），则该属性得到验证。</p>
 
       
 
